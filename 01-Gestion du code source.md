@@ -88,4 +88,4 @@ Court paragraphe décrivant les modifications plus en détail si nécessaire
 ## Nommage des dépôts
 
 Les noms de nos dépôts sur Github doivent être en minuscule, les éléments séparés par des tirets.
-Chaque nouveau nom doit être proposé à l'alias github@abes.fr qui assure le maintien d'une certaine cohérence dans le nommage des dépôts.
+Les demandes de création de dépôt doivent être transmises à l'alias github@abes.fr qui assure le maintien d'une certaine cohérence dans le nommage des dépôts.
