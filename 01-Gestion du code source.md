@@ -88,5 +88,6 @@ Court paragraphe décrivant les modifications plus en détail si nécessaire
 
 ## Nommage des dépôts
 
-Les noms de nos dépôts sur Github doivent être en minuscule, les éléments séparés par des tirets.
+Les noms de nos dépôts sur Github doivent être en minuscule, les éléments séparés par des tirets. Chaque dépôt doit posséder, dès sa création, une description ainsi qu'un `README.md` minimaliste pour donner dès le début un cadre au contenu attendu dans le dépôt (même si ce dernier est vide dans un premier temps).
+
 Les demandes de création de dépôt doivent être transmises à l'alias github@abes.fr qui assure le maintien d'une certaine cohérence dans le nommage des dépôts.
