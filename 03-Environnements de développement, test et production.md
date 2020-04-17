@@ -20,7 +20,12 @@ Chaque environnement est cloisonné. On ne peut pas accéder depuis un type d’
 
 Les points de montage qui permettent d’accéder aux espaces de stockage réseaux sont tous nommés : /applis/ que l’on soit sur l’environnement de développement, de test ou de production, ceci pour faciliter le déplacement des applications d’un environnement à l’autre (inutile de modifier les fichiers de configuration). 
 
-Si l’application a besoin de connaitre l’environnement sur lequel elle s’exécute, elle peut interroger une variable d’environnement positionnée sur chaque type d’environnement : APPLIS_ENV. Cette variable peut prendre comme valeur DEV, TEST ou PROD. On peut la récupérer en java via l’instruction System.getenv().
+Si l’application a besoin de connaitre l’environnement sur lequel elle s’exécute, elle peut interroger une variable d’environnement positionnée sur chaque type d’environnement : `APPLIS_ENV`. Cette variable peut prendre comme valeur DEV, TEST ou PROD. On peut la récupérer en java via l’instruction System.getenv().
+
+Remarque pour les batch : la variable d'environnement `APPLIS_ENV` n'est pas automatiquement injectée lorsque le batch est exécuté par crontab. Si l'on souhaite pouvoir l'utiliser dans ce contexte, veillez à sourcer le fichier `/etc/profile` (c'est ici que `APPLIS_ENV` est positionnée) avant de lancer le batch. Exemple :
+```cron
+* * * * * source /etc/profile ; /home/batch/monbatch.sh
+```
 
 Dans chaque type d’environnement, on peut trouver des serveurs d’application, des serveurs d’indexation, des serveurs de base de données. L’existence de chacun de ces serveurs n’est pas systématique et reste relative à chaque application. Chaque application doit être accompagnée de sa documentation explicitant sa propre architecture : elle doit préciser le type de serveurs mis en œuvre, la version des composants logiciels.
 
