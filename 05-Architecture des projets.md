@@ -104,7 +104,7 @@ La mise en oeuvre d'un framework permet notamment :
 * d'homogénéiser les développements des applications en assurant la réutilisation de composants fiables
 * de faciliter la maintenance notamment évolutive des applications
 
-### Framework Spring pour les applications Java
+### Framework Spring pour les applications serveurs (Java)
 
 Le framework qui s'est imposé ces dix dernières années est Spring. Il est très largement utilisé dans le monde Java, ce qui en fait un standard de fait et constitue une certaine garantie sur la pérennité du framework. Spring propose une très bonne intégration avec d'autres frameworks open source comme Hibernate ou des standards de Java (Servlets, JMS, JDO etc.) Toutes les fonctionnalités de Spring peuvent s'utiliser dans un serveur Java EE et pour la plupart dans un simple conteneur web ou une application standalone.
 
@@ -114,10 +114,23 @@ La documentation de Spring est complète et régulièrement mise à jour lors de
 
 A noter qu'il n'est pas rare que les livrables aient une taille importante du fait des nombreuses librairies requises par Spring et ses dépendances.
 
-### Framework VueJs pour les applications Javascript
+### Framework VueJs pour les applications clientes (CSS/Javascript)
 
 Les frameworks Javascript permettent de construire des applications s'exécutant essentiellement dans le navigateur web en minimisant les échanges avec la partie serveur. Ce fonctionnement permet d'obtenir une expérience utilisateur plus fluide et riche. Côté développeur, ces frameworks ajoutent une couche d'abstraction qui manquait dans l'univers Javascript. 
 Actuellement les frameworks Javascript les plus populaires sont React, Angular et VueJs.  
 Nous avons fait le choix de VueJs pour sa légèreté et facilité à prendre à main. Nous utilisons également Vuetify qui propose une galerie de composants graphiques.
 Ce framework implémente le modèle MVVM (modèle-vue-vue-modèle) via un système de binding qui permet d'échanger instantanément des données entre le modèle et la vue.
 
+#### Technique du "cache busting" pour les applications clients pas encore en VueJS
+
+Il est préconisé de mettre en place la technique du [cache busting](https://www.keycdn.com/support/what-is-cache-busting) pour les application HTML/CSS/JS qui n'utilisent pas encore VueJS. Cette technique permet de palier les problèmes de mise en cache des "vielles" ressources statiques (CSS/JS) lorsque l'on publie une nouvelle version de l'application (et évite par exemple de demander aux utilisateur de faire CTRL+F5 pour avoir la bonne version des ressources). Cette technique consiste à ajouter le numéro de version ou le hash du dernier commit dans l'URL de la CSS/JS au moment de l'inclusion ou bien d'y indiquer une valeur arbitraire qui est modifiée au moment où la ressource statique CSS/JS a été modifiée.
+
+Voici un exemple sur IdRef avant la mise en place du cache busting :
+```html
+<link rel="stylesheet" type="text/css" href="css/style.css" title="style" media="screen"/>
+```
+
+Et voici ce que cela donne après la mise en place du cache busting :
+```html
+<link rel="stylesheet" type="text/css" href="css/style.css?v1" title="style" media="screen"/>
+```
