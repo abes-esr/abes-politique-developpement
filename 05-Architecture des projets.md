@@ -57,7 +57,7 @@ Pour les projets Java qui sont gérés avec Maven, le fichier pom.xml est config
 * application-PROD.properties pour l’environnement de production
 * application.properties pour les éléments partagés par tous les environnements.
 
-pour les dépôts Github, les fichiers de configuration ne sont pas versionnés avec le projet. Ils sont versionnés sur un dépôt interne et encoyé sur les environnements de déploiement au moment de l'exécution du job de déploiement.  
+pour les dépôts Github, les fichiers de configuration ne sont pas versionnés avec le projet. Ils sont versionnés sur un dépôt interne et envoyés sur les environnements de déploiement au moment de l'exécution du job de déploiement.  
 
 Les fichiers journaux de l’application doivent se situer dans un répertoire nomAppli/logs. Un fichier log4j.properties est fourni dans l’application pour déterminer la structure du fichier de log.
 
