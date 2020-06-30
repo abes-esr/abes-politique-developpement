@@ -6,9 +6,9 @@ __Les objectifs visés__ :
 
 * Avoir une maintenance facilitée des applications existantes (lisibilité, reprise de code, partage de modules)
 * Faciliter l'intégration d'un nouveau développeur(se) dans une équipe
-* Faciliter le trasnfert de responsabilité informatique d'une application
+* Faciliter le transfert de responsabilité informatique d'une application
 * Rester en phase avec l'état de l'art en termes de technologies et donc permettre de meilleures possibilités de collaboration
-* assurer le respect de règles en termes de sécurité
+* Assurer le respect de règles en termes de sécurité
 
 __Les moyens__ : 
 
