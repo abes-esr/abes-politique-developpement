@@ -57,7 +57,7 @@ Les releases sont mises en oeuvre via Jenkins qui ajoute une version taguée dan
 * tout le code impacté par un ajout de fonctionnalité ou une correction doit être commité en une seule fois. Si plusieurs fonctionnalités ou bugs sont impactés, il est donc recommandé de réaliser plusieurs commits, chacun correspondant à une modification.
 * les builds sont en général lancé à la main depuis Jenkins. Mais il est aussi possible de programmer des builds automatique, par exemple tous les jours à la même heure.
 * il faut utiliser le fichier .gitignore pour exclure systématiquement des commits tout ce qui est spécifique à l’IDE (.classpath, .project), le répertoire avec le code compilé : target et les fichiers .properties lorsqu'on travaille sur Github.
-* Pour les dépôts Github, les fichiers application.properties sont stockés sur un dépôt Gitkab interne et déployé via nos jobs de déploiement Jenkins.
+* Pour les dépôts Github, les fichiers application.properties sont stockés sur un dépôt Gitlab interne et déployé via nos jobs de déploiement Jenkins.
 * le code compilé ne doit pas être envoyé sur le SCM (puisque les sources suffisent à créer le programme)
 * les dépendances externes ne doivent pas être envoyées sur le SCM (elles sont dans le repository manager)
 * Pour le PL/SQL : un batch parcourt tous les scripts PL/SQL et les envoie automatiquement dans un dépôt spécifique. On peut aussi exporter le code depuis l'IDE sqldeveloper sur son poste en local en fichiers .sql (qui contient fonctions, procédures, types, DDL). Ces fichiers sont alors regroupés dans un répertoire "sql" dans le projet et sont versionnés avec le projet.
