@@ -91,3 +91,20 @@ Court paragraphe décrivant les modifications plus en détail si nécessaire
 Les noms de nos dépôts sur Github doivent être en minuscule, les éléments séparés par des tirets. Chaque dépôt doit posséder, dès sa création, une description ainsi qu'un `README.md` minimaliste pour donner dès le début un cadre au contenu attendu dans le dépôt (même si ce dernier est vide dans un premier temps).
 
 Les demandes de création de dépôt doivent être transmises à l'alias github@abes.fr qui assure le maintien d'une certaine cohérence dans le nommage des dépôts.
+
+## Création et configuration d'un nouveau dépôt
+
+* se loguer en utilisateur "depots" pour Gitlab
+* le nommer en respectant le standard PascalCase pour Gitlab et les règles de nommage ci-dessus pour Github 
+* ajouter une description
+
+Une fois le dépôt créé : 
+* ajouter un readme
+* ajouter un .gitignore
+* créer une branche develop
+
+* dans les settings du dépôt, dans "Members" pour Gitlab ou "Manage access" pour Github : inviter les développeurs, leur attribuer un rôle (maintainer ou developers)
+
+* dans "Settings / repository" pour Gitlab ou "Branches" pour Github, il faut protéger les branches ainsi:
+    * master : allowed to push : no one, allowed to merge : maintainers + developers
+    * develop : allowed to push : maintainers + developers, allowed to merge : maintainers + developers
