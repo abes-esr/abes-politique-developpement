@@ -94,12 +94,14 @@ Les demandes de création de dépôt doivent être transmises à l'alias github@
 
 ## Création et configuration d'un nouveau dépôt
 
-* se loguer en utilisateur "depots" pour Gitlab
+La création de dépôt opensource sur GitHub doit être privilégiée. La création de dépôt sur GitLab (interne à l'Abes) est utile dans certain rares cas (dépôt contenant des secrets, réorganisation de vieux codes). Voici la procédure pour la création de dépôt : 
+
+* se loguer en utilisateur "depots" pour Gitlab (ou un compte avec les droits admin pour Github)
 * le nommer en respectant le standard PascalCase pour Gitlab et les règles de nommage ci-dessus pour Github 
 * ajouter une description
 
 Une fois le dépôt créé : 
-* ajouter un readme
+* ajouter un readme (et le renseigner)
 * ajouter un .gitignore
 * créer une branche develop
 
