@@ -20,5 +20,5 @@ Apache Tomcat/9.0.12
 ## Solution
 
 pour les war conçu avec Spring, il faut :
-* mettre <packaging>war</packaging> dans le pom 
+* mettre ```<packaging>war</packaging> ``` dans le pom 
 * ne pas oublier :  **extends SpringBootServletInitializer** dans la classe principale
