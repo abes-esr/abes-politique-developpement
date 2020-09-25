@@ -41,3 +41,10 @@ Les mots de passe doivent obligatoirement être stockés encryptés : nous utili
 ## Blocage après un certain nombre de tentatives de connexion
 
 Il faut ajouter un système pour bloquer momentanément le compte au-delà d'un certain nombre de tentatives de connexions infructueuses (il faut par exemple se prémunir contre les attaques de type "brute force" qui consiste à essayer de trouver un mot de passe en faisant de multiples tentatives). Nous implémentons ce type de protection dans le code.
+
+## Analyse dependabot
+
+Dependabot est un outil qui analyse les vulnérabilités des dépendances utilisées par nos codes sources. Lorsque une faille est découverte, dependabot propose une pull request avec la montée en version de la dépendance. L'activation de dependabot se configure via l'onglet Security. L'outil analyse la branche master. Voici la procédure à suivre lorsqu'une PR est proposée : 
+
+* Récupérer en local la branche avec la montée de version proposée par depenbdabot et tester si l'application fonctionne avec la nouvelle version. Pour le code VueJS, il faut lancer les commandes "npm install" (pour récuperer les dependances) puis "npm run serve" pour vérifier l'application.
+* Si aucun problème n'est détecté, il faut merger la branche sur master. On reporte ensuite master sur develop.
