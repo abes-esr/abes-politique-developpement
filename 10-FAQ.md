@@ -153,3 +153,14 @@ Commencer son message de commit avec l'option suivante
 ```syntaxe
 $git commit --cleanup=whitespace
 ```
+
+# Des annotations @Value renvoient null
+
+# Problème 
+
+Dans un projet Spring, des annotations @Value ne récupèrent pas les valeurs depuis les fichiers *.properties
+
+# Solution
+
+Cette annotation ne fonctionne que pour les objets instanciés via Spring c'est à dire par exemple avec l'annotation @Autowired.
+Un objet instancié via ```new``` ne pourra pas utiliser @Value. 
