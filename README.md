@@ -1,6 +1,6 @@
 # Politique de développement
 
-La mise en place d'une politique de développement à l'Abes nous a permis de se doter d'un cadre pour structurer nos développements informatiques. Cette politique a été rédigée par les développeur(se)s de l'Abes avec la participation de collègues du service Infrastructures et Réseaux. Elle nous fournit des méthodes et des outils pour améliorer la qualité de nos projets et applications.
+La mise en place d'une politique de développement à l'Abes nous a permis de nous doter d'un cadre pour structurer nos développements informatiques. Cette politique a été rédigée par les développeur(se)s de l'Abes avec la participation de collègues du service Infrastructures et Réseaux. Elle nous fournit des méthodes et des outils pour améliorer la qualité de nos projets et applications.
 
 __Les objectifs visés__ : 
 
