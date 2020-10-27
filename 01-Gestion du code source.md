@@ -40,7 +40,7 @@ Une release correspond à l'état stable d’une version. Si par exemple la cons
 
 ## Utilisation des branches
 
-Nous utilisons un système de branches inspiré de Gitflow : nous avons donc systématiquement deux branches : "master" (version en production) et "develop" (version en cours de développement). Lorsqu'on souhaite ajouter une fonctionnalité, on crée une nouvelle branche du nom de la fonctionnalité (feature/nomDeLaFonctionnalité). Une fois cette fonctionnalité déployée en environnement de test et validée, une merge request est créée.
+Nous utilisons un système de branches inspiré de [Gitflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow) : nous avons donc systématiquement deux branches : "master" (version en production) et "develop" (version en cours de développement). Lorsqu'on souhaite ajouter une fonctionnalité, on crée une nouvelle branche du nom de la fonctionnalité (feature/nomDeLaFonctionnalité). Une fois cette fonctionnalité déployée en environnement de test et validée, une merge request est créée.
 Lorsque un autre développeur a pris connaissance du code, la branche est fusionnée sur la branche "develop". 
 
 On peut également corriger un bug dans la version en production sans toucher à la version en développement. On dérive alors une branche "hotfix" de la branche "master". Une fois validée, la correction est intégrée sur la branche "master" et on ne doit pas trop tarder pour l'intégrer aussi à "develop".
