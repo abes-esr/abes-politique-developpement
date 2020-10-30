@@ -32,5 +32,5 @@ Le framework de test unitaire que nous utilisons est jUnit. Il permet de réalis
 
 ## Test unitaires  en Javascript
 
-Nous préconisons l'écriture de tests pour le code client produit avec le framework VueJs : https://fr.vuejs.org/v2/guide/unit-testing.html
+Nous préconisons l'écriture de tests pour le code client produit avec le framework VueJs : https://vuejs.org/v2/guide/testing.html#Vue-Test-Utils
  
