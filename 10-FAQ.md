@@ -164,3 +164,30 @@ Dans un projet Spring, des annotations @Value ne récupèrent pas les valeurs de
 
 Cette annotation ne fonctionne que pour les objets instanciés via Spring c'est à dire par exemple avec l'annotation @Autowired.
 Un objet instancié via ```new``` ne pourra pas utiliser @Value. 
+
+# Erreur "ORA-28040: No matching authentication protocol"
+
+# Problème 
+
+Lors de la migration vers Oracle 12C, on a l'erreur : ORA-28040: No matching authentication protocol
+
+# Solution
+
+Il faut mettre à jour la dépendance jdbc, par exemple remplacer :
+```
+<dependency>
+    <groupId>com.oracle.jdbc</groupId>
+    <artifactId>ojdbc6</artifactId>
+    <version>11.2.0.3.0</version>
+</dependency>
+```
+par : 
+```
+<dependency>
+    <groupId>oracle.ojdbc</groupId>
+     <artifactId>ojdbc</artifactId>
+     <version>12.1.0.1.0</version>
+ </dependency>
+```
+
+
