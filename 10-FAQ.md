@@ -191,3 +191,34 @@ par :
 ```
 
 
+## VueJS : Force resolution of vulnerabilities
+
+#Probleme
+
+Sous vuejs ou autre projet utilisant npm, lors du lancement de l'application avec npm run serve, ou lors de l'installation d'un nouveau module avec npm install, des vulnerabilités dans les modules peuvent apparaitre.
+- la commande npm audit permet de les investiguer.
+- la commande nom audit fix --force ne permet souvent pas de les fixer. Cela est du au fait que cette commande n'agit que sur les versions des modules, et non les versions des sous-modules empaquetés par certains modules. Il faut alors paramétrer les versions des sous-modules dans le package.json de l'application, puis lancer un script spécifique, après chaque npm install, afin de rétablir les version qui évitent ces vulnérabilités.
+
+install in package.json file
+```javascript
+"scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "yargs-parser": "15.0.1"
+  },
+```
+As the example, the script preinstall was added, and a specific version of yargs-parser (who depends on top level jest npm module)
+will be forced to update in node_module.
+Then, run the script: npx npm-force-resolutions
+and just tap on commands:
+```
+npm i && npm audit fix --force
+```
+Tip: think to run the script after each npm installation modules.
+
+Après cela, les vulnérabilités doivent avoir disparues.
