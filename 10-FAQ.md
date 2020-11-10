@@ -156,22 +156,22 @@ $git commit --cleanup=whitespace
 
 # Des annotations @Value renvoient null
 
-# Problème 
+## Problème 
 
 Dans un projet Spring, des annotations @Value ne récupèrent pas les valeurs depuis les fichiers *.properties
 
-# Solution
+## Solution
 
 Cette annotation ne fonctionne que pour les objets instanciés via Spring c'est à dire par exemple avec l'annotation @Autowired.
 Un objet instancié via ```new``` ne pourra pas utiliser @Value. 
 
 # Erreur "ORA-28040: No matching authentication protocol"
 
-# Problème 
+## Problème 
 
 Lors de la migration vers Oracle 12C, on a l'erreur : ORA-28040: No matching authentication protocol
 
-# Solution
+## Solution
 
 Il faut mettre à jour la dépendance jdbc, par exemple remplacer :
 ```
@@ -190,4 +190,12 @@ par :
  </dependency>
 ```
 
+#Oracle SQL Developper : Multiple table view
 
+##Probleme
+
+Oracle SQL ne permet pas de base les onglets multiples pour gérer les tables.
+
+##Solution
+
+https://stackoverflow.com/questions/1912129/oracle-sql-developer-multiple-table-views
