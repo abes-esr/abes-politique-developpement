@@ -199,3 +199,5 @@ Oracle SQL ne permet pas de base les onglets multiples pour gérer les tables.
 ##Solution
 
 https://stackoverflow.com/questions/1912129/oracle-sql-developer-multiple-table-views
+
+Outils > Preferences > Bases de donnees > Visualiseur d'objets
