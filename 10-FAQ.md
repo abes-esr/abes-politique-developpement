@@ -190,24 +190,26 @@ par :
  </dependency>
 ```
 
-#Oracle SQL Developper : Multiple table view
+# Oracle SQL Developper : Multiple table view
 
-##Probleme
+## Problème
 
 Oracle SQL ne permet pas de base les onglets multiples pour gérer les tables.
 
-##Solution
+## Solution
 
 https://stackoverflow.com/questions/1912129/oracle-sql-developer-multiple-table-views
 Outils > Preferences > Bases de donnees > Visualiseur d'objets
 
-## VueJS : Force resolution of vulnerabilities
+# VueJS : Force resolution of vulnerabilities
 
-#Probleme
+## Problème
 
 Sous vuejs ou autre projet utilisant npm, lors du lancement de l'application avec npm run serve, ou lors de l'installation d'un nouveau module avec npm install, des vulnerabilités dans les modules peuvent apparaitre.
 - la commande npm audit permet de les investiguer.
 - la commande nom audit fix --force ne permet souvent pas de les fixer. Cela est du au fait que cette commande n'agit que sur les versions des modules, et non les versions des sous-modules empaquetés par certains modules. Il faut alors paramétrer les versions des sous-modules dans le package.json de l'application, puis lancer un script spécifique, après chaque npm install, afin de rétablir les version qui évitent ces vulnérabilités.
+
+# Solution
 
 install in package.json file
 ```javascript
