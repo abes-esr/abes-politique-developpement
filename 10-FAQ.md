@@ -190,6 +190,8 @@ par :
  </dependency>
 ```
 
+Autre possibilité si jamais on est bloqué pour mettre à jour les librairies : utiliser la même version ojdbc6 et configurer l'authentification Oracle pour accepter des connexions de niveau 10, 11 et 12.
+
 # Oracle SQL Developper : Multiple table view
 
 ## Problème
