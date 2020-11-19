@@ -37,6 +37,22 @@ J'ai commité des changements en local mais l'application ne fonctionne plus, je
 git reset --hard HEAD~n
 ```
  avec n commits que l'on souhaite supprimer
+ 
+ # Versioning : supprimer les derniers commit erronés push sur le dépot distant
+ 
+ ## Problème 
+ 
+ J'ai commit puis push sur le dépôt distant des modifications que je n'aurais pas du envoyer.
+ 
+ ## Solution
+ ```terminal
+git reset --hard hashDuCommitSurLequelJeVeuxRevenir
+git push origin master -f
+```
+
+Ici le push se fait sur le master, mais remplacer 'master' par la branche sur laquelle vous voulez revenir en arrière.
+
+Attention : les commits supprimées disparaissent de l'historique
 
 ---
 
