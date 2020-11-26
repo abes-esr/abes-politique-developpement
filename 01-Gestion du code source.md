@@ -122,7 +122,7 @@ Une fois le dépôt créé :
 ## Codes partiellement ouverts sur Github
 
 Les dépôts Github publiés par l'Abes qui contiennent du code qui dépend de librairies non opensource (car pas encore libérées par l'Abes) doivent le mentionner dans le `README.md` du dépot par la mention suivante :
-> Attention : ce code (open)source, développé et maintenu par l'Abes ne peut pas (encore) être réutilisé à l'exterieur car il dépend de librairies internes. Contactez nous si vous souhaitez y contribuer.
+> Attention : ce code (open)source, développé et maintenu par l'Abes ne peut pas (encore) être réutilisé à l'exterieur car il dépend de librairies internes. Contactez nous (github@abes.fr) si vous souhaitez y contribuer.
 
 Ainsi les collègues contributeurs externes à l'Abes sont prévenus rapidement et cela leur évite de perdre du temps à essayer de compiler/réutiliser le code.
 
