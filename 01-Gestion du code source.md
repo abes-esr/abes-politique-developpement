@@ -1,14 +1,20 @@
 # Gestion du code source
 
+Pour gérer nos codes sources, nous utilisons :
+- Github comme gestionnaire de code open source (ou SCM pour source control management)
+- Artifactory (en interne à l'Abes) comme gestionnaire de dépôt d'objets binaires (ou repository manager). 
 
-Pour gérer nos codes sources, nous utilisons Gitlab comme gestionnaire de code source (ou SCM pour source control management) et Artifactory comme gestionnaire de dépôt d'objets binaires (ou repository manager). 
-Pour les nouveaux projets qui sont désormais par défaut open source, nous utilisons Github comme gestionnaire de code source.
+Pour les anciens projets que nous ne pouvons pas encore migrer en opensource, nous utilisons Gitlab en interne à l'Abes comme gestionnaire de code source.
+
+## Licences
+
+Tous les nouveaux projets créés par l'Abes depuis 2019 produisent du code opensource.
 
 Nous appliquons la [Licence CeCILL](https://fr.wikipedia.org/wiki/Licence_CeCILL) : c'est une licence équivalente à la GPL compatible avec le droit Français et [préconisée par la loi pour une République numérique](https://www.data.gouv.fr/fr/licences). Elle est donc "contaminante", c'est à dire qu'elle impose aux contributeurs de publier les modifications/améliorations réalisées sous la même licence. Les [bibliothèques de logiciels](https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_logicielle) ("librairies") développées seront elles publiées sous la [licence MIT](https://fr.wikipedia.org/wiki/Licence_MIT) qui permet une réutilisation moins contraignante et donc plus adapté à la nature de ces  codes.
 
-## Gitlab
+## Github / Gitlab
 
-Gitlab fournit une interface web qui : 
+Github et Gitlab fournissent une interface web qui : 
 * donne accès aux fichiers, aux commits, à un moteur de recherche sur le code source
 * propose un éditeur de code en ligne
 * permet de suivre facilement les modifications apportées par les développeurs
@@ -17,7 +23,7 @@ Gitlab fournit une interface web qui :
 
 ## Artifactory
 
-Artifactory permet de stocker le code source compilé des projets Java. Il contient l'ensemble des versions que les développeurs ont construites, qu'ils s'agissent de version SNAPTSHOT ou de RELEASE. On y trouve à la fois le code source compilé produit par l'Abes et les dépendances externes.
+Artifactory (outil interne à l'Abes) permet de stocker le code source compilé des projets Java. Il contient l'ensemble des versions que les développeurs ont construites, qu'ils s'agissent de version SNAPTSHOT ou de RELEASE. On y trouve à la fois le code source compilé produit par l'Abes et les dépendances externes.
 L'utilisation d'Artifactory nous permet aussi d'accélerer les phases de construction puisque les dépendances sont d'abord recherchées sur notre Artifactory local. En cas d'échec, elles sont recherchées sur Maven central.
 
 ## Numéros de version
@@ -94,7 +100,9 @@ Les demandes de création de dépôt doivent être transmises à l'alias github@
 
 ## Création et configuration d'un nouveau dépôt
 
-La création de dépôt opensource sur GitHub doit être privilégiée. La création de dépôt sur GitLab (interne à l'Abes) est utile dans certain rares cas (dépôt contenant des secrets, réorganisation de vieux codes). Voici la procédure pour la création de dépôt : 
+La création de dépôt opensource sur GitHub doit être privilégiée. La création de dépôt sur GitLab (interne à l'Abes) est utile dans certain rares cas (dépôt contenant des secrets, réorganisation de vieux codes). 
+
+Voici la procédure pour la création de dépôt Gitlab : 
 
 * se loguer en utilisateur "depots" pour Gitlab (ou un compte avec les droits admin pour Github)
 * le nommer en respectant le standard PascalCase pour Gitlab et les règles de nommage ci-dessus pour Github 
@@ -110,3 +118,11 @@ Une fois le dépôt créé :
 * dans "Settings / repository" pour Gitlab ou "Branches" pour Github, il faut protéger les branches ainsi:
     * master : allowed to push : no one, allowed to merge : maintainers + developers
     * develop : allowed to push : maintainers + developers, allowed to merge : maintainers + developers
+    
+## Codes partiellement ouverts sur Github
+
+Les dépôts Github publiés par l'Abes qui contiennent du code qui dépend de librairies non opensource (car pas encore libérées par l'Abes) doivent le mentionner dans le `README.md` du dépot par la mention suivante :
+> Attention : ce code (open)source, développé et maintenu par l'Abes ne peut pas (encore) être réutilisé à l'exterieur car il dépend de librairies internes. Contactez nous (github@abes.fr) si vous souhaitez y contribuer.
+
+Ainsi les collègues contributeurs externes à l'Abes sont prévenus rapidement et cela leur évite de perdre du temps à essayer de compiler/réutiliser le code.
+
