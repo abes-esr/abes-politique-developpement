@@ -48,3 +48,18 @@ Dependabot est un outil qui analyse les vulnérabilités des dépendances utilis
 
 * Récupérer en local la branche avec la montée de version proposée par depenbdabot et tester si l'application fonctionne avec la nouvelle version. Pour le code VueJS, il faut lancer les commandes "npm install" (pour récuperer les dependances) puis "npm run serve" pour vérifier l'application.
 * Si aucun problème n'est détecté, il faut merger la branche sur master. On reporte ensuite master sur develop.
+
+## Sécurisation d'un formulaire web anonyme (par Captcha)
+
+Les formulaires web pouvant être renseignés anonymement sont exposés aux robots spammeurs qui trainent sur le web public.
+
+Généralement ces robots ne vont pas tout de suite trouver comment publier du spam sur le formulaire en question, il leur faudra un certain temps avant de le repérer. Les formulaire web générés par des plateformes ou framework comme par exemple Wordpress ou Drupal sont repérés beaucoup plus rapidement par ces robots du fait de la popularité de ces plateformes.
+
+La mise en place d'un Captcha est une protection efficace. L'utilisation du système [reCaptcha](https://www.google.com/recaptcha/about/) est préconisé de manière à obtenir une uniformisation de l'expérience utilisateur sur les sites web produits par l'Abes (démarche UX).
+
+Plusieurs sites de l'Abes implémentent un Captcha dont voici un recensement :
+
+- Theses.fr dans la section "signaler une erreur" (reCaptcha) : https://www.theses.fr/feedbacktheses.jsp?origine=2005PA05S018&lng=fr&ppn_origine=026404788&appli_origine=Sudoc
+- IdRef dans la section "signaler une erreur" (reCaptcha) : https://www.idref.fr/assistance.jsp?ppn=139753753&titre=Dacos,%20Marin%20(1971-....)
+- Licences Nationales pour la création de compte (reCaptcha) : https://acces.licencesnationales.fr/creation-compte
+- Calames (système ad-hoc qui serait à modifier en reCaptcha) : http://www.calames.abes.fr/pub/ssl/Reg.aspx
