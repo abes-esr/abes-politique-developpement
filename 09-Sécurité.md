@@ -53,7 +53,7 @@ Dependabot est un outil qui analyse les vulnérabilités des dépendances utilis
 
 Les formulaires web pouvant être renseignés anonymement sont exposés aux robots spammeurs qui trainent sur le web public.
 
-Généralement ces robots ne vont pas tout de suite trouver comment publier du spam sur le formulaire en question, il leur faudra un certain temps avant de le repérer. Les formulaire web générés par des plateformes ou framework comme par exemple Wordpress ou Drupal sont repérés beaucoup plus rapidement par ces robots du fait de la popularité de ces plateformes.
+Généralement ces robots ne vont pas tout de suite trouver comment publier du spam sur le formulaire en question, il leur faudra un certain temps avant de le repérer. Les formulaires web générés par des plateformes ou framework comme par exemple Wordpress ou Drupal sont repérés beaucoup plus rapidement par ces robots du fait de la popularité de ces plateformes.
 
 La mise en place d'un Captcha est une protection efficace. L'utilisation du système [reCaptcha](https://www.google.com/recaptcha/about/) est préconisé de manière à obtenir une uniformisation de l'expérience utilisateur sur les sites web produits par l'Abes (démarche UX).
 
