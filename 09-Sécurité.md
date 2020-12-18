@@ -55,7 +55,7 @@ Les formulaires web pouvant être renseignés anonymement sont exposés aux robo
 
 Généralement ces robots ne vont pas tout de suite trouver comment publier du spam sur le formulaire en question, il leur faudra un certain temps avant de le repérer. Les formulaires web générés par des plateformes ou framework comme par exemple Wordpress ou Drupal sont repérés beaucoup plus rapidement par ces robots du fait de la popularité de ces plateformes.
 
-La mise en place d'un Captcha est une protection efficace. L'utilisation du système [reCaptcha](https://www.google.com/recaptcha/about/) est préconisé de manière à obtenir une uniformisation de l'expérience utilisateur sur les sites web produits par l'Abes (démarche UX).
+La mise en place d'un Captcha est une protection efficace. L'utilisation du système [reCaptcha](https://www.google.com/recaptcha/about/) est préconisé de manière à obtenir une uniformisation de l'expérience utilisateur sur les sites web produits par l'Abes (démarche UX). A noter que le compte commun Abes (applications.abes) est à utiliser pour administrer l'ensemble des instances de reCaptcha.
 
 Plusieurs sites de l'Abes implémentent un Captcha dont voici un recensement :
 
