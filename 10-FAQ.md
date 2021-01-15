@@ -205,6 +205,25 @@ par :
      <version>12.1.0.1.0</version>
  </dependency>
 ```
+Si on manipule des champs XMLTYPE, il faut ajouter les librairies xdb et xmlparser. Mais elles doivent être compatibles entre elles, par exemple : 
+```
+<dependency>
+   <groupId>oracle.ojdbc</groupId>
+   <artifactId>xdb6</artifactId>
+   <version>11.2.0.3.0</version>
+ </dependency>
+ <dependency>
+   <groupId>com.oracle</groupId>
+   <artifactId>ojdbc6</artifactId>
+   <version>11.2.0.3</version>
+ </dependency>
+ <dependency>
+   <groupId>oracle.ojdbc</groupId>
+   <artifactId>xmlparserv2</artifactId>
+   <version>11.2.0.3.0</version>
+   <scope>runtime</scope>
+ </dependency>
+```
 
 Autre possibilité si jamais on est bloqué pour mettre à jour les librairies : utiliser la même version ojdbc6 et configurer l'authentification Oracle pour accepter des connexions de niveau 10, 11 et 12.
 
