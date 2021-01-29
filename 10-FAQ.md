@@ -227,6 +227,30 @@ Si on manipule des champs XMLTYPE, il faut ajouter les librairies xdb et xmlpars
 
 Autre possibilité si jamais on est bloqué pour mettre à jour les librairies : utiliser la même version ojdbc6 et configurer l'authentification Oracle pour accepter des connexions de niveau 10, 11 et 12.
 
+## Problème 
+
+Lors de la mise à jour des dépendances Oracle, on a une erreur : SAXParser.
+L'erreur peut aussi arriver lorsqu'on passe une webapp de Tomcat 8 à Tomcat 9, sans forcément changer les dépendances Oracle : erreur SAXParser...
+
+## Solution
+
+La dépendance Oracle xmlparserv2 devient l'implémentation par défaut pour les javax.xml.parsers et javax.xml.transform
+
+Pour re-initialiser les implémentations par défaut, il faut : 
+
+Soit mettre ce bout de code au démarrage de l'application (par exemple dans une classe implémentant ServletContextListener et la méthode contextInitialized) : 
+```
+System.setProperty("javax.xml.parsers.SAXParserFactory","com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl");
+System.setProperty("javax.xml.transform.TransformerFactory","com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl");
+System.setProperty("javax.xml.parsers.DocumentBuilderFactory","com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
+```
+Soit définir ces propriétés en paramètre de la JVM : 
+```
+-Djavax.xml.parsers.DocumentBuilderFactory=com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl
+-Djavax.xml.transform.TransformerFactory=com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl
+-Djavax.xml.parsers.SAXParserFactory=com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl
+```
+
 # Oracle SQL Developper : Multiple table view
 
 ## Problème
