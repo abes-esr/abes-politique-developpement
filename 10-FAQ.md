@@ -297,3 +297,16 @@ npm i && npm audit fix --force
 Tip: think to run the script after each npm installation modules.
 
 Après cela, les vulnérabilités doivent avoir disparues.
+
+# Oracle SQL Developper : optimisation de requette. FPX
+
+## Problème
+
+Parfois une requette peut être très lente.
+
+## Solution
+
+Dans sqldev, se connecter à une instance, taper sa requete, pour tuner, faire alt+f12 ou le cliquer sur le cinqième icone (celui juste avant "commit")
+Ensuite dans détail, nous avons les plans d'executions, les index ou non à crée, les reformulations de requete ou pas ... 
+Faut juste suivre les indications.
+Fred
