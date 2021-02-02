@@ -306,7 +306,7 @@ Parfois une requete peut être très lente.
 
 ## Solution
 
-Dans sqldev, se connecter à une instance, taper sa requete, pour tuner, faire alt+f12 ou le cliquer sur le cinqième icone (celui juste avant "commit")
+Dans sqldev, se connecter à une instance, taper sa requete, pour tuner, faire ctrl+f12 ou le cliquer sur le cinqième icone (celui juste avant "commit")
 Ensuite dans détail, nous avons les plans d'executions, les index ou non à crée, les reformulations de requete ou pas ... 
 Faut juste suivre les indications.
 Fred
