@@ -298,11 +298,11 @@ Tip: think to run the script after each npm installation modules.
 
 Après cela, les vulnérabilités doivent avoir disparues.
 
-# Oracle SQL Developper : optimisation de requette. FPX
+# Oracle SQL Developper : optimisation de requete. FPX
 
 ## Problème
 
-Parfois une requette peut être très lente.
+Parfois une requete peut être très lente.
 
 ## Solution
 
