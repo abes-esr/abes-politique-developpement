@@ -233,7 +233,12 @@ Autre possibilité si jamais on est bloqué pour mettre à jour les librairies :
 
 Lors de la mise à jour des dépendances Oracle, on a une erreur : SAXParser.
 L'erreur peut aussi arriver lorsqu'on passe une webapp de Tomcat 8 à Tomcat 9, sans forcément changer les dépendances Oracle : erreur SAXParser...
-ex : java.lang.NoClassDefFoundError: oracle/i18n/util/LocaleMapper (cette erreur peut se produire à l'appel d'un service ou au chargement de la webapp par Tomcat).
+
+ex : 
+```
+java.lang.NoClassDefFoundError: oracle/i18n/util/LocaleMapper
+```
+(cette erreur peut se produire à l'appel d'un service ou au chargement de la webapp par Tomcat).
 
 ## Solution
 
