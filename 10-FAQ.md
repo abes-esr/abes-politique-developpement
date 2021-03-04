@@ -263,7 +263,10 @@ Soit définir ces propriétés en paramètre de la JVM :
 
 ## Problème 
 
-Ou : java.sql.SQLException: Could not commit with auto-commit set on
+Ou :
+```
+java.sql.SQLException: Could not commit with auto-commit set on
+```
 Cette erreur peut survenir suite à la mise à jour de la dépendance ojdbc.jar lors de la migration vers une version plus récente d'Oracle (12c en l'occurrence).
 
 ## Solution
