@@ -259,6 +259,20 @@ Soit définir ces propriétés en paramètre de la JVM :
 -Djavax.xml.parsers.SAXParserFactory=com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl
 ```
 
+# Erreur : SQLException: Validation (commit) impossible lorsque le mode autocommit est activé
+
+## Problème 
+
+Ou : java.sql.SQLException: Could not commit with auto-commit set on
+Cette erreur peut survenir suite à la mise à jour de la dépendance ojdbc.jar lors de la migration vers une version plus récente d'Oracle (12c en l'occurrence).
+
+## Solution
+
+il faut ajouter cette option lors du démarrage de la JVM (par exemple dans JAVA_OPTS du bin/catalina.sh de Tomcat) : 
+```
+-Doracle.jdbc.autoCommitSpecCompliant=false
+```
+
 # Oracle SQL Developer : Multiple table view
 
 ## Problème
