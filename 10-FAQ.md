@@ -340,6 +340,17 @@ TS2307: Cannot find module... alors que le module à bien été installé
 Note: npm i -g installe globalement les modules
 
 ## Solution
+
+COntroler préalablement la présence du répertoire node module dans les include du tsconfig.json, qui doit contenir :
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "node_modules"
+  ],
+
 Supprimer le fichier tsconfig.json à la racine du projet
 Faire 
 ```
