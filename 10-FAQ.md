@@ -331,3 +331,18 @@ Parfois une requête peut être très lente.
 
 Dans sql developer, après s'être connecté à une instance de base de données, taper la requête, faire ctrl+f12 (ou cliquer sur la cinquième icone (à côté de "commit")).
 Ensuite dans l'onglet "détail", nous avons les plans d'éxecutions, les indexes à créer, les reformulations de requêtes éventuelles...il suffit de suivre les indications.
+
+# VueJS : Cannot find module || lien rompu entre les méthodes
+
+## Problème
+
+TS2307: Cannot find module... alors que le module à bien été installé
+Note: npm i -g installe globalement les modules
+
+## Solution
+Supprimer le fichier tsconfig.json à la racine du projet
+Faire 
+```
+npx tsc --init
+```
+Pour le recréer. les imports doivent désormais fonctionner
