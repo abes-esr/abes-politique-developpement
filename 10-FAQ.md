@@ -332,7 +332,7 @@ Parfois une requête peut être très lente.
 Dans sql developer, après s'être connecté à une instance de base de données, taper la requête, faire ctrl+f12 (ou cliquer sur la cinquième icone (à côté de "commit")).
 Ensuite dans l'onglet "détail", nous avons les plans d'éxecutions, les indexes à créer, les reformulations de requêtes éventuelles...il suffit de suivre les indications.
 
-# VueJS : Cannot find module || lien rompu entre les méthodes
+# VueJS : Cannot find module : problème de librairie
 
 ## Problème
 
@@ -341,19 +341,72 @@ Note: npm i -g installe globalement les modules
 
 ## Solution
 
-COntroler préalablement la présence du répertoire node module dans les include du tsconfig.json, qui doit contenir :
+Il ne faut pas intégrer le repertoire node_modules globalement dans le tsconfig.json. Regarder dans l'IDE quelle librairie est manquante.
+Modifier le fichier tsconfig.json comme suit :
+```
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "node_modules"
+    "node_modules/[NOM_LIBRAIRIE_A_INTEGRER]"
   ],
+```
+
+## En dernier recours
 
 Supprimer le fichier tsconfig.json à la racine du projet
 Faire 
 ```
 npx tsc --init
 ```
-Pour le recréer. les imports doivent désormais fonctionner
+Pour le recréer. les imports doivent désormais fonctionner.
+
+# VueJS : Travailler avec des fichiers JSON stockés dans le projet, pour simuler des retours WS du back-end
+
+## Problème
+
+Pour des raisons diverses, certains ws peuvent être anormalement très long en terme de temps de réponse pour fournir leur retour, sous forme de Json ou wml, etc... Stocker le retour d'un ws en local sous forme d'un fichier json permet de travailler beaucoup plus rapidement dans un environnement isolé et non dépendant pour le developpement front.
+
+## Solution
+
+A partir de Typescript 2.9
+Exemple de fichier JSON placé dans le projet
+
+```
+{
+
+  "primaryBright":    "#2DC6FB",
+  "primaryMain":      "#05B4F0",
+  "primaryDarker":    "#04A1D7",
+  "primaryDarkest":   "#048FBE",
+
+  "secondaryBright":  "#4CD2C0",
+  "secondaryMain":    "#00BFA5",
+  "secondaryDarker":  "#009884",
+  "secondaryDarkest": "#007F6E",
+
+  "tertiaryMain":     "#FA555A",
+  "tertiaryDarker":   "#F93C42",
+  "tertiaryDarkest":  "#F9232A",
+
+  "darkGrey":         "#333333",
+  "lightGrey":        "#777777"
+}
+```
+
+Le fichier ts ou l'on veut utiliser le json
+```
+import colorsJson from '../colors.json'; // This import style requires "esModuleInterop", see "side notes"
+console.log(colorsJson.primaryBright);
+```
+
+Le fichier tsconfig.json doit contenir dans la rubrique compilerOptions
+```
+"resolveJsonModule": true,
+"esModuleInterop": true,
+```
+
+Source :
+[Stackoverflow : importing-json-file-in-typescript](https://stackoverflow.com/questions/49996456/importing-json-file-in-typescript)
