@@ -361,13 +361,13 @@ Faire
 ```
 npx tsc --init
 ```
-Pour le recréer. les imports doivent désormais fonctionner.
+pour le recréer. Les imports doivent désormais fonctionner.
 
-# VueJS : Travailler avec des fichiers JSON stockés dans le projet, pour simuler des retours WS du back-end
+# VueJS : Travailler avec des fichiers JSON stockés dans le projet pour simuler des retours WS du back-end
 
 ## Problème
 
-Pour des raisons diverses, certains ws peuvent être anormalement très long en terme de temps de réponse pour fournir leur retour, sous forme de Json ou wml, etc... Stocker le retour d'un ws en local sous forme d'un fichier json permet de travailler beaucoup plus rapidement dans un environnement isolé et non dépendant pour le developpement front.
+Pour des raisons diverses, certains ws peuvent être anormalement long en termes de temps de réponse pour fournir leur retour, sous forme de Json ou xml. Stocker le retour d'un ws en local sous forme d'un fichier json permet de travailler beaucoup plus rapidement dans un environnement isolé et non dépendant pour le developpement front.
 
 ## Solution
 
