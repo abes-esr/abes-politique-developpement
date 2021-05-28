@@ -410,3 +410,16 @@ Le fichier tsconfig.json doit contenir dans la rubrique compilerOptions
 
 Source :
 [Stackoverflow : importing-json-file-in-typescript](https://stackoverflow.com/questions/49996456/importing-json-file-in-typescript)
+
+# Remplacer le mot de passe de l'utilitaire git sur Windows
+
+## Problème 
+
+A partir du 13 aout 2021, l'authentification par mot de passe ne fonctionnera plus sur Github. On veut remplacer son mot de passe dès maintenant.
+
+## Solution
+
+* se connecter sur son compte Github, dans "Settings", dans "Developer settings", dans "Personal access tokens", il faut créer un token
+
+* dans le panneau de contrôle de Windows, dans "comptes utilisateurs", dans "gérer vos informations d'identification", dans "informations d'identification Windows", dans "informations d'identification génériques", on clique sur la clé : "git:https://github.com" et en cliquant "modifier", on peut remplacer le mot de passe par le token créé préalablement sur Github.
+
