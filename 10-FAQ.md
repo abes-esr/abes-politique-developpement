@@ -423,3 +423,20 @@ A partir du 13 aout 2021, l'authentification par mot de passe ne fonctionnera pl
 
 * dans le panneau de contrôle de Windows, dans "comptes utilisateurs", dans "gérer vos informations d'identification", dans "informations d'identification Windows", dans "informations d'identification génériques", on clique sur la clé : "git:https://github.com" et en cliquant "modifier", on peut remplacer le mot de passe par le token créé préalablement sur Github.
 
+
+# Harmoniser la configuration des fichiers .prettierrc.yaml, .eslintrc.js, tsconfig.json dans une architecture front, désactiver certaines règles eslint par rapport a un projet mixant typescript et javascript
+
+## Problème
+
+La configuration des fichiers mentionnées ci-dessus doit respecter une inter-compatibilité entre eux afin d'éviter des erreurs consoles ou des signalement de l'IDE.
+Les projets en ts vont parfois utiliser des librairies ou des portions de code historiquement construite en js. Le typage n'est alors pas le même, la syntaxe peut changer.
+Comment configurer eslint pour le mettre en accord avec ts config et les règles de prettier ?
+Voici un tableau de compatibilite
+![1 HRABdfNr2DHpNfrgpjqO0Q](https://user-images.githubusercontent.com/19894885/120649922-92ee9f00-c47d-11eb-8d79-f8126d1da388.png)
+
+###Solution
+- Désactiver certaines règles eslint en regardant sur la documentation officielle dans le fichier .eslintrc.js (sur chaque règle il y a une rubrique expliquant comment désactiver la règle à travers le fichier .eslintrc.js
+[https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md)
+- Configurer les fichiers en respectant le tableau de compatibilité.
+- Configurer prettierrc avec trailingComma pas en es5
+- Règler la conf
