@@ -428,7 +428,7 @@ A partir du 13 aout 2021, l'authentification par mot de passe ne fonctionnera pl
 
 ## Problème
 
-La configuration des fichiers mentionnées ci-dessus doit respecter une inter-compatibilité entre eux afin d'éviter des erreurs consoles ou des signalement de l'IDE.
+La configuration des fichiers mentionnés ci-dessus doit respecter une inter-compatibilité entre eux afin d'éviter des erreurs consoles ou des signalement de l'IDE.
 Les projets en ts vont parfois utiliser des librairies ou des portions de code historiquement construite en js. Le typage n'est alors pas le même, la syntaxe peut changer.
 Comment configurer eslint pour le mettre en accord avec ts config et les règles de prettier ?
 Voici un tableau de compatibilite
