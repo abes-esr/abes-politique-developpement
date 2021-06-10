@@ -440,3 +440,48 @@ Voici un tableau de compatibilite
 - Configurer les fichiers en respectant le tableau de compatibilité.
 - Configurer prettierrc avec trailingComma pas en es5
 - Règler la conf
+
+---
+
+# Erreur lors de la création d'une release avec Jenkins et OpenJDK 11
+
+## Problème
+
+Lorsqu'on veut réaliser une release, elle ne fonctionne pas : car il y a des ERROR dans la génération de la javadoc :
+
+```
+[INFO] [ERROR] Failed to execute goal org.apache.maven.plugins:maven-javadoc-plugin:3.3.0:jar (attach-javadocs) on project autorites: MavenReportException: Error while generating Javadoc: 
+```
+
+## Solution
+
+Il faut indiquer au plugin maven-javadoc qu'on souhaite un niveau WARN à la place de ERROR, afin que la release puisse se faire : 
+```
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <release.javadoc.root.path>javadocAPPLI/</release.javadoc.root.path>
+    <additionalparam>-Xdoclint:none</additionalparam>
+    <doclint>none</doclint>
+</properties>
+```
+et
+```
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+    <executions>
+        <execution>
+            <id>attach-javadocs</id>
+            <goals>
+                <goal>jar</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <additionalOptions>
+            <additionalOption>-Xdoclint:none</additionalOption>
+        </additionalOptions>
+        <failOnError>false</failOnError>
+    </configuration>
+</plugin>
+```
