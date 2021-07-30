@@ -20,5 +20,5 @@ Cette politique de développement est bien évidemment perfectible et ouverte au
 
 ## Open source 
 
-Nos nouveaux développements sont désormais par défaut disponibles en open source sur la plateforme Github : Nous publions donc notre politique de développement, à la fois pour montrer les règles que nous nous efforçons de suivre lors de nos phases de développements et pour faciliter les contributions éventuelles à nos projets. Nous nous inscrivons ainsi dans une démarche de co-construction.
+Nos nouveaux développements sont désormais par défaut disponibles en open source sur la plateforme Github. Nous publions donc notre politique de développement, à la fois pour montrer les règles que nous nous efforçons de suivre lors de nos phases de développements et pour faciliter les contributions éventuelles à nos projets. Nous nous inscrivons ainsi dans une démarche de co-construction.
 
