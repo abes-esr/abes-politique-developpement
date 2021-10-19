@@ -497,3 +497,25 @@ On veut réaliser certaines actions dans un Jenkinsfile.
 Jenkins met à disposition un générateur de code "Snippet Generator" accessible depuis les jobs de type "multibranch pipeline".
 Dans le menu de gauche du job, il faut cliquer sur "Pipeline Syntax". On accède alors à un formulaire pour choisir l'action à réaliser (checkout de code, publier via ssh etc.) et on peut générer le code à copier dans le jenkinsfile pour notre job.
 
+## Back : Maven Plugin not found in IntelliJ IDE
+
+## Problème
+
+Régulièrement dans les pom.xml le plugin suivant pose problème.
+```xml
+<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+```
+
+Plugin 'org.springframework.boot:spring-boot-maven-plugin:' not found  
+
+## Solution
+
+Dans les préférences d'Intelli J, naviguez jusqu'à "Build, Execution, Deployment > Build Tools > Maven", cochez "Use plugin registry", et cliquez sur "OK".
+Puis "File > Invalidate Caches / Restart" pour recharger Intelli J. L'erreur disparaîtra automatiquement.
