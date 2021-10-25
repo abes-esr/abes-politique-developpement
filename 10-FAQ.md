@@ -497,7 +497,7 @@ On veut réaliser certaines actions dans un Jenkinsfile.
 Jenkins met à disposition un générateur de code "Snippet Generator" accessible depuis les jobs de type "multibranch pipeline".
 Dans le menu de gauche du job, il faut cliquer sur "Pipeline Syntax". On accède alors à un formulaire pour choisir l'action à réaliser (checkout de code, publier via ssh etc.) et on peut générer le code à copier dans le jenkinsfile pour notre job.
 
-## Back : Maven Plugin not found in IntelliJ IDE
+# Back : Maven Plugin not found in IntelliJ IDE
 
 ## Problème
 
