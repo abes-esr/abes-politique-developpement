@@ -519,3 +519,26 @@ Plugin 'org.springframework.boot:spring-boot-maven-plugin:' not found
 
 Dans les préférences d'Intelli J, naviguez jusqu'à "Build, Execution, Deployment > Build Tools > Maven", cochez "Use plugin registry", et cliquez sur "OK".
 Puis "File > Invalidate Caches / Restart" pour recharger Intelli J. L'erreur disparaîtra automatiquement.
+
+# Problème d'injection d'un mock dans les tests unitaires
+
+## Problème
+
+Dans un test unitaire il arrive que, lors de la création d'un mock, l'objet ne soit pas injecté correctement dans la classe et qu'on ait une NullPointerException sur l'objet (par exemple, on mock une classe de la couche service qui est injectée dans un controller).
+
+## Solution
+
+Le problème peut venir de la façon dont les injections de dépendances sont déclarées. Si les objets sont injectés via une annotation @Autowired, cela peut créer le problème. Pour le corriger, il suffit de supprimer l'annotation @Autowired, de passer le champ en final, et de l'initialiser dans le constructeur de la classe (en passant l'objet en paramètre).
+
+Exemple : 
+```@Autowired
+private EtablissementService service;
+```
+devient : 
+```
+private final EtablissementService service;
+
+public MaClasse(EtablissementService service) {
+	this.service = service;
+}
+```
