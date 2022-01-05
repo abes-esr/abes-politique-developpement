@@ -542,3 +542,75 @@ public MaClasse(EtablissementService service) {
 	this.service = service;
 }
 ```
+
+# Faille de sécurité log4shell et applications Java
+
+## Problème
+
+On veut mettre à jour log4j dans les application java qui utilisent des vielles versions.
+La version préconisée de log4j qui corrige log4shell est la version **2.17.1**
+
+## Solution
+
+### Application Java utilisant slf4j-log4j12
+
+Si l'appli java dépend de `slf4j-log4j12` alors voici comment procéder. Le principe sera de modifier un minimum de code en utilisant la librairie `log4j-1.2-api` qui permet de conserver l'ancienne interface java de log4j v1 tout en utilisant la nouvelle version de log4j v2.17.1. Une subtilité est d'empêcher ` slf4j-log4j12` d'utiliser log4j v1 en utilisant le système d'`<exclusion>`.
+
+1) Dans pom.xml placer ces dépendances :
+```xml
+	<!-- Utilisation de log4j 2.17.1 qui corrige la faille log4shell -->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>2.17.1</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-api</artifactId>
+	    <version>2.17.1</version>
+	</dependency>
+
+	<!-- Wrapper qui permet de faire en sorte que le code qui appelle 
+	   l'API de log4j v1.2 fonctionne et log dans une version log4j v2.17.1
+	   (qui elle corrige la faille log4shell)
+	-->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-1.2-api</artifactId>
+	    <version>2.17.1</version>
+	</dependency>
+
+	<!-- C'est slf4j-log4j12 qui est utilisé dans le code de Rafa -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.32</version>
+	    <!-- exclusion de log4j pour que slf4j-log4j12 utilise
+	         log4j-1.2-api (cf plus haut) qui lui même utilise
+	         log4j-core dans sa version 2.17.1 (qui corrige la faille log4shell)  -->
+	    <exclusions>
+	        <exclusion>
+	            <groupId>log4j</groupId>
+		    <artifactId>log4j</artifactId>
+	        </exclusion>
+	    </exclusions>
+        </dependency>
+```
+
+2) Dans le répertoire `src/main/resources`, remplacer le fichier de paramétrage log4j.properties par log4j2.xml dont voici un exemple de contenu :
+```xml
+<Configuration>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{dark,yellow}: %msg%n%throwable" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+</Configuration>
+```
+
+3) Recompiler et redéployer l'application en veillant à la tester dans les grandes lignes.
