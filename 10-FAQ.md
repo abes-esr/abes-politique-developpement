@@ -259,6 +259,8 @@ Soit définir ces propriétés en paramètre de la JVM :
 -Djavax.xml.parsers.SAXParserFactory=com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl
 ```
 
+Voir aussi : https://stackoverflow.com/questions/43944803/java-lang-securityexception-org-xml-sax-saxnotrecognizedexception-feature-htt
+
 # Erreur : SQLException: Validation (commit) impossible lorsque le mode autocommit est activé
 
 ## Problème 
