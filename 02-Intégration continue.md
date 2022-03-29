@@ -17,19 +17,19 @@ __Notre plateforme d'intégration continue est constituée de cinq outils__ :
 L'intégration continue a de nombreux bénéfices : 
 
 * __Pour les développeurs__
-* Le débogage du code est facilité car les erreurs sont associées à des petites incrémentations du code. La correction des bugs est faite avant l’accumulation des erreurs interférant les unes avec les autres. Le risque lié à l’intégration d’une quantité de code trop importante au moment de la fin du projet est écarté car le code est dans un état vérifié et exécutable à tout moment.
-* le retour du cycle de développement est réduit donc des distributions applicatives fréquentes sont possibles
-* le risque de conflits de fusion du code source est réduit et la résolution de ces conflits est simplifiée car les fusions sont fréquentes
-* l’automatisation de l’exécution des tests unitaires et la réalisation des distributions permet d’obtenir une meilleure qualité du code et améliore la productivité. Une bonne couverture du code par les tests unitaires offre aux nouveaux développeurs un environnement sûr pour rapidement comprendre le code. 
-* les développeurs ne passent plus leur temps dans des tâches de débogage, fusion du code source, déploiement, etc. Ce temps peut alors être utilisé pour améliorer le code via par exemple des tâches de refactoring (modifier le code non pour ajouter une fonctionnalité mais pour améliorer sa structure)
+  * Le débogage du code est facilité car les erreurs sont associées à des petites incrémentations du code. La correction des bugs est faite avant l’accumulation des erreurs interférant les unes avec les autres. Le risque lié à l’intégration d’une quantité de code trop importante au moment de la fin du projet est écarté car le code est dans un état vérifié et exécutable à tout moment.
+  * le retour du cycle de développement est réduit donc des distributions applicatives fréquentes sont possibles
+  * le risque de conflits de fusion du code source est réduit et la résolution de ces conflits est simplifiée car les fusions sont fréquentes
+  * l’automatisation de l’exécution des tests unitaires et la réalisation des distributions permet d’obtenir une meilleure qualité du code et améliore la productivité. Une bonne couverture du code par les tests unitaires offre aux nouveaux développeurs un environnement sûr pour rapidement comprendre le code. 
+  * les développeurs ne passent plus leur temps dans des tâches de débogage, fusion du code source, déploiement, etc. Ce temps peut alors être utilisé pour améliorer le code via par exemple des tâches de refactoring (modifier le code non pour ajouter une fonctionnalité mais pour améliorer sa structure)
 
 * __Pour le management__
-* réduire les risques et le temps de distribution des applications
-* réduire les coûts de développement et déploiement
-* améliorer la qualité du code source
+  * réduire les risques et le temps de distribution des applications
+  * réduire les coûts de développement et déploiement
+  * améliorer la qualité du code source
 
 * __Pour les utilisateurs__
-* les utilisateurs peuvent à tout moment évaluer le produit qui est dans un état stable
+  * les utilisateurs peuvent à tout moment évaluer le produit qui est dans un état stable
 
 L'intégration continue facilite les déploiements fréquents, notamment si elle est couplée à l'utilisation d'une méthode agile. On peut par exemple définir un sprint de quinze jours sur un projet : les fonctionnalités développées lors de ce sprint sont déployées en test. Si les tests sont concluants, on peut ensuite intégrer les nouvelles fonctionnalités à la version en production qui sera déployée dans la foulée.
 
