@@ -22,3 +22,6 @@ Cette politique de développement est bien évidemment perfectible et ouverte au
 
 Depuis 2019, nos nouveaux développements sont par défaut disponibles en open source sur la plateforme Github. Nous publions donc notre politique de développement en open source, à la fois pour montrer les règles que nous nous efforçons de suivre lors de nos développements et aussi pour la co-construction en faciliter les contributions extérieures.
 
+## Contribuer à la politique de développement de l'Abes
+
+Si vous souhaitez contribuer à la politique de développement de l'Abes, nous vous invitons à créer une pull request depuis contenant votre contribution. L'équipe des développeurs de l'Abes se chargera alors de relire votre contribution, de la discuter le cas échéant, et enfin d'intégrer votre contribution. Les nouveaux développements réalisés par l'Abes suivront alors les éventuelles nouvelles préconisations renseignées dans cette politique.
