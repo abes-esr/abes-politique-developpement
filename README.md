@@ -1,6 +1,6 @@
 # Politique de développement
 
-La mise en place d'une politique de développement à l'Abes nous a permis de nous doter d'un cadre pour structurer nos développements informatiques. Cette politique a été rédigée par les développeur(se)s de l'Abes avec la participation de collègues du service Infrastructures et Réseaux. Elle nous fournit des méthodes et des outils pour améliorer la qualité de nos projets et applications.
+La politique de développement de l'Abes nous donne un cadre pour structurer nos développements informatiques. Cette politique est rédigée par les développeur(se)s de l'Abes avec la participation de collègues du service Infrastructures et Réseaux. Elle nous fournit des méthodes et des outils pour améliorer la qualité de nos projets et applications.
 
 ## Les objectifs visés
 
@@ -20,5 +20,5 @@ Cette politique de développement est bien évidemment perfectible et ouverte au
 
 ## Open source 
 
-Depuis 2019, nos nouveaux développements sont par défaut disponibles en open source sur la plateforme Github. Nous publions donc notre politique de développement, à la fois pour montrer les règles que nous nous efforçons de suivre lors de nos phases de développements et pour faciliter les contributions éventuelles à nos projets. Nous nous inscrivons ainsi dans une démarche de co-construction.
+Depuis 2019, nos nouveaux développements sont par défaut disponibles en open source sur la plateforme Github. Nous publions donc notre politique de développement en open source, à la fois pour montrer les règles que nous nous efforçons de suivre lors de nos développements et aussi pour la co-construction en faciliter les contributions extérieures.
 
