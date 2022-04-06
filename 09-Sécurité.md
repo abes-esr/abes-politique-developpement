@@ -63,3 +63,34 @@ Plusieurs sites de l'Abes implémentent un Captcha dont voici un recensement :
 - IdRef dans la section "signaler une erreur" (reCaptcha) : https://www.idref.fr/assistance.jsp?ppn=139753753&titre=Dacos,%20Marin%20(1971-....)
 - Licences Nationales pour la création de compte (reCaptcha) : https://acces.licencesnationales.fr/creation-compte
 - Calames (système ad-hoc qui serait à modifier en reCaptcha) : http://www.calames.abes.fr/pub/ssl/Reg.aspx
+
+## Sécurisation par CORS des API de votre application
+
+CORS est l'acronyme de ("Cross-origin resource sharing"](https://fr.wikipedia.org/wiki/Cross-origin_resource_sharing). C'est un système implémenté dans les navigateurs web modernes qui permet de filtrer quels sont les sites web qui peuvent accéder ou pas à votre API via HTTP en précisant si besoin les méthodes HTTP que l'on autorise.
+
+Par défaut, ce système de sécurité est restrictif au maximum et ne permet donc pas à un autre site web de venir interroger via HTTP (Ajax) votre API.
+
+Dans le cadre de l'Abes, nos API sont développées en Java Spring et ont comme vocation à être ouvertes au maximum. Nous avons donc un réglage au niveau des CORS très ouvert. Voici le code java spring à reprendre dans les applications pour une configuration très ouverte des CORS (pas de filtrage par domaine) :
+```java
+/**
+ * Réglages des CORS (très ouverts) qui permettent au front en javascript de s'y connecter
+ * depuis n'importe quel domaine : localhost, dev, test, prod, ou même depuis d'autres domaines.
+ */
+@Bean
+public FilterRegistrationBean simpleCorsFilter() {
+  UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+  CorsConfiguration config = new CorsConfiguration();
+  config.setAllowCredentials(true);
+  config.setAllowedOriginPatterns(Collections.singletonList("*"));
+  config.setAllowedMethods(Collections.singletonList("*"));
+  config.setAllowedHeaders(Collections.singletonList("*"));
+  source.registerCorsConfiguration("/**", config);
+  FilterRegistrationBean bean = new FilterRegistrationBean<>(new CorsFilter(source));
+  bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
+  return bean;
+}
+```
+
+Ce code est implémenté dans notre application "Hello World" nommée abes-hello, vous le trouverez ici:  
+https://github.com/abes-esr/abes-hello-back/blob/develop/web/src/main/java/fr/abes/helloabes/HelloABESApplication.java#L168-L187
+
