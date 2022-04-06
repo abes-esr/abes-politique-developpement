@@ -66,7 +66,7 @@ Plusieurs sites de l'Abes implémentent un Captcha dont voici un recensement :
 
 ## Sécurisation par CORS des API de votre application
 
-CORS est l'acronyme de ("Cross-origin resource sharing"](https://fr.wikipedia.org/wiki/Cross-origin_resource_sharing). C'est un système implémenté dans les navigateurs web modernes qui permet de filtrer quels sont les sites web qui peuvent accéder ou pas à votre API via HTTP en précisant si besoin les méthodes HTTP que l'on autorise.
+CORS est l'acronyme de ["Cross-origin resource sharing"](https://fr.wikipedia.org/wiki/Cross-origin_resource_sharing). C'est un système implémenté dans les navigateurs web modernes qui permet de filtrer quels sont les sites web qui peuvent accéder ou pas à votre API via HTTP en précisant si besoin les méthodes HTTP que l'on autorise.
 
 Par défaut, ce système de sécurité est restrictif au maximum et ne permet donc pas à un autre site web de venir interroger via HTTP (Ajax) votre API.
 
