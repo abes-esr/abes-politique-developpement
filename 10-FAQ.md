@@ -47,10 +47,10 @@ git reset --hard HEAD~n
  ## Solution
  ```terminal
 git reset --hard hashDuCommitSurLequelJeVeuxRevenir
-git push origin master -f
+git push origin develop -f
 ```
 
-Ici le push se fait sur le master, mais remplacer 'master' par la branche sur laquelle vous voulez revenir en arrière.
+Ici le push se fait sur le develop, mais remplacer ``develop`` par la branche sur laquelle vous voulez revenir en arrière.
 
 Attention : les commits supprimées disparaissent de l'historique
 
