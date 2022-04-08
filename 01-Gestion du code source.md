@@ -59,7 +59,7 @@ Lorsqu'on souhaite ajouter une fonctionnalité, on crée une nouvelle branche du
 
 On peut également corriger un bug dans la version en production sans toucher à la version en développement. On dérive alors une branche ``hotfix`` de la branche ``main``. Une fois validée, la correction est fusionnée sur la branche ``main`` et également fusionnée sur la branche ``develop``. Une nouvelle release est alors générées en incrémentant le numéro ``Z`` (cf ``X.Y.Z``) et la release intégrant cette correction peut être déployée sur l'env de production.
 
-Pour passer en production tout le travail présent sur la branche ``develop``, il faut fusionner ``develop`` sur ``main`` puis créer une release sur main et déployer cette release sur l'env de production.
+Pour passer en production tout le travail présent sur la branche ``develop``, il faut fusionner ``develop`` sur ``main`` puis créer une release sur ``main`` et déployer cette release sur l'env de production.
 
 Dans le cadre l'opensource, les release sont mises en oeuvre via une Github Action nommée create-release.yml que l'on peut voir sur l'application "Hello World" de l'Abes :
 https://github.com/abes-esr/abes-hello-back/blob/main/.github/workflows/create-release.yml
