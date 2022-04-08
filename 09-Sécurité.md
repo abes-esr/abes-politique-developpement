@@ -44,10 +44,10 @@ Il faut ajouter un système pour bloquer momentanément le compte au-delà d'un 
 
 ## Analyse dependabot
 
-Dependabot est un outil qui analyse les vulnérabilités des dépendances utilisées par nos codes sources. Lorsque une faille est découverte, dependabot propose une pull request avec la montée en version de la dépendance. L'activation de dependabot se configure via l'onglet Security. L'outil analyse la branche master. Voici la procédure à suivre lorsqu'une PR est proposée : 
+Dependabot est un outil qui analyse les vulnérabilités des dépendances utilisées par nos codes sources. Lorsque une faille est découverte, dependabot propose une pull request avec la montée en version de la dépendance. L'activation de dependabot se configure via l'onglet Security. L'outil analyse la branche main. Voici la procédure à suivre lorsqu'une PR est proposée : 
 
 * Récupérer en local la branche avec la montée de version proposée par depenbdabot et tester si l'application fonctionne avec la nouvelle version. Pour le code VueJS, il faut lancer les commandes "npm install" (pour récuperer les dependances) puis "npm run serve" pour vérifier l'application.
-* Si aucun problème n'est détecté, il faut merger la branche sur master. On reporte ensuite master sur develop.
+* Si aucun problème n'est détecté, il faut merger la branche sur main. On fusionne ensuite main sur develop.
 
 ## Sécurisation d'un formulaire web anonyme (par Captcha)
 
