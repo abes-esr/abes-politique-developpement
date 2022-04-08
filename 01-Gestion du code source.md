@@ -21,10 +21,14 @@ Github et Gitlab fournissent une interface web qui :
 * permet de visualiser l'activité de chaque développeur.
 * donne accès un tableau de type Kanban qui nous permet de gérer les sprints lorsque le projet est mené en méthode agile. Un atout de ce tableau est de pouvoir lier les tâches aux commits.
 
-## Artifactory
+Pour tous les développements réalisés par l'Abes depuis 2019, c'est Github qui est utilisé pour permettre la publication en open source. Le GitLab interne de l'Abes n'est plus utilisé pour les nouveaux développements.
+
+## Artifactory / DockerHub / MavenCentral
 
 Artifactory (outil interne à l'Abes) permet de stocker le code source compilé des projets Java. Il contient l'ensemble des versions que les développeurs ont construites, qu'ils s'agissent de version SNAPTSHOT ou de RELEASE. On y trouve à la fois le code source compilé produit par l'Abes et les dépendances externes.
 L'utilisation d'Artifactory nous permet aussi d'accélerer les phases de construction puisque les dépendances sont d'abord recherchées sur notre Artifactory local. En cas d'échec, elles sont recherchées sur Maven central.
+
+Depuis 2019, l'Abes produit du code open source. L'Artifactory interne de l'Abes n'est donc progressivement plus utilisé. L'Abes vise une publication de ses codes compilés sur : DockerHub pour les images docker et sur MavenCentral pour les librairies JAVA produites.
 
 ## Numéros de version
 
