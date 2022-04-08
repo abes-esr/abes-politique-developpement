@@ -138,7 +138,7 @@ Une fois le dépôt créé :
 * dans "Settings / Branches" pour Github ou "Settings / repository" pour Gitlab, il faut protéger les branches ainsi:
     * ``main`` : allowed to push : no one, allowed to merge : maintainers + developers
     * ``develop`` : allowed to push : maintainers + developers, allowed to merge : maintainers + developers
-    * ``develop`` : la positionner comme la branche par défaut, ainsi quand on clone le dépôt depuis zero et qu'on veut créer une branche pour ajouter une fonctionnalité, cela limite les erreur et permet de créer les PR sur la branche develop et pas sur la branche main
+    * ``develop`` : la positionner comme la branche par défaut, ainsi quand on clone le dépôt depuis zero et qu'on veut créer une branche pour ajouter une fonctionnalité, cela limite les erreurs et permet de créer les PR sur la branche develop et pas sur la branche main
     
 ## Codes partiellement ouverts sur Github
 
