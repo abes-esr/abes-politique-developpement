@@ -24,4 +24,4 @@ Depuis 2019, nos nouveaux développements sont par défaut disponibles en open s
 
 ## Contribuer à la politique de développement de l'Abes
 
-Si vous souhaitez contribuer à la politique de développement de l'Abes, nous vous invitons à créer une pull request depuis contenant votre contribution. L'équipe des développeurs de l'Abes se chargera alors de relire votre contribution, de la discuter le cas échéant, et enfin d'intégrer votre contribution. Les nouveaux développements réalisés par l'Abes suivront alors les éventuelles nouvelles préconisations renseignées dans cette politique.
+Si vous souhaitez contribuer à la politique de développement de l'Abes, nous vous invitons à créer une pull request contenant votre contribution. L'équipe des développeurs de l'Abes se chargera alors de relire votre contribution, de la discuter le cas échéant, et enfin d'intégrer votre contribution. Les nouveaux développements réalisés par l'Abes suivront alors les éventuelles nouvelles préconisations renseignées dans cette politique.
