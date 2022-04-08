@@ -91,7 +91,7 @@ Voici la procédure à appliquer pour publier une nouvelle release (nouvelle ver
    ![image](https://user-images.githubusercontent.com/328244/159044427-d36ae0d6-51cc-4f69-a855-097c162ba100.png)
 3. Cliquez ensuite sur "Run workflow" sur la droite  
    ![image](https://user-images.githubusercontent.com/328244/159044539-57b57fba-15b8-440d-94e7-1ee859566a04.png)
-4. Choisisez la branche ``main`` et indiquez ensuite le numéro de la version à générer (doit respecter le sementic versionning) après avoir vérifié que votre numéro de version n'existe pas déjà (sinon l'action github échouera)
+4. Choisisez la branche ``main`` et indiquez ensuite le numéro de la version à générer (doit respecter le sementic versionning) après avoir vérifié que votre numéro de version n'existe pas déjà (sinon l'action github échouera)  
    ![image](https://user-images.githubusercontent.com/328244/159044729-e9cc0d7a-abe3-401f-a246-84e577670493.png)
 5. Validez et attendez que le build se termine. Le fait de lancer le workflow create-release.yml va provoquer deux choses :
   - le workflow ``build-test-pubtodockerhub.yml`` va se déclencher dans la foulée (cf le code du [workflow "build-test-pubtodockerhub" sur abes-hello](https://github.com/abes-esr/abes-hello-back/actions/workflows/build-test-pubtodockerhub.yml),
@@ -119,36 +119,30 @@ Un message de commit doit donc être structuré ainsi :
 
 Court paragraphe décrivant les modifications plus en détail si nécessaire
 
-## Nommage des dépôts
-
-Les noms de nos dépôts sur Github doivent être en minuscule, les éléments séparés par des tirets. Chaque dépôt doit posséder, dès sa création, une description ainsi qu'un `README.md` minimaliste pour donner dès le début un cadre au contenu attendu dans le dépôt (même si ce dernier est vide dans un premier temps).
-
-Les demandes de création de dépôt doivent être transmises à l'alias github@abes.fr qui assure le maintien d'une certaine cohérence dans le nommage des dépôts.
 
 ## Création et configuration d'un nouveau dépôt
 
 La création de dépôt opensource sur GitHub doit être privilégiée. La création de dépôt sur GitLab (interne à l'Abes) est utile dans certain rares cas (dépôt contenant des secrets, réorganisation de vieux codes). 
 
-Voici la procédure pour la création de dépôt Gitlab : 
-
-* se loguer en utilisateur "depots" pour Gitlab (ou un compte avec les droits admin pour Github)
-* le nommer en respectant le standard PascalCase pour Gitlab et les règles de nommage ci-dessus pour Github 
+Voici la procédure pour la création de dépôt Git :
+* les noms des dépôts Git doivent être en minuscule, les éléments séparés par des tirets. Chaque dépôt doit posséder, dès sa création, une description ainsi qu'un `README.md` minimaliste pour donner dès le début un cadre au contenu attendu dans le dépôt (même si ce dernier est vide dans un premier temps).
+* les demandes de création de dépôt doivent être transmises à l'alias ``github@abes.fr`` qui assure le maintien de la cohérence dans le nommage des dépôts.
+* se loguer en utilisateur admin ``abes-dev`` pour Github (ou ``depot``pour le Gitlab interne Abes)
 * ajouter une description
 
 Une fois le dépôt créé : 
-* ajouter un readme (et le renseigner)
-* ajouter un .gitignore
-* créer une branche develop
-
-* dans les settings du dépôt, dans "Members" pour Gitlab ou "Manage access" pour Github : inviter les développeurs, leur attribuer un rôle (maintainer ou developers)
-
-* dans "Settings / repository" pour Gitlab ou "Branches" pour Github, il faut protéger les branches ainsi:
-    * master : allowed to push : no one, allowed to merge : maintainers + developers
-    * develop : allowed to push : maintainers + developers, allowed to merge : maintainers + developers
+* ajouter un ``README.md`` (et le renseigner)
+* ajouter un ``.gitignore``
+* créer une branche ``develop``
+* dans les settings du dépôt, dans "Manage access" pour Github ou "Members" pour Gitlab : inviter les développeurs, leur attribuer un rôle (maintainer ou developers)
+* dans "Settings / Branches" pour Github ou "Settings / repository" pour Gitlab, il faut protéger les branches ainsi:
+    * ``main`` : allowed to push : no one, allowed to merge : maintainers + developers
+    * ``develop`` : allowed to push : maintainers + developers, allowed to merge : maintainers + developers
+    * ``develop`` : la positionner comme la branche par défaut, ainsi quand on clone le dépôt depuis zero et qu'on veut créer une branche pour ajouter une fonctionnalité, cela limite les erreur et permet de créer les PR sur la branche develop et pas sur la branche main
     
 ## Codes partiellement ouverts sur Github
 
-Les dépôts Github publiés par l'Abes qui contiennent du code qui dépend de librairies non opensource (car pas encore libérées par l'Abes) doivent le mentionner dans le `README.md` du dépot par la mention suivante :
+Les dépôts Github publiés par l'Abes qui contiennent du code qui dépend de librairies non opensource (car pas encore libérées par l'Abes) doivent le mentionner dans le ``README.md`` du dépot par la mention suivante :
 > Attention : ce code (open)source, développé et maintenu par l'Abes ne peut pas (encore) être réutilisé à l'exterieur car il dépend de librairies internes. Contactez nous (github@abes.fr) si vous souhaitez y contribuer.
 
 Ainsi les collègues contributeurs externes à l'Abes sont prévenus rapidement et cela leur évite de perdre du temps à essayer de compiler/réutiliser le code.
