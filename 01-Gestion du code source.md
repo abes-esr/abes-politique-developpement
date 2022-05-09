@@ -59,7 +59,7 @@ Lorsqu'on souhaite ajouter une fonctionnalité, on crée une nouvelle branche du
 
 On peut également corriger un bug dans la version en production sans toucher à la version en développement. On dérive alors une branche ``hotfix`` de la branche ``main``. Une fois validée, la correction est fusionnée sur la branche ``main`` et également fusionnée sur la branche ``develop``. Une nouvelle release est alors générées en incrémentant le numéro ``Z`` (cf ``X.Y.Z``) et la release intégrant cette correction peut être déployée sur l'env de production.
 
-Pour passer en production tout le travail présent sur la branche ``develop``, il faut fusionner ``develop`` sur ``main`` puis créer une release sur ``main`` et déployer cette release sur l'env de production.
+Pour passer en production tout le travail présent sur la branche ``develop``, il faut fusionner ``develop`` sur ``main`` puis [créer une release sur ``main``](#publier-une-nouvelle-release-dune-application) et déployer cette release sur l'env de production.
 
 Dans le cadre l'opensource, les release sont mises en oeuvre via une Github Action nommée create-release.yml que l'on peut voir sur l'application "Hello World" de l'Abes :
 https://github.com/abes-esr/abes-hello-back/blob/main/.github/workflows/create-release.yml
@@ -88,16 +88,16 @@ Le fichier est édité à la main directement depuis Gitlab sur la page des "rel
 ## Publier une nouvelle release d'une application
 
 Voici la procédure à appliquer pour publier une nouvelle release (nouvelle version) d'une application open-source produite par l'Abes :
-
-1. Se rendre sur l'onglet "Actions" sur le dépôt github  
+1. S'assurer que le code que l'on souhaite passer en production est bien présent sur la branche ``main`` (procéder à la fusion manuelle de la branche ``develop`` vers ``main`` si besoin)
+2. Se rendre sur l'onglet "Actions" sur le dépôt github  
    ![image](https://user-images.githubusercontent.com/328244/159044287-67c7131f-8663-4452-b7fa-55aa8c695692.png)
-2. Cliquer sur le workflow "Create release"  
+3. Cliquer sur le workflow "Create release"  
    ![image](https://user-images.githubusercontent.com/328244/159044427-d36ae0d6-51cc-4f69-a855-097c162ba100.png)
-3. Cliquez ensuite sur "Run workflow" sur la droite  
+4. Cliquez ensuite sur "Run workflow" sur la droite  
    ![image](https://user-images.githubusercontent.com/328244/159044539-57b57fba-15b8-440d-94e7-1ee859566a04.png)
-4. Choisisez la branche ``main`` et indiquez ensuite le numéro de la version à générer (doit respecter le [semantic versioning](#numéros-de-version)) après avoir vérifié que votre numéro de version n'existe pas déjà (sinon l'action github échouera)  
+5. Choisisez la branche ``main`` et indiquez ensuite le numéro de la version à générer (doit respecter le [semantic versioning](#numéros-de-version)) après avoir vérifié que votre numéro de version n'existe pas déjà (sinon l'action github échouera)  
    ![image](https://user-images.githubusercontent.com/328244/159044729-e9cc0d7a-abe3-401f-a246-84e577670493.png)
-5. Validez et attendez que le build se termine. Le fait de lancer le workflow create-release.yml va provoquer deux choses :
+6. Validez et attendez que le build se termine. Le fait de lancer le workflow create-release.yml va provoquer deux choses :
   - le workflow ``build-test-pubtodockerhub.yml`` va se déclencher dans la foulée (cf le code du [workflow "build-test-pubtodockerhub" sur abes-hello](https://github.com/abes-esr/abes-hello-back/actions/workflows/build-test-pubtodockerhub.yml),
   - et une nouvelle image docker de l'application sera alors publiée avec comme tag docker le numéro de version de votre release (cf le  [dépôt docker hub de abes-hello](https://hub.docker.com/r/abesesr/abes-hello/)
 
