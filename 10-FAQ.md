@@ -632,3 +632,19 @@ sudo docker run --rm -ti   --name=ctop   --volume /var/run/docker.sock:/var/run/
 
 Vous obtiendrez une visualisation qui ressemblera à ceci :
 ![image](https://user-images.githubusercontent.com/328244/165930667-bbf6bd07-f294-4270-b473-ccd484964802.png)
+
+# Docker : Erreur connexion Oracle ORA-01882: timezone region not found
+
+## Problème
+
+Depuis les conteneurs dockers sur diplotaxis, l'application n'arrive pas à se connecter à la base de données Oracle et renvoie l'erreur ORA-01882: timezone region not found.
+
+## Solution
+
+Cela vient d'une différence de timezone entre la JVM (et donc le driver ojdbc) et la base de données. 
+
+Il faut ajouter en option en conteneur, dans la partie environnement du docker  compose, le paramètre suivant :
+
+JAVA_OPTS: "-Doracle.jdbc.timezoneAsRegion=false -Duser.timezone=CEST"
+
+Exemples : https://github.com/abes-esr/qualinka-microservices/blob/20cc3986ae2ae7a9dad1412efc26c1dad421a279/docker-compose.yaml#L154 ou https://git.abes.fr/depots/ansible-nbt/-/blob/master/ln-docker/templates/ln_docker-compose.j2
