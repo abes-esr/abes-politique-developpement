@@ -770,7 +770,9 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
 
 ## Installer et paramétrer Git
 
-- dans PowerShell ou en invite de commande, entrer dans la machine virtuelle. Si vous n'y êtes pas déjà, saisir :
+- Ouvrir PowerShell ou une invite de commande
+
+- Entrer dans la machine virtuelle :
 
     ```console
     wsl
@@ -811,7 +813,13 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
 
 ## Préparation du répertoire de travail
 
-- dans PowerShell ou en invite de commande, entrer dans la machine virtuelle. Si vous n'y êtes pas déjà, saisir :
+- Ouvrir PowerShell ou une invite de commande
+
+- Entrer dans la machine virtuelle :
+
+    ```console
+    wsl
+    ```
 
 - créer le répertoire pod :
 
