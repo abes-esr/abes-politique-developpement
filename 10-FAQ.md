@@ -635,4 +635,215 @@ Vous obtiendrez une visualisation qui ressemblera à ceci :
 
 # Configuration d'un environnement Docker sous Windows 10
 
-TODO 
+## Installation de WSL et d'une distribution Linux
+
+source  : [docs.microsoft.com](https://docs.microsoft.com/fr-fr/windows/wsl/install)
+
+### Installation et activation de WSL2
+
+1. vérifier si WSL est installé :
+
+    ```console
+    wsl -l -v :
+    ```
+
+- s'il est installé et la version est la 1, mettre à jour vers la version 2 :
+
+    ```console
+    wsl –install
+    ```
+
+- s'il n'est pas installé, installer WSL (la version 2 sera automatiquement installée)
+
+    ```console
+    wsl --install
+    ```
+
+### Installation d'une distribution Linux (Ubuntu pour l'exemple) dans WSL
+
+_Par défaut, l'installation de WSL 2 installera également une distribution Linux (Ubuntu). Néanmoins, si tel n'est pas le cas, suivre le protocole ci-dessous._
+
+1. vérifier si une distribution Linux est déjà installée dans WSL
+
+    ```console
+    wsl -l -v
+    ```
+
+- Si une distribution Linux est listée en version 1, saisissez
+
+    ```console
+    wsl –set-version <nom_de_la_distribution> 2
+    ```
+
+- si aucune distribution n'est installée,  saisir
+
+    ```console
+    wsl –install -d <nom_de_la_distribution>
+    ```
+
+### Passer la distribution de Linux installée dans WSL par défaut :
+
+- PowerShell en mode administrateur
+
+    ```console
+    wsl -set-default <nom_de_la_distribution>
+    ```
+
+## Installation de Docker Desktop
+
+- Télécharger et installer docker desktop avec l’option d’installation de WSL2 (cocher la case « Enable Hyper-V Windows Features » durant l'installation) :
+[www.docker.com](https://www.docker.com/products/docker-desktop/)
+
+- Une fois l'installation terminée, ouvrir Docker et aller dans les Settings/Resources/WSL Integration pour cocher les cases
+  - [x]  Enable integration with my default WSL distro »
+  - [x] <nom_de_la_distribution_Linux>
+
+## Création d'un user
+
+- Ouvrir PowerShell ou une invite de commande
+
+- entrer dans la machine virtuelle :
+
+    ```console
+    wsl
+    ```
+
+- ajouter un utilisateur :
+
+    ```console
+    adduser <nom_de_l'utilisateur>
+    ```
+
+- donner les droits sudo à l'utilisateur
+
+    ```console
+    usermod –aG sudo <nom_de_l'utilateur>
+    ```
+
+- donner les droits Docker à l'utilisateur
+
+    ```console
+    usermod –aG docker  <nom_de_l'utilateur>
+    ```
+
+- sortir de la machine virtuelle
+
+    ```console
+    exit
+    ```
+
+- changer l'utilisateur par défaut
+
+    ```console
+    ubuntu config --default-user <nom_de_l'utilateur>
+    ```
+
+## Vérification du fonctionnement de Docker
+
+- Ouvrir PowerShell ou une invite de commande
+
+- Entrer dans la machine virtuelle :
+
+    ```console
+    wsl
+    ```
+
+- Afficher la version de Docker :
+
+    ```console
+    docker -v
+    ```
+
+- Afficher la version de Docker-Compose :
+
+    ```console
+    docker-compose -v
+    ```
+
+- Télécharger et démarrer le conteneur d'essai Hello-World :
+
+    ```console
+    docker run --rm hello-world
+    ```
+
+    Le message « Hello from Docker !» s'affiche dans la console
+
+## Installer et paramétrer Git
+
+- dans PowerShell ou en invite de commande, entrer dans la machine virtuelle. Si vous n'y êtes pas déjà, saisir :
+
+    ```console
+    wsl
+    ```
+
+- installer Git :
+
+    ```console
+    sudo apt install git
+    ```
+
+- créer un jeu de clefs SSH privée/publique en suivant les récommandations du document suivant (chapitre "Générer des clés avec ssh-keygen") :
+[docs.microsoft.com](https://docs.microsoft.com/fr-fr/azure/virtual-machines/linux/create-ssh-keys-detailed)
+
+- enregistrer la clef publique sur son compte GitHub :
+  - ouvrir les "Settings" de son compte GitHub
+  - aller dans la rubrique "SSH and GPG keys"
+  - cliquer sur le bouton "New SSH key"
+  - donner un nom à la nouvelle clef SSH dans le champ "Title"
+  - coller l'intégralité de la clef publique dans le champ "Key"
+- dans WSL, en 'user' saisir :
+
+    ```console
+    cd
+    ```
+
+    Puis saisir :
+
+    ```console
+    explorer.exe .
+    ```
+
+    Cela ouvre une nouvelle fenêtre Windows qui affiche le répertoire racine de la machine virtuelle en cours. Ouvrir le répertoire .ssh
+    `\\wsl$\<nom_de_la_distribution_linux>\home\<nom_de_l'utilisateur_défini_dans_wsl>\.ssh`
+
+- Dans cette nouvelle fenêtre, coller la paire de clefs privée/publique que vous trouverez dans le répertoire .ssh de votre session utilisateur Windows 
+    `C:\Users\<votre_nom_d'utilisateur>\.ssh`
+
+## Préparation du répertoire de travail
+
+- dans PowerShell ou en invite de commande, entrer dans la machine virtuelle. Si vous n'y êtes pas déjà, saisir :
+
+- créer le répertoire pod :
+
+    ```console
+    sudo mkdir /opt/pod/
+    ```
+
+- donner les droits de lecture/écriture à tous au répertoire pod :
+
+    ```console
+    sudo chmod a+wrx /opt/pod
+    ```
+
+- entrer dans le répertoire pod :
+
+    ```console
+    cd /opt/pod
+    ```
+
+## Exemple avec Qualimarc
+
+- Cloner le projet à partir de GitHub. Dans wsl, saisir :
+
+    ```console
+    cd /opt/pod/
+    ```
+
+    puis
+
+    ```console
+    git clone git@github.com:abes-esr/qualimarc-docker.git
+    ```
+
+- Pour la suite, se référer au ReadMe Qualimarc-Docker  https://github.com/abes-esr/qualimarc-docker.git
+
