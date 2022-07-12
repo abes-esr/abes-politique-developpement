@@ -732,7 +732,7 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
     exit
     ```
 
-- changer l'utilisateur par défaut
+- changer l'utilisateur par défaut qui sera utilisé au moment de démarrer la distribution Linux WSL2
 
     ```console
     ubuntu config --default-user <nom_de_l'utilateur>
