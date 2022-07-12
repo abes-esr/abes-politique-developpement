@@ -644,19 +644,13 @@ source  : [docs.microsoft.com](https://docs.microsoft.com/fr-fr/windows/wsl/inst
 1. vérifier si WSL est installé :
 
     ```console
-    wsl -l -v :
+    wsl -l -v
     ```
 
-- s'il est installé et la version est la 1, mettre à jour vers la version 2 :
+2. pour être certain de disposer de la dernière version (WSL2) ou pour installer WSL2 depuis zéro, voici la commande à taper dans un PowerShell en mode administrateur : :
 
     ```console
     wsl –-install
-    ```
-
-- s'il n'est pas installé, installer WSL (la version 2 sera automatiquement installée)
-
-    ```console
-    wsl --install
     ```
 
 ### Installation d'une distribution Linux (Ubuntu pour l'exemple) dans WSL
