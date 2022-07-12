@@ -647,7 +647,7 @@ source  : [docs.microsoft.com](https://docs.microsoft.com/fr-fr/windows/wsl/inst
     wsl -l -v
     ```
 
-2. pour être certain de disposer de la dernière version (WSL2) ou pour installer WSL2 depuis zéro, voici la commande à taper dans un PowerShell en mode administrateur : :
+2. pour être certain de disposer de la dernière version (WSL2) ou pour installer WSL2 depuis zéro, voici la commande à taper dans un PowerShell en mode administrateur :
 
     ```console
     wsl –-install
