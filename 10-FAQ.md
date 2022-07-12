@@ -698,7 +698,7 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
   - [x]  Enable integration with my default WSL distro »
   - [x] <nom_de_la_distribution_Linux>
 
-## Création d'un user
+## Création d'un user individuel dans la distribution Linux WSL2
 
 - Ouvrir PowerShell ou une invite de commande
 
