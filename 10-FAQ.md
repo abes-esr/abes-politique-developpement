@@ -782,7 +782,7 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
     sudo apt install git
     ```
 
-- créer un jeu de clefs SSH privée/publique en suivant les récommandations du document suivant (chapitre "Générer des clés avec ssh-keygen") :
+- créer un jeu de clefs SSH privée/publique en suivant les recommandations du document suivant (chapitre "Générer des clés avec ssh-keygen") :
 [docs.microsoft.com](https://docs.microsoft.com/fr-fr/azure/virtual-machines/linux/create-ssh-keys-detailed)
 
 - enregistrer la clef publique sur son compte GitHub :
