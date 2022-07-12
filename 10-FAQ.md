@@ -650,7 +650,7 @@ source  : [docs.microsoft.com](https://docs.microsoft.com/fr-fr/windows/wsl/inst
 - s'il est installé et la version est la 1, mettre à jour vers la version 2 :
 
     ```console
-    wsl –install
+    wsl –-install
     ```
 
 - s'il n'est pas installé, installer WSL (la version 2 sera automatiquement installée)
