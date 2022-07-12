@@ -708,7 +708,7 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
     wsl
     ```
 
-- ajouter un utilisateur :
+- ajouter un utilisateur Linux (indiquer son login individuel habituel) :
 
     ```console
     adduser <nom_de_l'utilisateur>
