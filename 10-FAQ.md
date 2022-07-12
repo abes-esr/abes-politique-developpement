@@ -788,7 +788,7 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
 [docs.microsoft.com](https://docs.microsoft.com/fr-fr/azure/virtual-machines/linux/create-ssh-keys-detailed)
 
 - enregistrer la clef publique sur son compte GitHub :
-  - ouvrir les "Settings" de son compte GitHub
+  - ouvrir les "Settings" de son compte GitHub et aller dans la rubrique "SSH and GPG keys" ici : https://github.com/settings/keys
   - aller dans la rubrique "SSH and GPG keys"
   - cliquer sur le bouton "New SSH key"
   - donner un nom à la nouvelle clef SSH dans le champ "Title"
