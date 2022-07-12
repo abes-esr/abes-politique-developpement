@@ -760,7 +760,7 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
     docker-compose -v
     ```
 
-- Télécharger et démarrer le conteneur d'essai Hello-World :
+- Télécharger et démarrer le conteneur docker d'essai hello-world :
 
     ```console
     docker run --rm hello-world
