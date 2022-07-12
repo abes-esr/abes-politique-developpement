@@ -789,7 +789,6 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
 
 - enregistrer la clef publique sur son compte GitHub :
   - ouvrir les "Settings" de son compte GitHub et aller dans la rubrique "SSH and GPG keys" ici : https://github.com/settings/keys
-  - aller dans la rubrique "SSH and GPG keys"
   - cliquer sur le bouton "New SSH key"
   - donner un nom à la nouvelle clef SSH dans le champ "Title"
   - coller l'intégralité de la clef publique dans le champ "Key"
