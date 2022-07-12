@@ -672,13 +672,13 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
 - Si une distribution Linux est listée en version 1, saisissez
 
     ```console
-    wsl –set-version <nom_de_la_distribution> 2
+    wsl -–set-version <nom_de_la_distribution> 2
     ```
 
 - si aucune distribution n'est installée,  saisir
 
     ```console
-    wsl –install -d <nom_de_la_distribution>
+    wsl –-install -d <nom_de_la_distribution>
     ```
 
 ### Passer la distribution de Linux installée dans WSL par défaut :
@@ -686,7 +686,7 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
 - PowerShell en mode administrateur
 
     ```console
-    wsl -set-default <nom_de_la_distribution>
+    wsl --set-default <nom_de_la_distribution>
     ```
 
 ## Installation de Docker Desktop
