@@ -838,7 +838,7 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
     cd /opt/pod
     ```
 
-## Exemple avec Qualimarc
+## Exemple d'utilisation du répertoire /opt/pod avec Qualimarc
 
 - Cloner le projet à partir de GitHub. Dans wsl, saisir :
 
