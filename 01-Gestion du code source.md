@@ -3,6 +3,7 @@
 Pour gérer nos codes sources, nous utilisons :
 - Github comme gestionnaire de code open source (ou SCM pour source control management)
 - Artifactory (en interne à l'Abes) comme gestionnaire de dépôt d'objets binaires (ou repository manager). 
+- Maven Central (public) comme gestionnaire de dépôts de librairies JAVA pour tous nos développements opensource depuis 2019 (remplace donc le Artifactory interne)
 
 Pour les anciens projets que nous ne pouvons pas encore migrer en opensource, nous utilisons Gitlab en interne à l'Abes comme gestionnaire de code source.
 
