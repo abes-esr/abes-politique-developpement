@@ -36,7 +36,7 @@ Depuis 2019, l'Abes produit du code open source. L'Artifactory interne de l'Abes
 
 Le projet est une succession d’itérations : demande de fonctionnalités, implémentation, correction des bugs etc. Ces évolutions sont reflétées par les numéros de version des projets.
 
-Nous utilisons la notation ``X.Y.Z``, préconisée ici : https://semver.org/spec/v2.0.0.html
+Nous utilisons la notation ``X.Y.Z``, préconisée par le semantic versioning : https://semver.org/spec/v2.0.0.html
 
 - ``X`` correspond à une version majeure du système. Cette mise à jour peut potentiellement provoquer des incompatibilités par rapport aux versions précédentes.
 - ``Y`` correspond à une version mineure, ce numéro est incrémenté lors d'ajouts de fonctionnalités.
