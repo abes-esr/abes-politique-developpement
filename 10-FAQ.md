@@ -848,3 +848,19 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
 
 - Pour la suite, se référer au ReadMe Qualimarc-Docker  https://github.com/abes-esr/qualimarc-docker.git
 
+# Erreur envoi de mail : "PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target"
+
+## Problème
+
+Lors d'une tentative d'envoi de mail dans une application web, on rencontre l'erreur : 
+
+```javax.mail.MessagingException: Could not convert socket to TLS;
+  nested exception is:
+	javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+```
+
+## Solution
+
+Il faut spécifier où trouver le certificat lors du lancement du Tomcat. Pour celà, on ajoute dans JAVA_OPTS du catalina.sh le chemin vers le certificat, exemple :
+
+```JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=/home/tomcat/theses/jssecacerts [...] ```
