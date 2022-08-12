@@ -92,9 +92,9 @@ Le fichier est édité à la main directement depuis Gitlab sur la page des "rel
 Pour nommer les images docker publiées sur [DockerHub abesesr](https://hub.docker.com/u/abesesr), nous privilégions cette nommenclature :
 - ``<organisationdocker>/<nomapplication>:<nom-branche|numero-version>-<module-applicatif>``
 - exemple pour l'image docker du front de l'application ``abes-hello`` sur sa branche ``develop`` : ``abesesr/abes-hello:develop-front``
-- exemple sur les batchs de l'application ``abes-hello`` sur sa branche ``develop`` : ``abesesr/abes-hello:develop-batch``
-- exemple sur le front de l'application ``abes-hello`` sur sa branche ``main`` : ``abesesr/abes-hello:main-front``
-- exemple sur le front de l'application ``abes-hello`` sur sa release ``1.0.0`` : ``abesesr/abes-hello:1.0.0-front``
+- exemple pour l'image docker des batchs de l'application ``abes-hello`` sur sa branche ``develop`` : ``abesesr/abes-hello:develop-batch``
+- exemple pour l'image docker du front de l'application ``abes-hello`` sur sa branche ``main`` : ``abesesr/abes-hello:main-front``
+- exemple pour l'image docker du front de l'application ``abes-hello`` sur sa release ``1.0.0`` : ``abesesr/abes-hello:1.0.0-front``
 
 ## Publier une nouvelle release d'une application
 
