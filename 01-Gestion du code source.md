@@ -87,6 +87,15 @@ Parmi les bonnes pratiques à suivre en complément du workflow [Gitflow](https:
 Le fichier est édité à la main directement depuis Gitlab sur la page des "releases". A noter que dans le cadre de la chaine de build opensource, ce sont les intitulé des Pull Request qui sont utilisés pour auto-générer le changelog de la release (exemple sur la [release 1.0.0 de licencesnationales-front](https://github.com/abes-esr/licencesnationales-front/releases/tag/1.0.0)).
 * Nous utilisons les "pull request" sur Github ("merge request" sur Gitlab) : les branches "main" et "develop" n'acceptent que les "merge" et non les "push". Les "merge" sont conditionnés à l'approbation d'au moins un autre développeur. Cette pratique permet de renforcer la qualité du code (relecture) et de partager le code produit.
 
+### Nommage des images docker
+
+Pour nommer les images docker publiées sur [DockerHub abesesr](https://hub.docker.com/u/abesesr), nous privilégions cette nommenclature :
+- ``<organisationdocker>/<nomapplication>:<nom-branche|numero-version>-<module-applicatif>``
+- exemple pour l'image docker du front de l'application ``abes-hello`` sur sa branche ``develop`` : ``abesesr/abes-hello:develop-front``
+- exemple sur les batchs de l'application ``abes-hello`` sur sa branche ``develop`` : ``abesesr/abes-hello:develop-batch``
+- exemple sur le front de l'application ``abes-hello`` sur sa branche ``main`` : ``abesesr/abes-hello:main-front``
+- exemple sur le front de l'application ``abes-hello`` sur sa release ``1.0.0`` : ``abesesr/abes-hello:1.0.0-front``
+
 ## Publier une nouvelle release d'une application
 
 Voici la procédure à appliquer pour publier une nouvelle release (nouvelle version) d'une application open-source produite par l'Abes :
