@@ -67,7 +67,14 @@ Cette section est un **travail en cours** depuis début 2022 car la politique de
 
 ### Configuration d'une application docker
 
-TODO compléter les autres règles que l'on se donne, par exemple structure du dépôt git, Dockerfile multi-stage pour gérer la compilation, les tests et la génération des images prêtes à être déployées.
+Une application dockerisée respecte plusieurs règles :
+- l'application possède un dépôt pour son code source et c'est ce même dépôt qui est chargé de générer et de publier son image docker.
+  - ce dépôt contient le ``Dockerfile`` de l'application dont l'objectif est de produire l'image docker de l'application pour qu'elle soit ensuite prête à être exécutée
+  - le ``Dockerfile`` de l'application execute également les tests de l'application ce qui permet d'éviter de produire une image docker embarquant un code qui ne fonctionne pas
+  - ce dépôt contient une github action souvent nommée ``build-test-pubtodockerhub.yml`` (ex: sur [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml)) permettant de construire l'image Docker et de la publier sur l'[espace abesesr sur dockerhub](https://hub.docker.com/orgs/abesesr).
+  - ce dépôt contient une github action souvent nommée ``create-release.yml`` (ex: sur [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/create-release.yml)) permettant de créer une nouvelle version/release de l'application
+ - l'application peut générer plusieurs images docker, par exemple pour le front en vuejs (ex: [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml)), ou pour l'API en java Spring (ex: [abes-hello-back](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml)
+ - l'application possède un dépôt dédiée à son déploiement avec docker/docker-compose. La règle de nommage de ce dépôt est de commencer par le nom de l'application et de terminer par le suffix ``-docker`` (ex: [abes-hello-docker](https://github.com/abes-esr/abes-hello-docker)). Il permet à n'importe qui sur le web de venir tester l'application sur son environnement local ou sur son serveur. Ce dépôt permet de faciliter la réutilisation et les contributions externes. Ce dépôt permet surtout de formaliser comment installer, démarrer, stopper l'application et il héberge ainsi la fiche d'exploitation de l'application.
 
 ### Configuration des logs des conteneurs dockers
 
