@@ -848,3 +848,18 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
 
 - Pour la suite, se référer au ReadMe Qualimarc-Docker  https://github.com/abes-esr/qualimarc-docker.git
 
+
+# Secret envoyé par erreur sur GitHub
+
+## Problème
+
+J'ai envoyé par erreur un mot de passe sensible dans un commit/push, que faire ?
+
+## Solution
+
+Suivre les préconisation de Github décrites ici :
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository
+
+En particulier l'[outil BFG](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#using-the-bfg) est cité qui a le mérite d'être facile à utiliser.
+
+Et en fonction de la criticité du mot de passe révoquer le mot de passe et modifier sa valeur.
