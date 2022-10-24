@@ -1,6 +1,6 @@
 # Gestion du code source
 
-Pour gérer nos codes sources, nous utilisons majoritairement [Github](https://github.com/abes-esr) comme gestionnaire de code open source (ou SCM pour source control management) associé à notre [plateforme d'intégration continue](https://github.com/abes-esr/abes-politique-developpement/blob/feature/pic-opensource/02-Int%C3%A9gration%20continue.md).
+Pour gérer nos codes sources, nous utilisons majoritairement [Github](https://github.com/abes-esr) comme gestionnaire de code open source (ou SCM pour source control management) associé à notre [plateforme d'intégration continue](https://github.com/abes-esr/abes-politique-developpement/blob/main/02-Int%C3%A9gration%20continue.md).
 
 ## Licences
 
