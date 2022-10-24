@@ -8,7 +8,7 @@ Ces objectifs sont atteints via la mise en place d'une pipeline composée d'un o
 
 ## Plateforme d'intégration continue open source
 
-Notre plateforme d'intégration continue open source est constituée de :
+Notre plateforme d'intégration continue open source en place depuis 2019 est constituée de :
 
 * [__GitHub__](https://github.com/abes-esr/) est le gestionnaire de codes sources. Il fournit une interface web qui permet de naviguer dans les différents projets, d’effectuer des recherches dans le code.
 * __GitHub Action__ qui sert à compiler les source, lancer les tests, générer les versions, et générer les images docker des applications.
