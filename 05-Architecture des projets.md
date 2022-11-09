@@ -63,7 +63,6 @@ Les fichiers journaux de l’application doivent se situer dans un répertoire n
 
 ## Configuration d'un projet avec docker
 
-Cette section est un **travail en cours** depuis début 2022 car la politique de développement évolue pour viser un packaging et un déploiement sur les environnements avec Docker à moyen terme.
 
 ### Configuration d'une application docker
 
@@ -122,6 +121,8 @@ On trouve alors d'autres labels dont voici la signification :
 - `co.elastic.logs/module=nginx` : signifie qu'on dit à filebeat que ce conteneur produit des logs au format nginx ce qui lui permettra de les envoyées découpées dans le puits de logs (cf la liste des [modules filebeat disponibles](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html))
 - `co.elastic.logs/fileset.stdout=access` : signifie que filebeat doit surveiller les logs stdout du conteneur
 - `co.elastic.logs/fileset.stderr=error` : signifie que filebeat doit surveiller les logs stderr du conteneur
+
+La dernière étape pour que les logs de remontent jusqu'au puits de logs de l'Abes est de solliciter l'équipe puits de log de l'Abes pour lui demander d'intégrer (configuration à faire au niveau de la brique logstash) les logs de l'application en s'appuyant sur clé "co.elastic.logs/processors.add_fields.fields.abes_appli=monapplication"
 
 #### format pour les log personnalisées
 
