@@ -122,7 +122,7 @@ On trouve alors d'autres labels dont voici la signification :
 - `co.elastic.logs/fileset.stdout=access` : signifie que filebeat doit surveiller les logs stdout du conteneur
 - `co.elastic.logs/fileset.stderr=error` : signifie que filebeat doit surveiller les logs stderr du conteneur
 
-La dernière étape pour que les logs de remontent jusqu'au puits de logs de l'Abes est de solliciter l'équipe puits de log de l'Abess pour lui demander d'intégrer (configuration à faire au niveau de la brique logstash) les logs de l'application en s'appuyant sur clé "co.elastic.logs/processors.add_fields.fields.abes_appli=monapplication"
+La dernière étape pour que les logs de remontent jusqu'au puits de logs de l'Abes est de solliciter l'équipe puits de log de l'Abes pour lui demander d'intégrer (configuration à faire au niveau de la brique logstash) les logs de l'application en s'appuyant sur clé "co.elastic.logs/processors.add_fields.fields.abes_appli=monapplication"
 
 #### format pour les log personnalisées
 
