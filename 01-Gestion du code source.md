@@ -1,11 +1,6 @@
 # Gestion du code source
 
-Pour gérer nos codes sources, nous utilisons :
-- Github comme gestionnaire de code open source (ou SCM pour source control management)
-- Artifactory (en interne à l'Abes) comme gestionnaire de dépôt d'objets binaires (ou repository manager). 
-- Maven Central (public) comme gestionnaire de dépôts de librairies JAVA pour tous nos développements opensource depuis 2019 (remplace donc le Artifactory interne)
-
-Pour les anciens projets que nous ne pouvons pas encore migrer en opensource, nous utilisons Gitlab en interne à l'Abes comme gestionnaire de code source.
+Pour gérer nos codes sources, nous utilisons majoritairement [Github](https://github.com/abes-esr) comme gestionnaire de code open source (ou SCM pour source control management) associé à notre [plateforme d'intégration continue](https://github.com/abes-esr/abes-politique-developpement/blob/main/02-Int%C3%A9gration%20continue.md).
 
 ## Licences
 
@@ -24,13 +19,6 @@ Github et Gitlab fournissent une interface web qui :
 * donne accès un tableau de type Kanban qui nous permet de gérer les sprints lorsque le projet est mené en méthode agile. Un atout de ce tableau est de pouvoir lier les tâches aux commits.
 
 Pour tous les développements réalisés par l'Abes depuis 2019, c'est Github qui est utilisé pour permettre la publication en open source. Le GitLab interne de l'Abes n'est plus utilisé pour les nouveaux développements.
-
-## Artifactory / DockerHub / MavenCentral
-
-Artifactory (outil interne à l'Abes) permet de stocker le code source compilé des projets Java. Il contient l'ensemble des versions que les développeurs ont construites, qu'ils s'agissent de version SNAPTSHOT ou de RELEASE. On y trouve à la fois le code source compilé produit par l'Abes et les dépendances externes.
-L'utilisation d'Artifactory nous permet aussi d'accélerer les phases de construction puisque les dépendances sont d'abord recherchées sur notre Artifactory local. En cas d'échec, elles sont recherchées sur Maven central.
-
-Depuis 2019, l'Abes produit du code open source. L'Artifactory interne de l'Abes n'est donc progressivement plus utilisé. L'Abes vise une publication de ses codes compilés sur : DockerHub pour les images docker et sur MavenCentral pour les librairies JAVA produites.
 
 ## Numéros de version
 
@@ -71,20 +59,19 @@ Parallèlement, l'Abes maintient un système de génération de release au nivea
 
 Parmi les bonnes pratiques à suivre en complément du workflow [Gitflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow) on peut citer :  
 
-* ne pas attendre (maximum deux semaines) pour merger une branche et la branche dont elle est dérivée (par exemple une "feature" sur "develop"). En général, la durée maximale est celle du sprint.
+* ne pas attendre (maximum deux semaines) pour merger une branche et la branche dont elle est dérivée (par exemple une "feature" sur ``develop``). En général, la durée maximale est celle du sprint.
 * les commits doivent obligatoirement être accompagnés d'un certain nombre d'informations (voir ci-dessous la section spécifique aux messages de commit).
 * il faut toujours lancer les tests unitaires en local avant de commiter le code.
 * privilégier un découpage de projet en modules permet d'avoir des commits les plus indépendants les uns des autres. Lorsqu'on travaille à plusieurs, on limite ainsi le risque de modifier les mêmes parties du code.
 * à chaque correction de bug, il faut ajouter le test unitaire qui, s'il avait existé, aurait permis d'éviter le bug.
 * tout le code impacté par un ajout de fonctionnalité ou une correction doit être commité en une seule fois. Si plusieurs fonctionnalités ou bugs sont impactés, il est donc recommandé de réaliser plusieurs commits, chacun correspondant à une modification.
-* il faut utiliser le fichier .gitignore pour exclure systématiquement des commits tout ce qui est spécifique à l’IDE (.classpath, .project), le répertoire avec le code compilé : target et les fichiers .properties lorsqu'on travaille sur Github.
+* il faut utiliser le fichier ``.gitignore`` pour exclure systématiquement des commits tout ce qui est spécifique à l’IDE (``.classpath``, ``.project``), le répertoire avec le code compilé : target et les fichiers ``.properties`` lorsqu'on travaille sur Github.
 * le code compilé ne doit pas être envoyé sur Github (puisque les sources suffisent à créer le programme)
-* les dépendances externes ne doivent pas être envoyées sur Github (elles sont dans le repository manager : pom.xml pour Java et package.json pour VueJS)
-* Pour le PL/SQL : un batch parcourt tous les scripts PL/SQL et les envoie automatiquement dans un dépôt spécifique. On peut aussi exporter le code depuis l'IDE sqldeveloper sur son poste en local en fichiers .sql (qui contient fonctions, procédures, types, DDL). Ces fichiers sont alors regroupés dans un répertoire "sql" dans le projet et sont versionnés avec le projet.
+* les dépendances externes ne doivent pas être envoyées sur Github (elles sont dans le repository manager : ``pom.xml`` pour Java et ``package.json`` pour VueJS)
+* Pour les codes PL/SQL : l'ajout de code PL/SQL doit être limité autant que possible car ce code n'est pas versionné et son debuggage est compliqué. Du code externalisé est à privilégier lorsque c'est possible. A noter qu'une tâche périodique est en place et parcourt tous les scripts PL/SQL de la base Oracle de l'Abes et les versionne en vrac dans un dépôt git interne spécifique. Il est aussi possible d'exporter manuellement le code depuis l'IDE sqldeveloper sur son poste en local en fichiers ``.sql`` (qui contient fonctions, procédures, types, DDL). Ces fichiers sont alors regroupés dans un répertoire "sql" dans le projet et sont versionnés avec le code de l'application.
 * procéder de la même manière que pour le PL/SQL pour tout code susceptible d’être stocké dans des tables de base de données (fichiers XSL, XQuery etc.)
-* il faut ajouter des fichiers release-notes à chaque release. Ces fichiers contiennent les dernières fonctionnalités ajoutées, les corrections de bugs...
-Le fichier est édité à la main directement depuis Gitlab sur la page des "releases". A noter que dans le cadre de la chaine de build opensource, ce sont les intitulé des Pull Request qui sont utilisés pour auto-générer le changelog de la release (exemple sur la [release 1.0.0 de licencesnationales-front](https://github.com/abes-esr/licencesnationales-front/releases/tag/1.0.0)).
-* Nous utilisons les "pull request" sur Github ("merge request" sur Gitlab) : les branches "main" et "develop" n'acceptent que les "merge" et non les "push". Les "merge" sont conditionnés à l'approbation d'au moins un autre développeur. Cette pratique permet de renforcer la qualité du code (relecture) et de partager le code produit.
+* il faut ajouter des fichiers release-notes à chaque release. A noter que dans le cadre de la chaine de build opensource, ce sont les intitulé des Pull Request qui sont utilisés pour auto-générer le changelog de la release (exemple sur la [release 1.0.0 de licencesnationales-front](https://github.com/abes-esr/licencesnationales-front/releases/tag/1.0.0)).
+* Nous utilisons les "pull request" sur Github ("merge request" sur Gitlab) : les branches ``main`` et ``develop`` n'acceptent que les "merge" et non les "push". Les "merge" sont conditionnés à l'approbation d'au moins un autre développeur. Cette pratique permet de renforcer la qualité du code (relecture) et de partager le code produit.
 
 ### Nommage des images docker
 
