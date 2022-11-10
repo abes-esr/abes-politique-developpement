@@ -20,7 +20,7 @@ Cette politique de développement est bien évidemment perfectible et ouverte au
 
 ## Open source 
 
-Depuis 2019, nos nouveaux développements sont par défaut disponibles en open source sur la plateforme Github. Nous publions donc notre politique de développement en open source, à la fois pour montrer les règles que nous nous efforçons de suivre lors de nos développements et aussi pour la co-construction en faciliter les contributions extérieures.
+Depuis 2019, nos nouveaux développements sont par défaut disponibles en open source sur la plateforme Github https://github.com/abes-esr/. Nous publions donc notre politique de développement en open source, à la fois pour montrer les règles que nous nous efforçons de suivre lors de nos développements et aussi pour la co-construction en facilitant les contributions extérieures.
 
 ## Contribuer à la politique de développement de l'Abes
 
