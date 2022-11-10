@@ -78,7 +78,6 @@ Parmi les bonnes pratiques à suivre en complément du workflow [Gitflow](https:
 * à chaque correction de bug, il faut ajouter le test unitaire qui, s'il avait existé, aurait permis d'éviter le bug.
 * tout le code impacté par un ajout de fonctionnalité ou une correction doit être commité en une seule fois. Si plusieurs fonctionnalités ou bugs sont impactés, il est donc recommandé de réaliser plusieurs commits, chacun correspondant à une modification.
 * il faut utiliser le fichier .gitignore pour exclure systématiquement des commits tout ce qui est spécifique à l’IDE (.classpath, .project), le répertoire avec le code compilé : target et les fichiers .properties lorsqu'on travaille sur Github.
-* Pour les dépôts Github, les fichiers application.properties qui contiennent des secrets sont stockés et gérés sur un dépôt Gitlab interne et déployé via nos jobs de déploiement Jenkins ou Ansible (travail en cours - avril 2022).
 * le code compilé ne doit pas être envoyé sur Github (puisque les sources suffisent à créer le programme)
 * les dépendances externes ne doivent pas être envoyées sur Github (elles sont dans le repository manager : pom.xml pour Java et package.json pour VueJS)
 * Pour le PL/SQL : un batch parcourt tous les scripts PL/SQL et les envoie automatiquement dans un dépôt spécifique. On peut aussi exporter le code depuis l'IDE sqldeveloper sur son poste en local en fichiers .sql (qui contient fonctions, procédures, types, DDL). Ces fichiers sont alors regroupés dans un répertoire "sql" dans le projet et sont versionnés avec le projet.

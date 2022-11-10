@@ -633,6 +633,24 @@ sudo docker run --rm -ti   --name=ctop   --volume /var/run/docker.sock:/var/run/
 Vous obtiendrez une visualisation qui ressemblera à ceci :
 ![image](https://user-images.githubusercontent.com/328244/165930667-bbf6bd07-f294-4270-b473-ccd484964802.png)
 
+
+# Docker : Erreur connexion Oracle ORA-01882: timezone region not found
+
+## Problème
+
+Depuis les conteneurs dockers sur diplotaxis, l'application n'arrive pas à se connecter à la base de données Oracle et renvoie l'erreur ORA-01882: timezone region not found.
+
+## Solution
+
+Cela vient d'une différence de timezone entre la JVM (et donc le driver ojdbc) et la base de données. 
+
+Il faut ajouter en option en conteneur, dans la partie environnement du docker  compose, le paramètre suivant :
+
+JAVA_OPTS: "-Doracle.jdbc.timezoneAsRegion=false -Duser.timezone=CEST"
+
+Exemples : https://github.com/abes-esr/qualinka-microservices/blob/20cc3986ae2ae7a9dad1412efc26c1dad421a279/docker-compose.yaml#L154 ou https://git.abes.fr/depots/ansible-nbt/-/blob/master/ln-docker/templates/ln_docker-compose.j2
+
+
 # Configuration d'un environnement Docker sous Windows 10
 
 ## Installation de WSL et d'une distribution Linux
@@ -848,6 +866,7 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
 
 - Pour la suite, se référer au ReadMe Qualimarc-Docker  https://github.com/abes-esr/qualimarc-docker.git
 
+
 # Erreur envoi de mail : "PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target"
 
 ## Problème
@@ -864,3 +883,23 @@ Lors d'une tentative d'envoi de mail dans une application web, on rencontre l'er
 Il faut spécifier où trouver le certificat lors du lancement du Tomcat. Pour celà, on ajoute dans JAVA_OPTS du catalina.sh le chemin vers le certificat, exemple :
 
 ```JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=/home/tomcat/theses/jssecacerts [...] ```
+
+
+# Secret envoyé par erreur sur GitHub
+
+## Problème
+
+J'ai envoyé par erreur un mot de passe sensible dans un commit/push, que faire ?
+
+## Solution
+
+Suivre les préconisation de Github décrites ici :
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository
+
+En particulier l'[outil BFG](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#using-the-bfg) est cité qui a le mérite d'être facile à utiliser.
+
+Une fois le nettoyage réalisé, il est probable que votre commit soit toujours présent sur le web (cf [section dans la doc de github](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#fully-removing-the-data-from-github)). Il faut alors demander au [support github](https://support.github.com/contact?tags=docs-generic) de lancer un garbage collector sur le dépôt github pour que le commit soit complètement nettoyé.
+
+A noter : en fonction de la criticité du mot de passe, penser à révoquer le mot de passe en modifiant sa valeur sur les environnements de dev, test, et prod.
+
+
