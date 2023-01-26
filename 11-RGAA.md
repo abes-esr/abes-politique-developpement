@@ -62,11 +62,11 @@ La prise en compte de ces problématiques est essentielle afin de rendre les ser
 <!-- Balise d'ouverture de l'indentation des sous-titres du chapitre III -->
 <ul>
 
-:exclamation:
-> Ce document est encore en cours de rédaction. Il sera étoffé dans les semaines/mois à venir.
-> Si vous avez des correctifs à apporter, n'hésitez pas à faire remonter vos idées.
 
-:warning:
+:warning: Ce document est encore en cours de rédaction. Il sera étoffé dans les semaines/mois à venir.
+Si vous avez des correctifs à apporter, n'hésitez pas à faire remonter vos idées.
+
+
 
 <ul>
 La structure d'une application web est importante. En effet, celle-ci peut être lu par un lecteur d'écran 
