@@ -376,9 +376,9 @@ Plusieurs outils permettent de contrôler que le code de l'application respecte 
 <!-- Balise de fermeture de l'indentation des sous-titres du chapitre IV -->
 </ul>
 
-<span style="text-align: right">
+<div style="text-align: right">
 
 [Sommaire](#sommaire)
 
-</span>
+</div>
 
