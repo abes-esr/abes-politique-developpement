@@ -26,10 +26,10 @@ L'accessibilité du web est la possibilité d'accéder aux contenus et services 
 
 Les pratiques d'accessibilité ont pour vocation de réduire ou supprimer les obstacles qui empêchent les utilisateurs d'accéder ou d'interagir avec des services. Le respect de ces pratiques s'applique autant aux UX/UI designers lors de la conception de l'identité graphique et du fonctionnement d'un projet web qu'aux développeuses et développeurs lors de l'écriture du code d'un projet.
 
+[Sommaire](#sommaire)
+
 <!-- Balise de fermeture de l'indentation des sous-titres du chapitre I -->
 </ul>
-
-[Sommaire](#sommaire)
 
 <a id="application" />
 
@@ -50,10 +50,9 @@ Les acteurs et actrices qui participent à la création d'un service web doivent
 
 La prise en compte de ces problématiques est essentielle afin de rendre les services web accessibles à tous.
 
+[Sommaire](#sommaire)
 <!-- Balise de fermeture de l'indentation des sous-titres du chapitre II -->
 </ul>
-
-[Sommaire](#sommaire)
 
 <a id="pratique" />
 
@@ -77,9 +76,9 @@ Néanmoins, certains composants ne génèrent pas d'information exploitable pour
 Il est donc nécessaire de remédier à ce problème.
 
 Voici listé ci-dessous quelques composants et les méthodes pour améliorer leur accessibilité.
-</ul> 
 
 [Sommaire](#sommaire)
+</ul> 
 
 <a id="image" />
 
@@ -96,9 +95,9 @@ ou :
 ```HTML
 <v-img src="/img/logo.svg" alt="logo [nom_de_l_application]">
 ```
-</ul>
 
 [Sommaire](#sommaire)
+</ul>
 
 <a id="icone" />
 
@@ -123,14 +122,11 @@ Pour palier ce problème, deux solutions existent.<br><br>
 <v-icon @click="goToHome()" aria-label="Retourner à l'interface de vérification" role="img">mdi-home</v-icon>
 ```
 
-> [!TIP]
->
-> L'ajout des attributs <b>@click=""</b> et  <b>role="img"</b> à un <b>v-icon</b>
-> permet la reconnaissance de l'attribut <b>aria-label</b>
-
-</ul>
+:information_source: L'ajout des attributs <b>@click=""</b> et  <b>role="img"</b> à un <b>v-icon</b>
+permet la reconnaissance de l'attribut <b>aria-label</b>
 
 [Sommaire](#sommaire)
+</ul>
 
 <a id="titre" />
 
@@ -151,9 +147,9 @@ h2 {
   font-weight: bold;
 }
 ```
-</ul>
 
 [Sommaire](#sommaire)
+</ul>
 
 <a id="titreavecicone" />
 
@@ -170,13 +166,11 @@ Il n'est pas nécessaire d'appliquer un <b>aria-label</b> ainsi qu'un <b>role="i
     Premier titre
 </h2>
 ```
->[!TIP]
->
->un ```margin-top``` négatif peut être appliqué à l'icône afin que le titre s'aligne avec elle au mieux, dans le cas où un ```vertical-align``` (<i>baseline, text-top, text-bottom, sub ou super</i>) ne le permet pas efficacement.
 
-</ul>
+:information_source: un ```margin-top``` négatif peut être appliqué à l'icône afin que le titre s'aligne avec elle au mieux, dans le cas où un ```vertical-align``` (<i>baseline, text-top, text-bottom, sub ou super</i>) ne le permet pas efficacement.
 
 [Sommaire](#sommaire)
+</ul>
 
 <a id="tableau" />
 
@@ -195,9 +189,8 @@ Il est cependant possible d'attribuer un <b>aria-label</b> à un titre de colonn
 
 Les images et icônes, elles, seront traitées comme tel. À ce propos, voir : [image](#image) ou [icone](#icone) plus haut.
 
-</ul>
-
 [Sommaire](#sommaire)
+</ul>
 
 <a id="bouton" />
 
@@ -248,9 +241,9 @@ Plusieurs types de boutons existe. Chacun sera lu et interprété différemment 
 ```
 
 </li>
-</ul>
 
 [Sommaire](#sommaire)
+</ul>
 
 <a id="navigation" />
 
@@ -272,14 +265,14 @@ La balise <b>< nav></b> permet la reconnaissance des zones de navigation (<i>men
 </nav>
 ```
 
-> L'attribut <b>class="v-slider__thumb"</b> associé à l'attribut <b>@click="goToHome()"</b> permet d'activer la reconnaissance d'une balise <b>< span></b> en tant que lien.
+:information_source: L'attribut <b>class="v-slider__thumb"</b> associé à l'attribut <b>@click="goToHome()"</b> permet d'activer la reconnaissance d'une balise <b>< span></b> en tant que lien.
+
+[Sommaire](#sommaire)
 
 </ul>
 
 <!-- Balise de fermeture de l'indentation des sous-titres du chapitre III -->
 </ul>
-
-[Sommaire](#sommaire)
 
 <a id="test" />
 
@@ -304,7 +297,6 @@ Plusieurs outils permettent de contrôler que le code de l'application respecte 
 |    Wave Evaluation Tool     |     FireFox, Chrome     | Affiche l'ordre de défilement des éléments de l'interface (via la touche Tab). <br/> Affiche la structure de l'interface. <br/> Contrôle le taux de contraste entre les éléments superposés et propose un pickup color intégré pour effectuer des tests.  |
 |    WCAG Contrast checker    |     Firefox, Chrome     | Contrôle le taux de contraste entre les éléments superposés et propose un pickup color intégré pour effectuer des tests.                                                                                                                                  |
 
+[Sommaire](#sommaire)
 <!-- Balise de fermeture de l'indentation des sous-titres du chapitre IV -->
 </ul>
-
-[Sommaire](#sommaire)
