@@ -136,7 +136,7 @@ permet la reconnaissance de l'attribut ```aria-label``` placé dans le même UI 
 
 <ul>
 
-Utiliser les balises HTML ```h1``` à ```h6```, afin que les lecteurs d'écran puissent les détecter et permettre la navigation par titre au clavier.
+Utiliser les balises HTML ```<h1>``` à ```<h6>```, afin que les lecteurs d'écran puissent les détecter et permettre la navigation par titre au clavier.
 
 *Exemple d'un titre avec un style dans un fichier css lié au projet :*
 ```HTML
@@ -161,9 +161,9 @@ h2 {
 <ul>
 
 Dans le cas des titres avec numérotation par icônes, 
-il est possible d'imbriquer une ```<v-icon>``` de numérotation dans un titre (```h1``` à ```h6```).  
+il est possible d'imbriquer une ```<v-icon>``` de numérotation dans un titre (```<h1>``` à ```<h6>```).  
 Il n'est pas nécessaire d'appliquer un ```aria-label``` ainsi qu'un ```role="img"``` à l'icône. 
-En effet, la ```<v-icon>``` étant imbriquée dans le titre (```h1``` à ```h6```), 
+En effet, la ```<v-icon>``` étant imbriquée dans le titre (```<h1>``` à ```<h6>```), 
 le titre sera lu par le lecteur d'écran au passage de la souris sur la ```<v-icon>```.
 
 *Exemple d'une icône de numérotation imbriquée dans un titre :*
