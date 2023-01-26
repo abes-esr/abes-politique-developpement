@@ -61,7 +61,6 @@ La prise en compte de ces problématiques est essentielle afin de rendre les ser
 <!-- Balise d'ouverture de l'indentation des sous-titres du chapitre III -->
 <ul>
 
-<ul>
 :warning: Ce document est encore en cours de rédaction. Il sera étoffé dans les semaines/mois à venir.
 Si vous avez des correctifs à apporter, n'hésitez pas à faire remonter vos idées.
 <br><br>
@@ -78,7 +77,6 @@ Il est donc nécessaire de remédier à ce problème.
 Voici listé ci-dessous quelques composants et les méthodes pour améliorer leur accessibilité.
 
 [Sommaire](#sommaire)
-</ul> 
 
 <a id="image" />
 
