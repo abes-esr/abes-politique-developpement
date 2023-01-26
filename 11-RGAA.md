@@ -62,13 +62,10 @@ La prise en compte de ces problématiques est essentielle afin de rendre les ser
 <!-- Balise d'ouverture de l'indentation des sous-titres du chapitre III -->
 <ul>
 
-
+<ul>
 :warning: Ce document est encore en cours de rédaction. Il sera étoffé dans les semaines/mois à venir.
 Si vous avez des correctifs à apporter, n'hésitez pas à faire remonter vos idées.
-
-
-
-<ul>
+<br><br>
 La structure d'une application web est importante. En effet, celle-ci peut être lu par un lecteur d'écran 
 et servir à la navigation. De fait, il est nécessaire d'y porter une attention particulière. 
 En ce sens, il faut définir des 'zones' (<i>header, main, nav, footer, section</i>) avec les balises correspondantes.
