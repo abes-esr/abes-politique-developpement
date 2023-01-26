@@ -4,44 +4,17 @@
 
 ## I. Sommaire
 
-<ul>
-  <li style="line-height: 0.5">
-
-[Principe](#principe)</li>
-  <li style="line-height: 0.5">
-
-[Champ d'application](#application)</li>
-  <li style="line-height: 0.5">
-
-[En pratique, pour les développeuses et développeurs](#pratique)</li>
-  <ul>
-  <li style="line-height: 0.5">
-
-[Images](#image)</li>
-  <li style="line-height: 0.5">
-
-[Icônes](#icone)</li>
-  <li style="line-height: 0.5">
-
-[Titre](#titre)</li>
-  <li style="line-height: 0.5">
-
-[Titre et icône imbriquée](#titreavecicone)</li>
-  <li style="line-height: 0.5">
-
-[Tableau](#tableau)</li>
-  <li style="line-height: 0.5">
-
-[Bouton](#bouton)</li>
-  <li style="line-height: 0.5">
-
-[Navigation](#navigation)</li>
-
-  </ul>
-  <li style="line-height: 0.5">
-
-[Tests](#test)</li>
-</ul>
+  * [Principe](#principe)
+  * [Champ d'application](#application)
+  * [En pratique, pour les développeuses et développeurs](#pratique)
+    * [Images](#image)
+    * [Icônes](#icone)
+    * [Titre](#titre)
+    * [Titre et icône imbriquée](#titreavecicone)
+    * [Tableau](#tableau)
+    * [Bouton](#bouton)
+    * [Navigation](#navigation)
+    * [Tests](#test)
 
 <a id="principe" />
 
@@ -56,11 +29,7 @@ Les pratiques d'accessibilité ont pour vocation de réduire ou supprimer les ob
 <!-- Balise de fermeture de l'indentation des sous-titres du chapitre I -->
 </ul>
 
-<span style="text-align: right">
-
 [Sommaire](#sommaire)
-
-</span>
 
 <a id="application" />
 
@@ -84,11 +53,7 @@ La prise en compte de ces problématiques est essentielle afin de rendre les ser
 <!-- Balise de fermeture de l'indentation des sous-titres du chapitre II -->
 </ul>
 
-<span style="text-align: right">
-
 [Sommaire](#sommaire)
-
-</span>
 
 <a id="pratique" />
 
@@ -97,10 +62,11 @@ La prise en compte de ces problématiques est essentielle afin de rendre les ser
 <!-- Balise d'ouverture de l'indentation des sous-titres du chapitre III -->
 <ul>
 
-> NOTE
->
+:exclamation:
 > Ce document est encore en cours de rédaction. Il sera étoffé dans les semaines/mois à venir.
 > Si vous avez des correctifs à apporter, n'hésitez pas à faire remonter vos idées.
+
+:warning:
 
 <ul>
 La structure d'une application web est importante. En effet, celle-ci peut être lu par un lecteur d'écran 
@@ -116,11 +82,7 @@ Il est donc nécessaire de remédier à ce problème.
 Voici listé ci-dessous quelques composants et les méthodes pour améliorer leur accessibilité.
 </ul> 
 
-<span style="text-align: right">
-
 [Sommaire](#sommaire)
-
-</span>
 
 <a id="image" />
 
@@ -139,11 +101,7 @@ ou :
 ```
 </ul>
 
-<span style="text-align: right">
-
 [Sommaire](#sommaire)
-
-</span>
 
 <a id="icone" />
 
@@ -175,11 +133,7 @@ Pour palier ce problème, deux solutions existent.<br><br>
 
 </ul>
 
-<span style="text-align: right">
-
 [Sommaire](#sommaire)
-
-</span>
 
 <a id="titre" />
 
@@ -202,11 +156,7 @@ h2 {
 ```
 </ul>
 
-<span style="text-align: right">
-
 [Sommaire](#sommaire)
-
-</span>
 
 <a id="titreavecicone" />
 
@@ -229,11 +179,7 @@ Il n'est pas nécessaire d'appliquer un <b>aria-label</b> ainsi qu'un <b>role="i
 
 </ul>
 
-<span style="text-align: right">
-
 [Sommaire](#sommaire)
-
-</span>
 
 <a id="tableau" />
 
@@ -254,11 +200,7 @@ Les images et icônes, elles, seront traitées comme tel. À ce propos, voir : [
 
 </ul>
 
-<span style="text-align: right">
-
 [Sommaire](#sommaire)
-
-</span>
 
 <a id="bouton" />
 
@@ -311,11 +253,7 @@ Plusieurs types de boutons existe. Chacun sera lu et interprété différemment 
 </li>
 </ul>
 
-<span style="text-align: right">
-
 [Sommaire](#sommaire)
-
-</span>
 
 <a id="navigation" />
 
@@ -344,11 +282,7 @@ La balise <b>< nav></b> permet la reconnaissance des zones de navigation (<i>men
 <!-- Balise de fermeture de l'indentation des sous-titres du chapitre III -->
 </ul>
 
-<span style="text-align: right">
-
 [Sommaire](#sommaire)
-
-</span>
 
 <a id="test" />
 
@@ -376,9 +310,4 @@ Plusieurs outils permettent de contrôler que le code de l'application respecte 
 <!-- Balise de fermeture de l'indentation des sous-titres du chapitre IV -->
 </ul>
 
-<div style="text-align: right">
-
 [Sommaire](#sommaire)
-
-</div>
-
