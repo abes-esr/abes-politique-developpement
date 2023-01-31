@@ -73,7 +73,43 @@ Une application dockerisée respecte plusieurs règles :
   - ce dépôt contient une github action souvent nommée ``build-test-pubtodockerhub.yml`` (ex: sur [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml)) permettant de construire l'image Docker et de la publier sur l'[espace abesesr sur dockerhub](https://hub.docker.com/orgs/abesesr).
   - ce dépôt contient une github action souvent nommée ``create-release.yml`` (ex: sur [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/create-release.yml)) permettant de créer une nouvelle version/release de l'application
  - l'application peut avoir besoin de plusieurs images docker, par exemple pour le front en vuejs (ex: [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml)), ou pour l'API en java Spring (ex: [abes-hello-back](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml))
- - l'application possède un dépôt dédiée à son déploiement avec docker/docker-compose. La règle de nommage de ce dépôt est de commencer par le nom de l'application et de terminer par le suffix ``-docker`` (ex: [abes-hello-docker](https://github.com/abes-esr/abes-hello-docker)). Il permet à n'importe qui sur le web de venir tester l'application sur son environnement local ou sur son serveur. Ce dépôt permet de faciliter la réutilisation et les contributions externes. Ce dépôt permet surtout de formaliser la fiche d'exploitation de l'application qui explique comment installer, démarrer, stopper, superviser, et sauvegarder l'application (ex: sur [abes-hello-docker](https://github.com/abes-esr/abes-hello-docker#readme))
+ - l'application possède un dépôt dédiée à son déploiement avec ``docker-compose``, cf section suivante.
+
+### Déploiement d'une application docker
+
+Un dépôt github dédié au déploiement doit être créé pour l'application. La règle de nommage de ce dépôt est de commencer par le nom de l'application et de terminer par le suffix ``-docker`` (ex: [abes-hello-docker](https://github.com/abes-esr/abes-hello-docker)). Il permet à n'importe qui sur le web de venir tester l'application sur son environnement local ou sur son serveur. Ce dépôt permet de faciliter la réutilisation et les contributions externes.
+
+Les éléments obligatoires de ce dépôt sont :
+- le fichier ``docker-compose.yml`` : c'est la liste de tous les conteneurs et leurs configurations/articulations utilisés par l'application. Des règles doivent être respectées, cf paragraphe plus bas.
+- le fichier ``.env-dist`` : c'est un fichier contenant les paramètres de l'application avec des exemples de valeurs. Il est destiné à être copié vers un fichier ``.env`` au moment de l'installation initiale de l'application et à personnaliser son contenu (ex: mot de passe d'une base de données, chaine de connexion etc ...)
+- le fichier ``README.md`` : c'est la fiche d'exploitation de l'application qui explique comment installer, démarrer, stopper, superviser, et sauvegarder l'application (ex: sur [abes-hello-docker](https://github.com/abes-esr/abes-hello-docker#readme)).
+
+Le fichier docker-compose.yml de l'application décrit tous les conteneurs de l'application et leurs articulations, il doit respecter les règles suivantes :
+- chaque nom de service doit être préfixé par le nom (court) de l'application, ex avec le préfix ``abes-hello`` ceci afin de mieux les distinguer et le regrouper au niveau d'un serveur hébergeant plusieurs applications différentes :  
+  ```
+  services:
+    abes-hello-front:
+  ```
+- chaque service doit nommer son conteneur en réutilisant le même nommage que le service, ex sur ``abes-hello`` :  
+  ```
+  container_name: abes-hello-front
+  ```
+- chaque service (sauf rares exceptions) doit se configurer pour redémarrer automatiquement au démarrage de la machine, sauf si l'humain a stoppé intentionnellement le conteneur, cf la directive suivante :
+  ```
+  restart: unless-stopped
+  ```
+- chaque service doit limiter sa consommation mémoire à 5Go max (sauf rares exceptions), cf la directive suivante :  
+  Dans docker-compose.yml :
+  ```
+  mem_limit: ${MEM_LIMIT}
+  ```  
+  Dans dans .env-dist :  
+  ```
+  ######################################################
+  # Memory caping for containers : 5Gio = 5368709120 bytes
+  MEM_LIMIT=5g
+  ```
+
 
 ### Configuration des logs des conteneurs dockers
 
