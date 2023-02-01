@@ -6,7 +6,7 @@
 
   * [Principe](#principe)
   * [Champ d'application](#application)
-  * [En pratique, pour les développeuses et développeurs](#pratique)
+  * [En pratique, pour les équipes de développement](#pratique)
     * [Images](#image)
     * [Icônes](#icone)
     * [Titre](#titre)
@@ -24,7 +24,7 @@
 <ul>
 L'accessibilité du web est la possibilité d'accéder aux contenus et services web pour les personnes handicapées (visuels, auditifs, moteurs, neurologiques, handicapées temporaires, etc.), pour les personnes âgées ou peu habituées aux conténus et services web et plus généralement pour tous les utilisateurs, quels que soient leurs moyens d'accès (mobile, tablette, ordinateur, télévision, etc.) ou leur conditions d'environnement (luminosité, niveau sonore, bande passante réduite, etc.)
 
-Les pratiques d'accessibilité ont pour vocation de réduire ou supprimer les obstacles qui empêchent les utilisateurs d'accéder ou d'interagir avec des services. Le respect de ces pratiques s'applique autant aux UX/UI designers lors de la conception de l'identité graphique et du fonctionnement d'un projet web qu'aux développeuses et développeurs lors de l'écriture du code d'un projet.
+Les pratiques d'accessibilité ont pour vocation de réduire ou supprimer les obstacles qui empêchent les utilisateurs d'accéder ou d'interagir avec des services. Le respect de ces pratiques s'applique autant aux UX/UI designers lors de la conception de l'identité graphique et du fonctionnement d'un projet web, qu'aux équipes de développement lors de l'écriture du code d'un projet.
 
 [Sommaire](#sommaire)
 
@@ -56,7 +56,7 @@ La prise en compte de ces problématiques est essentielle afin de rendre les ser
 
 <a id="pratique" />
 
-## IV. En pratique, pour les développeuses et développeurs
+## IV. En pratique, pour les équipes de développement
 
 <!-- Balise d'ouverture de l'indentation des sous-titres du chapitre III -->
 <ul>
@@ -69,12 +69,14 @@ et servir à la navigation. De fait, il est nécessaire d'y porter une attention
 En ce sens, il faut définir des zones avec les balises HTML correspondantes 
 (```<header>```, ```<main>```, ```<nav>```, ```<footer>```, ```<section>```).
 Leur présence oblige à veiller à ne pas surcharger le code avec une imbrication d'UI Component et/ou de balises HTML 
-(```<v-container>```, ```<div>```, ```<section>```, ```<v-sheet>```, etc.) qui pourraient être fusionnées.
+(```<v-container>```, ```<div>```, ```<section>```, ```<v-sheet>```, etc.) qui pourraient être fusionnée
+en une seule balise HTML ou un seul UI Component VueJs.
 
 La plupart des UI Component VueJs génère un code HTML propre et lisible par les lecteurs d'écran 
-(```<v-btn>```, ```<v-img>```, etc.).
-Néanmoins, certains d'entre eux ne génèrent pas d'information exploitable pour les lecteurs d'écran.
-Il est donc nécessaire de remédier à ce problème.
+(```<v-btn>```, ```<v-img>```, etc.).  
+Néanmoins, certains d'entre eux génèrent des erreurs sur les ```aria-label```, ```role``` ou ```id``` qu'il n'est,
+pour le moment, pas possible de corriger (```<v-expansion-panel>```, ```<v-combobox>```, ```<v-radio-group>```, ```<v-data-table>```).  
+D'autres encore, ne génèrent pas d'informations exploitables pour les lecteurs d'écran. Il est donc nécessaire de remédier à ce problème.
 
 Voici listé ci-dessous quelques UI Component VueJs et les méthodes pour améliorer leur accessibilité.
 
@@ -86,7 +88,8 @@ Voici listé ci-dessous quelques UI Component VueJs et les méthodes pour améli
 
 <ul>
 
-La balise HTML ```<img>``` et l'UI Component VueJs ```<v-img>``` possédant toutes les deux un attribut ```alt=""```, la mise en place de description est facilitée.
+La balise HTML ```<img>``` et l'UI Component VueJs ```<v-img>``` possédant toutes les deux un attribut ```alt=""```, 
+la mise en place de description est facilitée.
 
 *Exemple :*
 ```HTML
@@ -110,7 +113,7 @@ L'UI Component VueJs ```<v-icon>``` ne prend pas en compte l'attribut ```alt```.
 De plus, un ```<v-icon>``` simple (ex : ```<v-icon>mdi-home< /v-icon>```) ne permet pas 
 l'utilisation d'un ```aria-label```, même si ce dernier est associé à un ```role="img"```. 
 Il ne renverra donc aucune information exploitable pour un lecteur de d'écran.<br>
-Pour palier ce problème, deux solutions existent.<br><br>
+Pour palier ce problème, une solution existe.<br><br>
 
 *Exemple avec utilisation d'une balise HTML ```<div>``` :*
 ```HTML
@@ -119,13 +122,15 @@ Pour palier ce problème, deux solutions existent.<br><br>
 </div>
 ```
 
-*Exemple avec utilisation des attributs ```@click``` et ```role="img"``` :*
-```HTML
-<v-icon @click="goToHome()" aria-label="Retourner à l'interface de vérification" role="img">mdi-home</v-icon>
-```
+:information_source: L'ajout de l'attribut ```@click=""``` à un UI Component ```<v-icon>```
+le transformera, une fois le code VueJs compilé, en balise HTML ```<button>```. 
+La solution proposée ci-dessus n'est donc pas recommandée, car elle lèverait une erreur d'association role-balise.  
+La solution consiste à simplement ajouter un ```aria-label``` au ```<v-icon>``` :
 
-:information_source: L'ajout des attributs ```@click=""``` et ```role="img"``` à un UI Component ```<v-icon>```
-permet la reconnaissance de l'attribut ```aria-label``` placé dans le même UI Component.
+*Exemple d'un ```<v-icon>``` possédant un attribut ```@click```:*
+```HTML
+<v-icon @click="goToHome()" aria-label="Retourner à l'accueil">mdi-home</v-icon>
+```
 
 [Sommaire](#sommaire)
 </ul>
@@ -174,8 +179,9 @@ le titre sera lu par le lecteur d'écran au passage de la souris sur la ```<v-ic
 </h2>
 ```
 
-:information_source: un ```margin-top``` négatif peut être appliqué à l'icône afin que le titre s'aligne avec elle au mieux, 
-dans le cas où un ```vertical-align``` (```baseline```, ```text-top```, ```text-bottom```, ```sub``` ou ```super```) ne le permet pas efficacement.
+:information_source: un ```margin-top``` négatif peut être appliqué à l'icône afin que le titre s'aligne sur elle au mieux, 
+dans le cas où un ```vertical-align``` (```baseline```, ```text-top```, ```text-bottom```, ```sub``` ou ```super```) 
+ne le permet pas efficacement.
 
 [Sommaire](#sommaire)
 </ul>
@@ -187,15 +193,7 @@ dans le cas où un ```vertical-align``` (```baseline```, ```text-top```, ```text
 <ul>
 
 Les contenus des tableaux sont régis selon les mêmes principes que leur type de base. 
-C'est-à-dire que les titres de colonne sont du texte et seront donc lus comme du texte. 
-Il est cependant possible d'attribuer un ```aria-label``` à un titre de colonne trop peu explicite (<i>ex : Nb. Exemp.</i>)
-
-*Exemple d'une colonne triable :*
-```HTML
-<span v-if="header.text === 'Nb. Exemp.'" aria-label="Trier par nombre d'exemplaire" role="img">
-  {{ header.text }}
-</span>
-```
+C'est-à-dire que les titres de colonne sont du texte et seront donc lus comme du texte.
 
 Les images et icônes, elles, seront traitées comme tel. À ce propos, voir : [image](#image) ou [icone](#icone) plus haut.
 
@@ -207,14 +205,14 @@ Les images et icônes, elles, seront traitées comme tel. À ce propos, voir : [
 **6. Bouton**
 
 <ul>
-Plusieurs types de boutons existe. Chacun sera lu et interprété différemment par un lecteur d'écran.
+Plusieurs types de boutons existe. Chacun sera lu et interprété différemment par les lecteurs d'écran.
 </ul>
 
 <br>
 
 <ul>
-<li>Cas d'un bouton avec uniquement du texte. Le texte sera lu directement par un lecteur d'écran 
-et reconnu comme un bouton dans la structure de la page. 
+<li>Cas d'un bouton avec un label (contenu écrit dans le bouton). 
+Le texte sera lu directement par un lecteur d'écran et reconnu comme un bouton dans la structure de la page. 
 
 *Exemple d'un bouton simple :*
 ```HTML
@@ -225,30 +223,17 @@ et reconnu comme un bouton dans la structure de la page.
 </li>
 
 <li>Cas d'un bouton avec un texte et une icône. Le texte sera lu directement par un lecteur d'écran 
-et reconnu comme un bouton dans la structure de la page.
+et reconnu comme un bouton dans la structure de la page.  
 
-*Exemple d'un bouton avec texte et icône, sans ```aria-label``` sur l'icône :*
-```HTML
-<v-btn text tile color="blue" value="accueil" to="/accueil">
-    Accueil
-  <v-icon small color="blue">mdi-home</v-icon>
-</v-btn>
-```
-
-*Exemple d'un bouton avec texte et icône, avec ```aria-label``` pour l'icône :*
-```HTML
-<v-btn text tile color="blue" value="accueil" to="/accueil">
-    Accueil
-  <div aria-label="Accueil" role="img">
-    <v-icon small color="blue">mdi-home</v-icon>
-  </div>
-</v-btn>
-```
+Dans ce cas, il n'est pas possible d'utiliser une balise ```<div>``` qui englobe l'UI Component ```<v-icon>``` 
+(comme vu dans le chapitre sur les [icônes](#icone)), 
+car cela génère un conflit aria-role entre le ```<v-btn>``` et le ```<v-icon>```.  
 
 *Exemple d'un bouton avec texte et icône :*
 ```HTML
-<v-btn fab color="white" href="https://stp.abes.fr/node/3?origine=sudocpro" target="_blank" aria-pressed="false" tabindex="4">
- <v-img src="@/assets/chatBubbles.svg" :max-height="($vuetify.breakpoint.mdAndUp) ? '34px' : '24px'" :max-width="($vuetify.breakpoint.mdAndUp) ? '34px' : '24px'" alt="Poser une question sur Abes STP"></v-img>
+<v-btn text value="accueil" to="/accueil">
+    Accueil
+  <v-icon alt="Accueil">mdi-home</v-icon>
 </v-btn>
 ```
 
@@ -263,24 +248,20 @@ et reconnu comme un bouton dans la structure de la page.
 
 <ul>
 
-La balise HTML ```<nav>``` permet la reconnaissance des zones de navigation (<i>menu ou fil d'Ariane</i>) 
-comme élément de structure par les lecteurs d'écran, offrant de fait plus d'option de navigation, notamment au clavier. 
+La balise HTML ```<nav>``` permet la reconnaissance d'une zone de navigation comme élément de structure par les lecteurs d'écran, 
+offrant de fait plus d'option de navigation, notamment au clavier. Une seule zone de navigation devrait être spécifiée 
+pour une application.
 
 *Exemple :*
 ```HTML
-<nav>
-  <v-icon @click="goToHome()" aria-label="Retourner à la page d'accueil" role="img">mdi-home</v-icon>
-  <v-icon>mdi-chevron-right</v-icon>
-  <span @click="goToHome()" class="v-slider__thumb" aria-label="Retourner à l'interface de vérification" role="img">Accueil</span>
-  <v-icon>mdi-chevron-right</v-icon>
-  <span aria-label="Vous êtes sur la page 1" role="img">
-    Page 1
-  </span>
+<nav aria-label="navigation">
+    <v-row role="toolbar">
+        <v-btn text value="accueil">Accueil</v-btn>
+        <v-btn text value="page1">Page 1</v-btn>
+        <v-btn text value="page2">Page 2</v-btn>
+    </v-row>
 </nav>
 ```
-
-:information_source: L'attribut ```class="v-slider__thumb"``` associé à l'attribut ```@click="goToHome()"``` 
-permet d'activer la reconnaissance d'une balise HTML ```<span>``` en tant que lien.
 
 [Sommaire](#sommaire)
 
