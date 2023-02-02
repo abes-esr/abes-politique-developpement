@@ -7,14 +7,15 @@
   * [Principe](#principe)
   * [Champ d'application](#application)
   * [En pratique, pour les équipes de développement](#pratique)
-    * [Images](#image)
-    * [Icônes](#icone)
+    * [Image](#image)
+    * [Icône](#icone)
     * [Titre](#titre)
     * [Titre et icône imbriquée](#titreavecicone)
     * [Tableau](#tableau)
     * [Bouton](#bouton)
     * [Navigation](#navigation)
-    * [Tests](#test)
+    * [Lien](#lien)
+  * [Tests](#test)
 
 <a id="principe" />
 
@@ -261,6 +262,26 @@ pour une application.
         <v-btn text value="page2">Page 2</v-btn>
     </v-row>
 </nav>
+```
+
+[Sommaire](#sommaire)
+
+</ul>
+
+<a id="lien" />
+
+**8. Lien**
+
+<ul>
+
+La balise HTML ```<a>```, permet la création de lien. Elle doit être complétée par un attribut ```aria-label``` 
+qui reprend le texte du lien et le complète d'informations utiles aux personnes se servant de logiciel d'aide
+à la navigation. De plus, les liens vers des pages externes au site d'origine doivent être ouvert dans un 
+nouvel onglet et signalé comme tel pour les utilisateurs.
+
+*Exemple :*
+```HTML
+<a href="https://abes.fr/mentions-legales/" aria-label="Ouvre, dans un nouvel onglet du navigateur, la page internet de l'Abes sur les mentions légales" target="_blank">Mentions légales</a> 
 ```
 
 [Sommaire](#sommaire)
