@@ -903,3 +903,18 @@ Une fois le nettoyage réalisé, il est probable que votre commit soit toujours 
 A noter : en fonction de la criticité du mot de passe, penser à révoquer le mot de passe en modifiant sa valeur sur les environnements de dev, test, et prod.
 
 
+# Erreur Désérialisation JSON vers Java
+
+## Problème
+
+On veut désérialiser une réponse json d'Elastic Search vers des classes modèles Java. On a l'erreur :
+```Error during generated code invocation com.intellij.debugger.engine.evaluation.EvaluateException: Method threw 'co.elastic.clients.json.JsonpMappingException' exception```
+
+
+## Solution
+
+Jackson utilise le constructeur par défaut des classes modèles. Si aucun constructeur n'est présent dans la classe modèle, Jackson le génère. 
+Par contre, l'erreur se produit si un constructeur qui n'itialise pas tous les champs est présent dans la classe modèle.
+
+Dans ce cas, il faut ajouter le constructeur par défaut.
+
