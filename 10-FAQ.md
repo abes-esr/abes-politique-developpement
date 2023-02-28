@@ -918,3 +918,21 @@ Par contre, l'erreur se produit si un constructeur qui n'itialise pas tous les c
 
 Dans ce cas, il faut ajouter le constructeur par défaut.
 
+
+# Erreur version conflict, document already exists (current version [1])
+
+## Problème
+
+Notre batch envoie des requêtes DELETE puis POST avec le même identifiant et rapidement on a l'erreur "version conflict". 
+
+## Solution
+
+A chaque requête, on force ES à rafraichir l'index pour qu'il rende visible immédiatement le résultat de la requête.
+Exemple en utilisant l'API Java pour une requête de suppression :
+
+```
+DeleteRequest.Builder builder = new DeleteRequest.Builder();
+builder.refresh(Refresh.True);
+builder.build()
+```
+
