@@ -24,16 +24,11 @@ __Les services web sont sécurisés__
 
 __Le versionning des API__
 
-les API doivent être versionnées en utilisant la notation v1, v2 dans l'url. Ainsi, on peut mettre en ligne une nouvelle version d'une API (/v2) tout en préservant pour un temps donné la version en cours (/v1). 
-La documentation est proposée via OpenAPI. Pour les projets Java Spring, la documentation peut être générée facilement via l'outil SpringFox: 
+cf. [Gestion des API](12-Gestion%20des%20API.md#versionnage)
 
-* ajouter la dépendance dans le pom.xml 
-* ajouter les annotations sur les méthodes dans les interfaces @ApiOperation(value = "renvoie les demandeModifs pour les administrateurs", notes ="...")
-* ajouter une classe SwaggerConfig
+__Cas particulier des applications J2EE / architecture MVC__
 
-
-
-* Application J2EE / architecture MVC : certaines de nos applications ont été développées entièrement en Java, notamment la couche UI avec des frameworks comme JSF. Ces applications Java web sont en général structurées en couches (DAO pour l’accès à la base de données, métier, contrôleur, interface). 
+Certaines de nos applications ont été développées entièrement en Java, notamment la couche UI avec des frameworks comme JSF. Ces applications Java web sont en général structurées en couches (DAO pour l’accès à la base de données, métier, contrôleur, interface). 
 
 ### Application Batch
 
