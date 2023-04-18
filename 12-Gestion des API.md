@@ -33,8 +33,10 @@ La documentation est proposée via OpenAPI. Pour les projets Java Spring, la doc
 * ajouter les annotations sur les méthodes dans les interfaces @ApiOperation(value = "renvoie les demandeModifs pour les administrateurs", notes ="...")
 * ajouter une classe SwaggerConfig
 
+La documentation produite doit suivre les recommandations de la DINUM pour le partage des données par API dans l'administration : https://www.numerique.gouv.fr/publications/recommandations-partage-donnees-api/
+  
 ## Déploiement
 
 Le choix d'un unique ou de plusieurs containers Docker pour déployer les API se fait en fonction de l'architecture choisie.
 Si on met en oeuvre une architecture Java "traditionnelle", on peut soit déployer l'API dans un seul container, soit avoir un container par API. Dans le cas d'une architecture microservice, on aura un container par service ainsi que pour les éléments du système comme le registry par exemple.
-
+  
