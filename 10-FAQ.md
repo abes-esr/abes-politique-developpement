@@ -936,3 +936,40 @@ builder.refresh(Refresh.True);
 builder.build()
 ```
 
+# Erreur java.lang.IllegalStateException: More than the maximum allowed number of headers, [100], were detected.
+
+## Problème
+
+Tomcat est configuré par défaut pour ne pas recevoir plus de 100 headers HTTP. Mais dans le cadre de la fédération d'identité RENATER, les attributs renvoyés font excéder cette limite (cf. https://services.renater.fr/federation/documentation/fiches-techniques/sp/config-sp-mdattributeextractor).
+La solution qui consiste à positionner la variable server.max-http--header-size dans l'application properties ne fonctionne pas pour nous (il s'agit de la taille et non du nombre de headers).
+
+## Solution
+
+Il faut ajouter une classe de configuration pour le tomcat embarqué comme présenté ici : https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#web.servlet.embedded-container.customizing.programmatic)
+
+exemple : 
+
+```
+package fr.abes.theses.diffusion.utils;
+
+import org.apache.coyote.ProtocolHandler;
+import org.apache.coyote.http11.AbstractHttp11Protocol;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.stereotype.Component;
+
+@Component
+public class TomcatCustomizer implements WebServerFactoryCustomizer<TomcatServletWebServerFactory> {
+
+    @Override
+    public void customize(TomcatServletWebServerFactory server) {
+        server.addConnectorCustomizers((connector) -> {
+            ProtocolHandler handler = connector.getProtocolHandler();
+            AbstractHttp11Protocol protocol = (AbstractHttp11Protocol) handler;
+            protocol.setMaxHeaderCount(500);
+
+        });
+    }
+}
+```
+
