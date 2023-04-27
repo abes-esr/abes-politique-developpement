@@ -973,3 +973,28 @@ public class TomcatCustomizer implements WebServerFactoryCustomizer<TomcatServle
 }
 ```
 
+# Comment accéder à une variable dépendante de l'environnement depuis log4j2.xml
+
+## Problème
+Dans la configuration log4j2, on peut vouloir créer une propriété dont la valeur est dépendante de l'environnement d'exécution de l'application (dev / test / prod). On pourrait être tenté d'aller chercher la variable dans le application.properties du dit environnement, mais cette approche ne fonctionne pas.
+En effet, lorsque l'application se lance, log4j est initialisé avant Spring (pour pouvoir afficher la trace d'exécution du lancement de spring), et ne connait donc pas le SPRING_PROFILES_ACTIVE définit par Spring.
+
+## Solution
+Utiliser une variable d'environnement pour alimenter la variable. Par exemple :
+``` XML
+<Property name="kafkaServer">${env:SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS}</Property>
+```
+
+Il suffit ensuite de déclarer la variable SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS dans le docker-compose de l'application dans la section environment
+``` YAML
+  bacon2kafka-api:
+    image: abesesr/convergence:${BACON2KAFKA_API_VERSION}
+    container_name: bacon2kafka-api
+    restart: unless-stopped
+    mem_limit: ${MEM_LIMIT}
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS: http://somekafkaserver.com:9094
+```
+
+La variable peut être mise dans le .env comme toute autre variable d'environnement. Au déploiements, docker-compose va créer la variable d'environnement SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS et log4j peut y avoir accès directement avec l'instruction env.
