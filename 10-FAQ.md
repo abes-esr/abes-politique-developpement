@@ -627,7 +627,7 @@ J'aimerais connaitre la consommation CPU et RAM de mon/mes conteneurs sur un ser
 
 Utiliser l'outil ctop en tapant ceci en ligne de commande sur le serveur :
 ```
-sudo docker run --rm -ti   --name=ctop   --volume /var/run/docker.sock:/var/run/docker.sock:ro   quay.io/vektorlab/ctop:latest
+sudo docker run --rm -ti   --volume /var/run/docker.sock:/var/run/docker.sock:ro   quay.io/vektorlab/ctop:latest
 ```
 
 Vous obtiendrez une visualisation qui ressemblera à ceci :
