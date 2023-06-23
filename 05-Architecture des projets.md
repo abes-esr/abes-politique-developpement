@@ -93,16 +93,20 @@ Le fichier docker-compose.yml de l'application décrit tous les conteneurs de l'
   ```
   restart: unless-stopped
   ```
-- chaque service doit limiter sa consommation mémoire à 5Go max (sauf rares exceptions), cf la directive suivante :  
+- chaque service doit limiter sa consommation mémoire et cpu à 5Go et 5 cpu max (sauf rares exceptions) et désactiver la mémoire swap, cf la directive suivante :  
   Dans docker-compose.yml :
   ```
   mem_limit: ${MEM_LIMIT}
+  memswap_limit: ${MEM_LIMIT}
+  cpus: ${CPU_LIMIT}
   ```  
   Dans dans .env-dist :  
   ```
   ######################################################
-  # Memory caping for containers : 5Gio = 5368709120 bytes
+  # Memory caping for containers : 5Go
+  # CPU caping for containers : 5 CPU
   MEM_LIMIT=5g
+  CPU_LIMIT=5
   ```
 
 
