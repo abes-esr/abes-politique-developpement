@@ -1,6 +1,6 @@
 # Accessibilité Web
 
-<a id="sommaire" />
+<a id="sommaire"></a>
 
 ## I. Sommaire
 
@@ -17,7 +17,7 @@
     * [Lien](#lien)
   * [Tests](#test)
 
-<a id="principe" />
+<a id="principe"></a>
 
 ## II. Principe
 
@@ -32,7 +32,7 @@ Les pratiques d'accessibilité ont pour vocation de réduire ou supprimer les ob
 <!-- Balise de fermeture de l'indentation des sous-titres du chapitre I -->
 </ul>
 
-<a id="application" />
+<a id="application"></a>
 
 ## III. Champ d'application
 
@@ -55,7 +55,7 @@ La prise en compte de ces problématiques est essentielle afin de rendre les ser
 <!-- Balise de fermeture de l'indentation des sous-titres du chapitre II -->
 </ul>
 
-<a id="pratique" />
+<a id="pratique"></a>
 
 ## IV. En pratique, pour les équipes de développement
 
@@ -83,7 +83,7 @@ Voici listé ci-dessous quelques UI Component VueJs et les méthodes pour améli
 
 [Sommaire](#sommaire)
 
-<a id="image" />
+<a id="image"></a>
 
 **1. Image :**
 
@@ -104,7 +104,7 @@ ou :
 [Sommaire](#sommaire)
 </ul>
 
-<a id="icone" />
+<a id="icone"></a>
 
 **2. Icône :**
 
@@ -136,7 +136,7 @@ La solution consiste à simplement ajouter un ```aria-label``` au ```<v-icon>```
 [Sommaire](#sommaire)
 </ul>
 
-<a id="titre" />
+<a id="titre"></a>
 
 **3. Titre :**
 
@@ -160,7 +160,7 @@ h2 {
 [Sommaire](#sommaire)
 </ul>
 
-<a id="titreavecicone" />
+<a id="titreavecicone"></a>
 
 **4. Titre et icône imbriquée :**
 
@@ -187,7 +187,7 @@ ne le permet pas efficacement.
 [Sommaire](#sommaire)
 </ul>
 
-<a id="tableau" />
+<a id="tableau"></a>
 
 **5. Tableau**
 
@@ -201,7 +201,7 @@ Les images et icônes, elles, seront traitées comme tel. À ce propos, voir : [
 [Sommaire](#sommaire)
 </ul>
 
-<a id="bouton" />
+<a id="bouton"></a>
 
 **6. Bouton**
 
@@ -243,7 +243,7 @@ car cela génère un conflit aria-role entre le ```<v-btn>``` et le ```<v-icon>`
 [Sommaire](#sommaire)
 </ul>
 
-<a id="navigation" />
+<a id="navigation"></a>
 
 **7. Navigation**
 
@@ -253,7 +253,7 @@ La balise HTML ```<nav>``` permet la reconnaissance d'une zone de navigation com
 offrant de fait plus d'option de navigation, notamment au clavier. Une seule zone de navigation devrait être spécifiée 
 pour une application.
 
-*Exemple :*
+*Exemple de navigation par bouton :*
 ```HTML
 <nav aria-label="navigation">
     <v-row role="toolbar">
@@ -264,11 +264,60 @@ pour une application.
 </nav>
 ```
 
+*Exemple de navigation par fil d'Ariane (code HTML et CSS associé) :*
+```HTML
+<nav aria-label="fil d'Ariane" class="filAriane">
+    <ul>
+        <li>
+            <span @click="$router.push({path: '/'})" class="v-slider__thumb">Accueil</span>
+        </li>
+        <li>
+            <span @click="$router.push({path: '/'})" class="v-slider__thumb">Interface de vérification</span>
+        </li>
+        <li>
+            <div aria-current="page">Historique des analysess</div>
+        </li>
+    </ul>
+</nav>
+```
+```CSS
+.filAriane {
+    padding: 0 .5rem;
+    color: #595959;
+}
+
+.filAriane ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.filAriane li:not(:last-child)::after {
+    display: inline-block;
+    margin: 0 .25rem;
+    content: ">";
+}
+
+.filAriane span {
+    color: #595959;
+    cursor: pointer;
+}
+
+.filAriane span:hover {
+    color: #9a3614;
+    cursor: pointer;
+    text-decoration: underline;
+}
+```
+
+
 [Sommaire](#sommaire)
 
 </ul>
 
-<a id="lien" />
+<a id="lien"></a>
 
 **8. Lien**
 
@@ -291,7 +340,7 @@ nouvel onglet et signalé comme tel pour les utilisateurs.
 <!-- Balise de fermeture de l'indentation des sous-titres du chapitre III -->
 </ul>
 
-<a id="test" />
+<a id="test"></a>
 
 ## V. Tests
 
