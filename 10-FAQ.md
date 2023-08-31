@@ -650,6 +650,16 @@ JAVA_OPTS: "-Doracle.jdbc.timezoneAsRegion=false -Duser.timezone=CEST"
 
 Exemples : https://github.com/abes-esr/qualinka-microservices/blob/20cc3986ae2ae7a9dad1412efc26c1dad421a279/docker-compose.yaml#L154 ou https://git.abes.fr/depots/ansible-nbt/-/blob/master/ln-docker/templates/ln_docker-compose.j2
 
+## Solution alternative
+
+Si la solution au dessus ne fonctionne pas, il est également possible de paramétrer la timezone directement dans le code Java. Il faut ajouter le code suivant :
+
+```
+TimeZone timeZone = TimeZone.getTimeZone("Europe/Paris");
+TimeZone.setDefault(timeZone);
+```
+avant la connexion ou l'execution de la première requête SQL.
+
 
 # Configuration d'un environnement Docker sous Windows 10
 
