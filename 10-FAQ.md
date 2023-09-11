@@ -908,7 +908,7 @@ https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/r
 
 En particulier l'[outil BFG](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#using-the-bfg) est cité qui a le mérite d'être facile à utiliser.
 
-Une fois le nettoyage réalisé, il est probable que votre commit soit toujours présent sur le web (cf [section dans la doc de github](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#fully-removing-the-data-from-github)). Il faut alors demander au [support github](https://support.github.com/contact?tags=docs-generic) de lancer un garbage collector sur le dépôt github pour que le commit soit complètement nettoyé.
+Une fois le nettoyage réalisé, il est probable que votre commit soit toujours présent sur le web (cf [section dans la doc de github](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#fully-removing-the-data-from-github)). Il faut alors demander au [support github](https://support.github.com/contact?tags=docs-generic) de lancer un garbage collector sur le dépôt github pour que le commit soit complètement nettoyé. [Lien direct vers le formulaire](https://support.github.com/contact?flow=clear_cached_views&subject=Clear+Cached+Views&tags=docs-generic%2Crr-remove-data).
 
 A noter : en fonction de la criticité du mot de passe, penser à révoquer le mot de passe en modifiant sa valeur sur les environnements de dev, test, et prod.
 
