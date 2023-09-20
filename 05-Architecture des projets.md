@@ -41,7 +41,7 @@ Tous nos projets Java sont obligatoirement gérés via Maven.
 Un projet dont l'objectif est de créer ou de faire évoluer une application donnera forcément lieu tôt ou tard au choix d'un nom d'application.
 
 Au niveau technique il est nécessaire de choisir un nom respectant les règles suivantes :
-* réutiliser le nom public de l'application (exemple : on choisirait "qualimarc" car c'est comme ça qu'il est connu par le public)
+* réutiliser le nom public de l'application (exemple : on choisirait "qualimarc" et pas "outil-qualite-sudoc" car c'est comme ça qu'il est connu par le public)
 * ne pas utiliser de majuscules
 * si nécessaire de plusieurs mots, les séparer avec des tirets "-" (tiret du 6)
 * ne pas terminer par un chiffre (c'est une contrainte du puits de log qui n'accepte pas que le nom de l'application se termine par un chiffre, par exemple privilégier "projetetab" plutôt que "projet2024")
