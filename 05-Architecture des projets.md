@@ -36,6 +36,19 @@ Ces applications permettent de réaliser des tâches côté serveur sans IHM. L'
 
 Tous nos projets Java sont obligatoirement gérés via Maven.
 
+## Nom d'un projet/application
+
+Un projet dont l'objectif est de créer ou de faire évoluer une application donnera forcément lieu tôt ou tard au choix d'un nom d'application.
+Généralement le nom d'un projet réutilise le nom de l'application mais ce sont deux notions distinctes.
+
+Au niveau technique il est nécessaire de choisir un nom d'application respectant les règles suivantes :
+* réutiliser le nom public de l'application (exemple : on choisirait "qualimarc" et pas "outil-qualite-sudoc" car c'est comme ça qu'il est connu par le public)
+* ne pas utiliser de majuscules
+* si nécessaire de plusieurs mots, les séparer avec des tirets "-" (tiret du 6)
+* ne pas terminer par un chiffre (c'est une contrainte du puits de log de l'Abes qui n'accepte pas que le nom de l'application se termine par un chiffre, par exemple privilégier "projetetab" plutôt que "projet2024")
+
+Ce nom sera ensuite utilisé dans le nom des dépôts github, dans le code source et sa documentation, dans les images et les conteneurs docker, dans les tests, dans les scripts de déploiement, dans le nom de domaine du site web. Si ce nom change, il devient alors nécessaire de modifier l'ensemble de la chaine technique (attention cette opération peut être couteuse d'où l'importance de bien choisir le nom le plus en amont possible).
+
 ## Configuration d'un projet
 
 La première étape lorsque nous démarrons un projet est de créer un dépôt dans le gestionnaire de source : nos nouveaux projets étant par défaut open source, il s'agit d'un dépôt Github.
@@ -147,7 +160,7 @@ La configuration la plus simple est de seulement signaler à filebeat que les lo
 Les labels ont la signification suivante :
 - `co.elastic.logs/enabled=true` : signifie qu'on souhaite que filebeat remonte les logs de ce conteneur (par défault c'est `false`)
 - `co.elastic.logs/processors.add_fields.target=` : signifie qu'on souhaite ajouter les deux champs `abes_appli` et `abes_middleware` dans le puits de logs en rateau à la racine des champs (cf [la doc](https://www.elastic.co/guide/en/beats/filebeat/current/add-fields.html#add-fields))
-- `co.elastic.logs/processors.add_fields.fields.abes_appli=monapplication` : signifie qu'on souhaite faire remonter un champs personnalisé nommé "abes_appli" qui contiendra comme valeur "monapplication" pour le conteneur présent. Ce champ "abes_appli" est obligatoire, il doit contenir le nom de l'application car cette dernière peut être éclatée en plusieurs conteneurs (un pour le web, un pour le back, un pour les batch etc ...), c'est ce champ qui permet de regrouper tous les conteneur d'une même application au niveau du puits de logs. Remarque : dans une architecture de type orchestrateur (ex: OKD), c'est probablement le nom du pod qui remplacera la valeur de "abes_appli".
+- `co.elastic.logs/processors.add_fields.fields.abes_appli=monapplication` : signifie qu'on souhaite faire remonter un champs personnalisé nommé "abes_appli" qui contiendra comme valeur "monapplication" pour le conteneur présent. Ce champ "abes_appli" est obligatoire, il doit contenir le nom de l'application qui peut elle même être éclatée en plusieurs conteneurs pour chaque middleware (un pour le web, un pour le back, un pour les batch etc ...), c'est ce champ qui permet de regrouper tous les conteneur d'une même application au niveau du puits de logs. Remarque : le puits de logs n'accepte pas que le nom de l'application se termine par un chiffre (ex: si l'appli s'appelle "projet2024" ça ne convient pas, il faut que le nom se termine par une lettre, dans notre exemple ça pourrait donner "projetetab"). Remarque : dans une architecture de type orchestrateur (ex: OKD), c'est probablement le nom du pod qui remplacera la valeur de "abes_appli".
 - `co.elastic.logs/processors.add_fields.fields.abes_middleware=Httpd` : le champs "abes_middleware" est obligatoire, il permet d'indiquer au puits de logs de l'Abes (via logstash précisément) la nature des logs envoyées et donc dans quel index elasticsearch doit il classer ces logs. Les valeurs possibles sont : "adhoc", "Httpd" (mettre "adhoc" si ce sont des logs dont le format est spécifique à l'application).
 
 Pour un exemple complet qui montre aussi comment spécifier un format de log précis, on peut se référer à https://github.com/abes-esr/abes-filebeat-docker/blob/f4b19dfdccab690801c550c61724bd09cbeb6f5b/docker-compose.yml#L24-L37
