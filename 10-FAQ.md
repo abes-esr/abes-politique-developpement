@@ -1008,3 +1008,23 @@ Il suffit ensuite de déclarer la variable SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVE
 ```
 
 La variable peut être mise dans le .env comme toute autre variable d'environnement. Au déploiements, docker-compose va créer la variable d'environnement SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS et log4j peut y avoir accès directement avec l'instruction env.
+
+# Blocage dans l'exécution d'une requête d'un reader Spring Batch
+
+## Problème
+Lors d'un lancement d'un batch Spring Batch, lorsque le Reader essaie d'exécuter une requête pour selectionner les lignes à traiter dans la base de données, l'erreur suivante survient : 
+```
+SQL state [99999]; error code [17041]; Paramètre IN ou OUT absent dans l'index :: 1; nested exception is java.sql.SQLException: Paramètre IN ou OUT absent dans l'index :: 1
+```
+
+## Solution
+Il peut s'agir d'une exécution précédente du batch qui a laissé un état failed stocké dans les tables de Spring batch, on peut alors les nettoyer :
+```
+delete from batch_step_execution_context;
+delete from batch_job_execution_params;
+delete from batch_step_execution;
+delete from batch_job_execution_context;
+delete from batch_job_execution;
+delete from batch_job_instance;
+commit;
+```
