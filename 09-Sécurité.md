@@ -35,7 +35,7 @@ Les règles suivantes :
 * au moins un chiffre
 * au moins un caractère spécial (!@#$%&*())
 
-peuvent être vérifiées par cette expression régulière : "(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&*()]).{8,}"
+peuvent être vérifiées par cette expression régulière : ```"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&*()]).{8,}"```
 Les mots de passe doivent obligatoirement être stockés encryptés : nous utilisons BCrypt.
 
 ## Blocage après un certain nombre de tentatives de connexion
