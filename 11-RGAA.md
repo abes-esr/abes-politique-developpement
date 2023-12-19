@@ -82,7 +82,7 @@ Voici listé ci-dessous quelques UI Component VueJs et les méthodes pour améli
 [Sommaire](#sommaire)
 
 <a id="image"></a>
-**1. Image :**
+### 1. Image :
 
 La balise HTML ```<img>``` et l'UI Component VueJs ```<v-img>``` possédant toutes les deux un attribut ```alt=""```,
 la mise en place de description est facilitée.
@@ -99,7 +99,7 @@ ou :
 [Sommaire](#sommaire)
 
 <a id="icone"></a>
-**2. Icône :**
+### 2. Icône :
 
 
 L'UI Component VueJs ```<v-icon>``` ne prend pas en compte l'attribut ```alt```.
@@ -128,7 +128,7 @@ La solution consiste à simplement ajouter un ```aria-label``` au ```<v-icon>```
 [Sommaire](#sommaire)
 
 <a id="titre"></a>
-**3. Titre :**
+### 3. Titre :
 
 Utiliser les balises HTML ```<h1>``` à ```<h6>```, afin que les lecteurs d'écran puissent les détecter et permettre la navigation par titre au clavier.
 
@@ -148,7 +148,7 @@ h2 {
 [Sommaire](#sommaire)
 
 <a id="titreavecicone"></a>
-**4. Titre et icône imbriquée :**
+### 4. Titre et icône imbriquée :
 
 Dans le cas des titres avec numérotation par icônes,
 il est possible d'imbriquer une ```<v-icon>``` de numérotation dans un titre (```<h1>``` à ```<h6>```).  
@@ -171,7 +171,7 @@ ne le permet pas efficacement.
 [Sommaire](#sommaire)
 
 <a id="tableau"></a>
-**5. Tableau**
+### 5. Tableau
 
 Les contenus des tableaux sont régis selon les mêmes principes que leur type de base.
 C'est-à-dire que les titres de colonne sont du texte et seront donc lus comme du texte.
@@ -181,7 +181,7 @@ Les images et icônes, elles, seront traitées comme tel. À ce propos, voir : [
 [Sommaire](#sommaire)
 
 <a id="bouton"></a>
-**6. Bouton**
+### 6. Bouton
 
 Plusieurs types de boutons existe. Chacun sera lu et interprété différemment par les lecteurs d'écran.
 
@@ -211,7 +211,7 @@ Plusieurs types de boutons existe. Chacun sera lu et interprété différemment 
 [Sommaire](#sommaire)
 
 <a id="navigation"></a>
-**7. Navigation**
+### 7. Navigation
 
 La balise HTML ```<nav>``` permet la reconnaissance d'une zone de navigation comme élément de structure par les lecteurs d'écran,
 offrant de fait plus d'option de navigation, notamment au clavier. Une seule zone de navigation devrait être spécifiée
@@ -280,7 +280,7 @@ pour une application.
 [Sommaire](#sommaire)
 
 <a id="lien"></a>
-**8. Lien**
+### 8. Lien
 
 La balise HTML ```<a>```, permet la création de lien. Elle doit être complétée par un attribut ```aria-label```
 qui reprend le texte du lien et le complète d'informations utiles aux personnes se servant de logiciel d'aide
