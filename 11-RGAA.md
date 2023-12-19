@@ -4,9 +4,9 @@
 
 ## I. Sommaire
 
-  * [Principe](#principe)
-  * [Champ d'application](#application)
-  * [En pratique, pour les équipes de développement](#pratique)
+* [Principe](#principe)
+* [Champ d'application](#application)
+* [En pratique, pour les équipes de développement](#pratique)
     * [Image](#image)
     * [Icône](#icone)
     * [Titre](#titre)
@@ -15,7 +15,7 @@
     * [Bouton](#bouton)
     * [Navigation](#navigation)
     * [Lien](#lien)
-  * [Tests](#test)
+* [Tests](#test)
 
 <a id="principe"></a>
 
@@ -59,21 +59,19 @@ La prise en compte de ces problématiques est essentielle afin de rendre les ser
 
 ## IV. En pratique, pour les équipes de développement
 
-<!-- Balise d'ouverture de l'indentation des sous-titres du chapitre III -->
 <ul>
-
 :warning: Ce document est encore en cours de rédaction. Il sera étoffé dans les semaines/mois à venir.
 Si vous avez des correctifs à apporter, n'hésitez pas à faire remonter vos idées.
-<br><br>
-La structure d'une application web est importante. En effet, celle-ci peut être lu par un lecteur d'écran 
-et servir à la navigation. De fait, il est nécessaire d'y porter une attention particulière. 
-En ce sens, il faut définir des zones avec les balises HTML correspondantes 
+
+La structure d'une application web est importante. En effet, celle-ci peut être lu par un lecteur d'écran
+et servir à la navigation. De fait, il est nécessaire d'y porter une attention particulière.
+En ce sens, il faut définir des zones avec les balises HTML correspondantes
 (```<header>```, ```<main>```, ```<nav>```, ```<footer>```, ```<section>```).
-Leur présence oblige à veiller à ne pas surcharger le code avec une imbrication d'UI Component et/ou de balises HTML 
+Leur présence oblige à veiller à ne pas surcharger le code avec une imbrication d'UI Component et/ou de balises HTML
 (```<v-container>```, ```<div>```, ```<section>```, ```<v-sheet>```, etc.) qui pourraient être fusionnée
 en une seule balise HTML ou un seul UI Component VueJs.
 
-La plupart des UI Component VueJs génère un code HTML propre et lisible par les lecteurs d'écran 
+La plupart des UI Component VueJs génère un code HTML propre et lisible par les lecteurs d'écran
 (```<v-btn>```, ```<v-img>```, etc.).  
 Néanmoins, certains d'entre eux génèrent des erreurs sur les ```aria-label```, ```role``` ou ```id``` qu'il n'est,
 pour le moment, pas possible de corriger (```<v-expansion-panel>```, ```<v-combobox>```, ```<v-radio-group>```, ```<v-data-table>```).  
@@ -84,12 +82,9 @@ Voici listé ci-dessous quelques UI Component VueJs et les méthodes pour améli
 [Sommaire](#sommaire)
 
 <a id="image"></a>
-
 **1. Image :**
 
-<ul>
-
-La balise HTML ```<img>``` et l'UI Component VueJs ```<v-img>``` possédant toutes les deux un attribut ```alt=""```, 
+La balise HTML ```<img>``` et l'UI Component VueJs ```<v-img>``` possédant toutes les deux un attribut ```alt=""```,
 la mise en place de description est facilitée.
 
 *Exemple :*
@@ -102,19 +97,16 @@ ou :
 ```
 
 [Sommaire](#sommaire)
-</ul>
 
 <a id="icone"></a>
-
 **2. Icône :**
 
-<ul>
 
-L'UI Component VueJs ```<v-icon>``` ne prend pas en compte l'attribut ```alt```.<br> 
-De plus, un ```<v-icon>``` simple (ex : ```<v-icon>mdi-home< /v-icon>```) ne permet pas 
-l'utilisation d'un ```aria-label```, même si ce dernier est associé à un ```role="img"```. 
-Il ne renverra donc aucune information exploitable pour un lecteur de d'écran.<br>
-Pour palier ce problème, une solution existe.<br><br>
+L'UI Component VueJs ```<v-icon>``` ne prend pas en compte l'attribut ```alt```.
+De plus, un ```<v-icon>``` simple (ex : ```<v-icon>mdi-home< /v-icon>```) ne permet pas
+l'utilisation d'un ```aria-label```, même si ce dernier est associé à un ```role="img"```.
+Il ne renverra donc aucune information exploitable pour un lecteur de d'écran.
+Pour palier ce problème, une solution existe.
 
 *Exemple avec utilisation d'une balise HTML ```<div>``` :*
 ```HTML
@@ -124,7 +116,7 @@ Pour palier ce problème, une solution existe.<br><br>
 ```
 
 :information_source: L'ajout de l'attribut ```@click=""``` à un UI Component ```<v-icon>```
-le transformera, une fois le code VueJs compilé, en balise HTML ```<button>```. 
+le transformera, une fois le code VueJs compilé, en balise HTML ```<button>```.
 La solution proposée ci-dessus n'est donc pas recommandée, car elle lèverait une erreur d'association role-balise.  
 La solution consiste à simplement ajouter un ```aria-label``` au ```<v-icon>``` :
 
@@ -134,13 +126,9 @@ La solution consiste à simplement ajouter un ```aria-label``` au ```<v-icon>```
 ```
 
 [Sommaire](#sommaire)
-</ul>
 
 <a id="titre"></a>
-
 **3. Titre :**
-
-<ul>
 
 Utiliser les balises HTML ```<h1>``` à ```<h6>```, afin que les lecteurs d'écran puissent les détecter et permettre la navigation par titre au clavier.
 
@@ -158,18 +146,14 @@ h2 {
 ```
 
 [Sommaire](#sommaire)
-</ul>
 
 <a id="titreavecicone"></a>
-
 **4. Titre et icône imbriquée :**
 
-<ul>
-
-Dans le cas des titres avec numérotation par icônes, 
+Dans le cas des titres avec numérotation par icônes,
 il est possible d'imbriquer une ```<v-icon>``` de numérotation dans un titre (```<h1>``` à ```<h6>```).  
-Il n'est pas nécessaire d'appliquer un ```aria-label``` ainsi qu'un ```role="img"``` à l'icône. 
-En effet, la ```<v-icon>``` étant imbriquée dans le titre (```<h1>``` à ```<h6>```), 
+Il n'est pas nécessaire d'appliquer un ```aria-label``` ainsi qu'un ```role="img"``` à l'icône.
+En effet, la ```<v-icon>``` étant imbriquée dans le titre (```<h1>``` à ```<h6>```),
 le titre sera lu par le lecteur d'écran au passage de la souris sur la ```<v-icon>```.
 
 *Exemple d'une icône de numérotation imbriquée dans un titre :*
@@ -180,77 +164,57 @@ le titre sera lu par le lecteur d'écran au passage de la souris sur la ```<v-ic
 </h2>
 ```
 
-:information_source: un ```margin-top``` négatif peut être appliqué à l'icône afin que le titre s'aligne sur elle au mieux, 
-dans le cas où un ```vertical-align``` (```baseline```, ```text-top```, ```text-bottom```, ```sub``` ou ```super```) 
+:information_source: un ```margin-top``` négatif peut être appliqué à l'icône afin que le titre s'aligne sur elle au mieux,
+dans le cas où un ```vertical-align``` (```baseline```, ```text-top```, ```text-bottom```, ```sub``` ou ```super```)
 ne le permet pas efficacement.
 
 [Sommaire](#sommaire)
-</ul>
 
 <a id="tableau"></a>
-
 **5. Tableau**
 
-<ul>
-
-Les contenus des tableaux sont régis selon les mêmes principes que leur type de base. 
+Les contenus des tableaux sont régis selon les mêmes principes que leur type de base.
 C'est-à-dire que les titres de colonne sont du texte et seront donc lus comme du texte.
 
 Les images et icônes, elles, seront traitées comme tel. À ce propos, voir : [image](#image) ou [icone](#icone) plus haut.
 
 [Sommaire](#sommaire)
-</ul>
 
 <a id="bouton"></a>
-
 **6. Bouton**
 
-<ul>
 Plusieurs types de boutons existe. Chacun sera lu et interprété différemment par les lecteurs d'écran.
-</ul>
 
-<br>
+1. Cas d'un bouton avec un label (contenu écrit dans le bouton). Le texte sera lu directement par un lecteur d'écran et reconnu comme un bouton dans la structure de la page.
 
-<ul>
-<li>Cas d'un bouton avec un label (contenu écrit dans le bouton). 
-Le texte sera lu directement par un lecteur d'écran et reconnu comme un bouton dans la structure de la page. 
+   *Exemple d'un bouton simple :*
+    ```HTML
+      <v-btn text tile color="blue" value="accueil" to="/accueil">
+      Accueil
+      </v-btn>
+    ```
 
-*Exemple d'un bouton simple :*
-```HTML
-<v-btn text tile color="blue" value="accueil" to="/accueil">
-  Accueil
-</v-btn>
-```
-</li>
+2. Cas d'un bouton avec un texte et une icône.
+   Le texte sera lu directement par un lecteur d'écran et reconnu comme un bouton dans la structure de la page.  
+   Dans ce cas, il n'est pas possible d'utiliser une balise ```<div>``` qui englobe l'UI Component ```<v-icon>```
+   (comme vu dans le chapitre sur les [icônes](#icone)),
+   car cela génère un conflit aria-role entre le ```<v-btn>``` et le ```<v-icon>```.
 
-<li>Cas d'un bouton avec un texte et une icône. Le texte sera lu directement par un lecteur d'écran 
-et reconnu comme un bouton dans la structure de la page.  
-
-Dans ce cas, il n'est pas possible d'utiliser une balise ```<div>``` qui englobe l'UI Component ```<v-icon>``` 
-(comme vu dans le chapitre sur les [icônes](#icone)), 
-car cela génère un conflit aria-role entre le ```<v-btn>``` et le ```<v-icon>```.  
-
-*Exemple d'un bouton avec texte et icône :*
-```HTML
-<v-btn text value="accueil" to="/accueil">
-    Accueil
-  <v-icon alt="Accueil">mdi-home</v-icon>
-</v-btn>
-```
-
-</li>
+   *Exemple d'un bouton avec texte et icône :*
+    ```HTML
+    <v-btn text value="accueil" to="/accueil">
+        Accueil
+    <v-icon alt="Accueil">mdi-home</v-icon>
+    </v-btn>
+    ```
 
 [Sommaire](#sommaire)
-</ul>
 
 <a id="navigation"></a>
-
 **7. Navigation**
 
-<ul>
-
-La balise HTML ```<nav>``` permet la reconnaissance d'une zone de navigation comme élément de structure par les lecteurs d'écran, 
-offrant de fait plus d'option de navigation, notamment au clavier. Une seule zone de navigation devrait être spécifiée 
+La balise HTML ```<nav>``` permet la reconnaissance d'une zone de navigation comme élément de structure par les lecteurs d'écran,
+offrant de fait plus d'option de navigation, notamment au clavier. Une seule zone de navigation devrait être spécifiée
 pour une application.
 
 *Exemple de navigation par bouton :*
@@ -315,17 +279,12 @@ pour une application.
 
 [Sommaire](#sommaire)
 
-</ul>
-
 <a id="lien"></a>
-
 **8. Lien**
 
-<ul>
-
-La balise HTML ```<a>```, permet la création de lien. Elle doit être complétée par un attribut ```aria-label``` 
+La balise HTML ```<a>```, permet la création de lien. Elle doit être complétée par un attribut ```aria-label```
 qui reprend le texte du lien et le complète d'informations utiles aux personnes se servant de logiciel d'aide
-à la navigation. De plus, les liens vers des pages externes au site d'origine doivent être ouvert dans un 
+à la navigation. De plus, les liens vers des pages externes au site d'origine doivent être ouvert dans un
 nouvel onglet et signalé comme tel pour les utilisateurs.
 
 *Exemple :*
@@ -337,11 +296,7 @@ nouvel onglet et signalé comme tel pour les utilisateurs.
 
 </ul>
 
-<!-- Balise de fermeture de l'indentation des sous-titres du chapitre III -->
-</ul>
-
 <a id="test"></a>
-
 ## V. Tests
 
 <!-- Balise d'ouverture de l'indentation des sous-titres du chapitre IV -->
@@ -351,7 +306,6 @@ Plusieurs outils permettent de contrôler que le code de l'application respecte 
 * Application.s lourde.s :
     * NVDA (application open source pour ordinateur). Lecteur d'écran.
 
-<br>
 
 * Plugins pour navigateurs :
 
