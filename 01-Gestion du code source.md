@@ -45,7 +45,7 @@ Nous utilisons un système de branches inspiré de [Gitflow](https://www.atlassi
   - et version non taggée pour l'env de test (version "glissante")
 - ``develop`` : version pour l'env de développement (version "glissante")
 
-Lorsqu'on souhaite ajouter une fonctionnalité, on crée une nouvelle branche du nom de la fonctionnalité (feature/nomDeLaFonctionnalité ou sous JIRA <n°ticket JIRA/nomDeLaFonctionnalité>) à partir de la branche ``develop``. Une fois que cette fonctionnalité a été testée, une pull request (appelé aussi merge request) est créée. Un autre développeur prends alors connaissance du code (review), la branche est ensuite fusionnée sur la branche ``develop``. 
+Lorsqu'on souhaite ajouter une fonctionnalité, on crée une nouvelle branche du nom de la fonctionnalité (feature/nomDeLaFonctionnalité ou sous JIRA `<n°ticket JIRA/nomDeLaFonctionnalité>`) à partir de la branche ``develop``. Une fois que cette fonctionnalité a été testée, une pull request (appelé aussi merge request) est créée. Un autre développeur prends alors connaissance du code (review), la branche est ensuite fusionnée sur la branche ``develop``. 
 
 On peut également corriger un bug dans la version en production sans toucher à la version en développement. On dérive alors une branche ``hotfix`` de la branche ``main``. Une fois validée, la correction est fusionnée sur la branche ``main`` et également fusionnée sur la branche ``develop``. Une nouvelle release est alors générées en incrémentant le numéro ``Z`` (cf ``X.Y.Z``) et la release intégrant cette correction peut être déployée sur l'env de production.
 
