@@ -1028,3 +1028,20 @@ delete from batch_job_execution;
 delete from batch_job_instance;
 commit;
 ```
+
+
+# Erreur de déploiement automatique avec watchtower : "you have reached your pull rate limit"
+
+## Problème
+
+L'outil watchtower utilisé pour le déploiement continue des applications docker Abes fait appels récurrents à l'API de dockerhub et cela peut provoquer des erreurs de ce type :
+> Error response from daemon: toomanyrequests you have reached your pull rate limit
+
+![image](https://github.com/abes-esr/abes-politique-developpement/assets/328244/14b1502c-3ed3-4614-af3b-9d6ee9ddc118)
+
+## Solution
+
+Deux solutions :
+- Soit souscrire au programme DockerHub OpenSource Program sur l'organisation DockerHub en question (A la date du 12/2023, c'est le cas sur l'organisation abesesr mais pas le cas sur l'organisation transitionbibliographique)
+- Soit configurer watchtower pour utiliser un login/mdp dockerhub pour faire les appels à l'API de dockerhub (la limitation "rate limit" est alors moins drastique qu'un appel anonyme à l'API), voici les paramètres watchtower à utiliser dans cet exemple ici : https://github.com/abes-esr/abes-hello-docker/blob/develop/docker-compose.yml#L132-L134
+
