@@ -20,7 +20,7 @@ Apache Tomcat/9.0.12
 ## Solution
 
 pour les war conçu avec Spring, il faut :
-* mettre ```<packaging>war</packaging> ``` dans le pom 
+* mettre `<packaging>war</packaging>` dans le pom 
 * ne pas oublier :  **extends SpringBootServletInitializer** dans la classe principale
 
 ---
@@ -50,7 +50,7 @@ git reset --hard hashDuCommitSurLequelJeVeuxRevenir
 git push origin develop -f
 ```
 
-Ici le push se fait sur le develop, mais remplacer ``develop`` par la branche sur laquelle vous voulez revenir en arrière.
+Ici le push se fait sur le develop, mais remplacer `develop` par la branche sur laquelle vous voulez revenir en arrière.
 
 Attention : les commits supprimées disparaissent de l'historique
 
@@ -179,7 +179,7 @@ Dans un projet Spring, des annotations @Value ne récupèrent pas les valeurs de
 ## Solution
 
 Cette annotation ne fonctionne que pour les objets instanciés via Spring c'est à dire par exemple avec l'annotation @Autowired.
-Un objet instancié via ```new``` ne pourra pas utiliser @Value. 
+Un objet instancié via `new` ne pourra pas utiliser @Value. 
 
 # Erreur "ORA-28040: No matching authentication protocol"
 
@@ -376,7 +376,7 @@ Pour des raisons diverses, certains ws peuvent être anormalement long en termes
 A partir de Typescript 2.9
 Exemple de fichier JSON placé dans le projet
 
-```
+```JSON
 {
 
   "primaryBright":    "#2DC6FB",
@@ -556,7 +556,7 @@ La version préconisée de log4j qui corrige log4shell est la version **2.17.1**
 
 ### Application Java utilisant slf4j-log4j12
 
-Si l'appli java dépend de `slf4j-log4j12` alors voici comment procéder. Le principe sera de modifier un minimum de code en utilisant la librairie `log4j-1.2-api` qui permet de conserver l'ancienne interface java de log4j v1 tout en utilisant la nouvelle version de log4j v2.17.1. Une subtilité est d'empêcher ` slf4j-log4j12` d'utiliser log4j v1 en utilisant le système d'`<exclusion>`.
+Si l'appli java dépend de `slf4j-log4j12` alors voici comment procéder. Le principe sera de modifier un minimum de code en utilisant la librairie `log4j-1.2-api` qui permet de conserver l'ancienne interface java de log4j v1 tout en utilisant la nouvelle version de log4j v2.17.1. Une subtilité est d'empêcher `slf4j-log4j12` d'utiliser log4j v1 en utilisant le système d'`<exclusion>`.
 
 1) Dans pom.xml placer ces dépendances :
 ```xml
@@ -644,7 +644,7 @@ Depuis les conteneurs dockers sur diplotaxis, l'application n'arrive pas à se c
 
 Cela vient d'une différence de timezone entre la JVM (et donc le driver ojdbc) et la base de données. 
 
-Il faut ajouter en option en conteneur, dans la partie environnement du docker  compose, le paramètre suivant :
+Il faut ajouter en option en conteneur, dans la partie environnement du docker compose, le paramètre suivant :
 
 JAVA_OPTS: "-Doracle.jdbc.timezoneAsRegion=false -Duser.timezone=CEST"
 
@@ -717,8 +717,8 @@ _Par défaut, l'installation de WSL 2 installera également une distribution Lin
 [www.docker.com](https://www.docker.com/products/docker-desktop/)
 
 - Une fois l'installation terminée, ouvrir Docker et aller dans les Settings/Resources/WSL Integration pour cocher les cases
-  - [x]  Enable integration with my default WSL distro »
-  - [x] <nom_de_la_distribution_Linux>
+  - `[x]  Enable integration with my default WSL distro »`
+  - `[x] <nom_de_la_distribution_Linux>`
 
 ## Création d'un user individuel dans la distribution Linux WSL2
 
