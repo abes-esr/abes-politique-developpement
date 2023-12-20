@@ -76,29 +76,29 @@ Les fichiers journaux de l’application doivent se situer dans un répertoire n
 
 Une application dockerisée respecte plusieurs règles :
 - l'application possède un dépôt pour son code source et c'est ce même dépôt qui est chargé de générer et de publier son image docker.
-  - ce dépôt contient le ``Dockerfile`` de l'application dont l'objectif est de produire l'image docker de l'application pour qu'elle soit ensuite prête à être exécutée (ex: sur [abes-hello-back](https://github.com/abes-esr/abes-hello-back/blob/develop/Dockerfile))
-  - le ``Dockerfile`` de l'application execute également les tests de l'application ce qui permet d'éviter de produire une image docker embarquant un code qui ne fonctionne pas (exemple de paramétrage maven sur [abes-hello-back](https://github.com/abes-esr/abes-hello-back/blob/develop/Dockerfile#L27))
-  - ce dépôt contient une github action souvent nommée ``build-test-pubtodockerhub.yml`` (ex: sur [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml)) permettant de construire l'image Docker et de la publier sur l'[espace abesesr sur dockerhub](https://hub.docker.com/orgs/abesesr).
-  - ce dépôt contient une github action souvent nommée ``create-release.yml`` (ex: sur [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/create-release.yml)) permettant de créer une nouvelle version/release de l'application
+  - ce dépôt contient le `Dockerfile` de l'application dont l'objectif est de produire l'image docker de l'application pour qu'elle soit ensuite prête à être exécutée (ex: sur [abes-hello-back](https://github.com/abes-esr/abes-hello-back/blob/develop/Dockerfile))
+  - le `Dockerfile` de l'application execute également les tests de l'application ce qui permet d'éviter de produire une image docker embarquant un code qui ne fonctionne pas (exemple de paramétrage maven sur [abes-hello-back](https://github.com/abes-esr/abes-hello-back/blob/develop/Dockerfile#L27))
+  - ce dépôt contient une github action souvent nommée `build-test-pubtodockerhub.yml` (ex: sur [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml)) permettant de construire l'image Docker et de la publier sur l'[espace abesesr sur dockerhub](https://hub.docker.com/orgs/abesesr).
+  - ce dépôt contient une github action souvent nommée `create-release.yml` (ex: sur [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/create-release.yml)) permettant de créer une nouvelle version/release de l'application
  - l'application peut avoir besoin de plusieurs images docker, par exemple pour le front en vuejs (ex: [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml)), ou pour l'API en java Spring (ex: [abes-hello-back](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml))
- - l'application possède un dépôt dédiée à son déploiement avec ``docker-compose``, cf section suivante.
+ - l'application possède un dépôt dédiée à son déploiement avec `docker-compose`, cf section suivante.
 
 ### Déploiement d'une application docker
 
-Un dépôt github dédié au déploiement doit être créé pour l'application. La règle de nommage de ce dépôt est de commencer par le nom de l'application et de terminer par le suffix ``-docker`` (ex: [abes-hello-docker](https://github.com/abes-esr/abes-hello-docker)). Il permet à n'importe qui sur le web de venir tester l'application sur son environnement local ou sur son serveur. Ce dépôt permet de faciliter la réutilisation et les contributions externes.
+Un dépôt github dédié au déploiement doit être créé pour l'application. La règle de nommage de ce dépôt est de commencer par le nom de l'application et de terminer par le suffix `-docker` (ex: [abes-hello-docker](https://github.com/abes-esr/abes-hello-docker)). Il permet à n'importe qui sur le web de venir tester l'application sur son environnement local ou sur son serveur. Ce dépôt permet de faciliter la réutilisation et les contributions externes.
 
 Les éléments obligatoires de ce dépôt sont :
-- le fichier ``docker-compose.yml`` : c'est la liste de tous les conteneurs et leurs configurations/articulations utilisés par l'application. Des règles doivent être respectées, cf paragraphe plus bas.
-- le fichier ``.env-dist`` : c'est un fichier contenant les paramètres de l'application avec des exemples de valeurs. Il est destiné à être copié vers un fichier ``.env`` au moment de l'installation initiale de l'application et à personnaliser son contenu (ex: mot de passe d'une base de données, chaine de connexion etc ...)
-- le fichier ``README.md`` : c'est la fiche d'exploitation de l'application qui explique comment installer, démarrer, stopper, superviser, et sauvegarder l'application (ex: sur [abes-hello-docker](https://github.com/abes-esr/abes-hello-docker#readme)).
+- le fichier `docker-compose.yml` : c'est la liste de tous les conteneurs et leurs configurations/articulations utilisés par l'application. Des règles doivent être respectées, cf paragraphe plus bas.
+- le fichier `.env-dist` : c'est un fichier contenant les paramètres de l'application avec des exemples de valeurs. Il est destiné à être copié vers un fichier `.env` au moment de l'installation initiale de l'application et à personnaliser son contenu (ex: mot de passe d'une base de données, chaine de connexion etc ...)
+- le fichier `README.md` : c'est la fiche d'exploitation de l'application qui explique comment installer, démarrer, stopper, superviser, et sauvegarder l'application (ex: sur [abes-hello-docker](https://github.com/abes-esr/abes-hello-docker#readme)).
 
 Le fichier docker-compose.yml de l'application décrit tous les conteneurs de l'application et leurs articulations, il doit respecter les règles suivantes :
-- chaque nom de service doit être préfixé par le nom (court) de l'application, ex avec le préfix ``abes-hello`` ceci afin de mieux les distinguer et le regrouper au niveau d'un serveur hébergeant plusieurs applications différentes :  
+- chaque nom de service doit être préfixé par le nom (court) de l'application, ex avec le préfix `abes-hello` ceci afin de mieux les distinguer et le regrouper au niveau d'un serveur hébergeant plusieurs applications différentes :  
   ```
   services:
     abes-hello-front:
   ```
-- chaque service doit nommer son conteneur en réutilisant le même nommage que le service, ex sur ``abes-hello`` :  
+- chaque service doit nommer son conteneur en réutilisant le même nommage que le service, ex sur `abes-hello` :  
   ```
   container_name: abes-hello-front
   ```
@@ -136,13 +136,13 @@ L'application doit respecter quelques règles :
 #### stderr stdout
 
 Pour que le conteneur de l'application produise ses logs sur stdout et stderr, il y a plusieurs possibilités.
-  - Si c'est une application Java le mieux est d'exécuter le process java en premier plan (foreground). Exemple de point d'entrée docker exécutant l'appli java à partir d'un JAR en premier plan : ``ENTRYPOINT ["java","-jar","/app.jar"]``
-  - Si c'est une script shell (exemple un batch), alors on logguer sur stdout ou stderr au choix en utilisant ``>/dev/stdout`` (par défaut si rien n'est précisé c'est sur stdout que ça va) ou ``>/dev/stderr`` pour logguer les erreurs. Exemple :
+  - Si c'est une application Java le mieux est d'exécuter le process java en premier plan (foreground). Exemple de point d'entrée docker exécutant l'appli java à partir d'un JAR en premier plan : `ENTRYPOINT ["java","-jar","/app.jar"]`
+  - Si c'est une script shell (exemple un batch), alors on logguer sur stdout ou stderr au choix en utilisant `>/dev/stdout` (par défaut si rien n'est précisé c'est sur stdout que ça va) ou `>/dev/stderr` pour logguer les erreurs. Exemple :
     ```bash
     echo "INFO: ma ligne de log pour aller sur stdout" >/dev/stdout
     echo "ERROR: ma ligne de log pour aller sur stderr" >/dev/stderr
     ```
-  - Si c'est une application tierce qu'on ne peut donc pas trop modifier et qui loggue déjà dans un fichier, alors on peut soit configurer l'application pour lui demander de logguer les erreurs sur le fichier ``/proc/self/fd/2`` (c'est la même chose que le fichier ``/dev/stderr``) sur le fichier ``/proc/self/fd/1`` (ou au choix ``/dev/stdout``), soit identifier le chemin du fichier vers lequel l'application va logguer et s'en sortir avec un système de lien symbolique comme par exemple ce que l'image docker officielle de nginx fait : cf son [Dockerfile](https://github.com/nginxinc/docker-nginx/blob/8921999083def7ba43a06fabd5f80e4406651353/mainline/jessie/Dockerfile#L21-L23).
+  - Si c'est une application tierce qu'on ne peut donc pas trop modifier et qui loggue déjà dans un fichier, alors on peut soit configurer l'application pour lui demander de logguer les erreurs sur le fichier `/proc/self/fd/2` (c'est la même chose que le fichier `/dev/stderr`) sur le fichier `/proc/self/fd/1` (ou au choix `/dev/stdout`), soit identifier le chemin du fichier vers lequel l'application va logguer et s'en sortir avec un système de lien symbolique comme par exemple ce que l'image docker officielle de nginx fait : cf son [Dockerfile](https://github.com/nginxinc/docker-nginx/blob/8921999083def7ba43a06fabd5f80e4406651353/mainline/jessie/Dockerfile#L21-L23).
   
 #### paramètres pour filebeat - labels docker
 
