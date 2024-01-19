@@ -38,6 +38,9 @@ Les règles suivantes :
 peuvent être vérifiées par cette expression régulière : `"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&*()]).{8,}"`
 Les mots de passe doivent obligatoirement être stockés encryptés : nous utilisons BCrypt.
 
+On peut utiliser par exemple le site : https://passwordsgenerator.net/ pour générer un mot de passe.  
+Et le site https://www.security.org/how-secure-is-my-password/ pour tester sa robustesse.
+
 ## Blocage après un certain nombre de tentatives de connexion
 
 Il faut ajouter un système pour bloquer momentanément le compte au-delà d'un certain nombre de tentatives de connexions infructueuses (il faut par exemple se prémunir contre les attaques de type "brute force" qui consiste à essayer de trouver un mot de passe en faisant de multiples tentatives). Nous implémentons ce type de protection dans le code.
