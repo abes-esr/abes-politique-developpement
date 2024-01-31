@@ -1075,4 +1075,33 @@ Etape 6 : sur l'écran suivant vous obtenez l'URL que vous pouvez copier coller 
 
 Dans cette étape 6 vous pouvez si vous le souhaitez configurer le nom du bot, son logo etc pour améliorer l'apparence sur slack mais ce n'est pas obligatoire.
 
+# Accès impossible sur un volume docker depuis le serveur hote
+
+## Problème
+
+Parfois nous devons accéder depuis le serveur hote à un volume d'un conteneur docker déporté sur le disque du serveur hote.
+Par exemple lorsque l'on souhaite restaurer les données d'une database à partir d'un dump sql issu des sauvegardes.
+
+Nous avons par exemple la configuration suivante : 
+- répertoire sur le serveur hote : ``/opt/pod/item-docker/volumes/item-db/dump/``
+- volume du conteneur docker monté sur ce répertoire et ayant comme cible interne au conteneur : ``/backup/`` (le conteneur en question a comme nom ``item-db-dumper``)
+- le répertoire ``/opt/pod/item-docker/volumes/item-db/dump/`` peut avoir des user/group ou droits d'accès en lecture/écriture qui rendent impossible son accès sans passer root.
+
+Nous souhaiterions venir déposer le fichier ``pgsql_item_item-db_20220801-143201.sql.gz`` dans ce répertoire mais nous sommes bloqué.
+
+## Solution
+
+La solution lourde est de solliciter un administrateur système et réseau ayant les droits root pour faire ce dépôt de fichier.
+
+Une autre solution est de passer par la commande ``docker cp`` qui permet de copier un fichier présent sur le système hote vers un répertoire interne au conteneur ce qui a l'avantage de réutiliser les mêmes droits (user/group) du conteneur lui même et donc de ne pas être bloqué.
+
+Voici en pratique comment procéder sur l'exemple ci-dessus : 
+- déposer le fichier ``pgsql_item_item-db_20220801-143201.sql.gz`` à la racine dans /opt/pod/item-docker/ sur le serveur hôte
+- lancer la commande suivante :
+  ```bash
+  cd /opt/pod/item-docker/
+  docker cp ./pgsql_item_item-db_20220801-143201.sql.gz item-db-dumper:/backup/
+  ```
+
+Votre fichier ``pgsql_item_item-db_20220801-143201.sql.gz`` sera alors déposé dans le répertoire ``/backup/`` du conteneur qui équivaut au répertoire ``/opt/pod/item-docker/volumes/item-db/dump/`` sur le système hôte.
 
