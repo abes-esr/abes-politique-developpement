@@ -1105,3 +1105,27 @@ Voici en pratique comment procéder sur l'exemple ci-dessus :
 
 Votre fichier ``pgsql_item_item-db_20220801-143201.sql.gz`` sera alors déposé dans le répertoire ``/backup/`` du conteneur qui équivaut au répertoire ``/opt/pod/item-docker/volumes/item-db/dump/`` sur le système hôte.
 
+
+# Erreur lors d'un cast vers OracleResultSet
+
+## Problème
+
+L'erreur suivante survient lors d'un Cast d'un ResultSet Hikari vers un OracleResultSet (qui permet par exemple d'utiliser getOpaque (qui permet de récupérer le contenu d'une colonne XMLType)) : 
+
+java.lang.ClassCastException: class com.zaxxer.hikari.pool.HikariProxyResultSet cannot be cast to class oracle.jdbc.OracleResultSet (com.zaxxer.hikari.pool.HikariProxyResultSet and oracle.jdbc.OracleResultSet are in unnamed module of loader 'app')
+
+## Solution
+
+Il faut définir une OracleDataSource spécifique via un Bean dans une classe @Configuration, par exemple :
+
+```
+@Bean
+    @Primary
+    @ConfigurationProperties("spring.db.datasource")
+    public DataSource dataSourceLecture() {
+
+        return DataSourceBuilder.create().url(dataSourceProperties().getUrl())
+                .username(dataSourceProperties().getUsername()).password(dataSourceProperties().getPassword())
+                .type(OracleDataSource.class).build();
+    }
+```
