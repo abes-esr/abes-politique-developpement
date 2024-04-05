@@ -83,6 +83,7 @@ Une application dockerisée respecte plusieurs règles :
  - l'application peut avoir besoin de plusieurs images docker, par exemple pour le front en vuejs (ex: [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml)), ou pour l'API en java Spring (ex: [abes-hello-back](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml))
  - l'application possède un dépôt dédiée à son déploiement avec `docker-compose`, cf section suivante.
 
+
 ### Déploiement d'une application docker
 
 Un dépôt github dédié au déploiement doit être créé pour l'application. La règle de nommage de ce dépôt est de commencer par le nom de l'application et de terminer par le suffix `-docker` (ex: [abes-hello-docker](https://github.com/abes-esr/abes-hello-docker)). Il permet à n'importe qui sur le web de venir tester l'application sur son environnement local ou sur son serveur. Ce dépôt permet de faciliter la réutilisation et les contributions externes.
@@ -121,7 +122,7 @@ Le fichier docker-compose.yml de l'application décrit tous les conteneurs de l'
   MEM_LIMIT=5g
   CPU_LIMIT=5
   ```
-
+- les ports externes utilisés par l'application doivent être contiguës dans une plage de port définie au début du projet (par exemple en réservant 10 ports) en prenant soin que cette plage de ports n'empiète pas sur d'autres plages de ports utilisées par d'autres applications du SI de l'Abes (l'application interne https://devops.abes.fr doit être utilisée pour identifier cette plage libre). Cette plage de port doit être à la suite de la dernière plage de port utilisée par la dernière application ajoutée au SI de l'Abes. Le fichier ``.env-dist`` doit indiquer dans des variables ces ports choisis qui deviennent donc les ports par défaut de l'application mais qui si besoin peuvent être paramétré du fait qu'il sont variabilisés et pas codés en dur dans le ``docker-compose.yml``.
 
 ### Configuration des logs des conteneurs dockers
 
