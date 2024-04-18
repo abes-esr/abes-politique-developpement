@@ -7,7 +7,7 @@ La documentation d’un logiciel est indispensable car elle permet de :
 * retrouver plus facilement comment le logiciel a été structuré
 * partager le logiciel avec d’autres programmeurs : ce point est essentiel lors de la publication d’une API
 
-On distingue trois types de documentation : 
+On distingue trois types de documentation :
 
 * __La documentation à l’usage des utilisateurs__
 * __La documentation à l'usage des développeurs__
@@ -23,7 +23,7 @@ https://swagger.io/docs/specification/about/ décrit la spécification openAPI. 
 
 # __La documentation à l'usage des développeurs__
 
-Nous identifions le besoin de deux types de documentation : 
+Nous identifions le besoin de deux types de documentation :
 
 ## Une documentation décrivant l’architecture et la conception
 
@@ -34,16 +34,16 @@ Il ne s’agit pas de décrire de manière exhaustive et systématique chaque d�
 * le diagramme de déploiement situe l’application dans son contexte
 * un diagramme des flux entrants et sortants permet de décrire la communication et les dépendances de l’application
 
-Cette documentation doit être rédigée en adoptant le point de vue d'un(e) nouveau(velle) développeur(se) à qui l'on veut fournir le niveau d'information minimal essentiel pour lui permettre d'aborder le projet. 
+Cette documentation doit être rédigée en adoptant le point de vue d'un(e) nouveau(velle) développeur(se) à qui l'on veut fournir le niveau d'information minimal essentiel pour lui permettre d'aborder le projet.
 
 __Ces informations liées à la structure de l'application doivent être consignées dans un fichier README-dev.md. présent à la racine du dépôt.__
-  
-* il faut aussi inclure les informations jugées utiles pour faciliter la prise en main de l'application par un nouveau développeur : 
-     * l’adresse du dépôt Github ou Gitlab
-     * les éléments de configuration
-    * les projets associés à l'application
 
-__Ces méta-informations doivent être consignées dans un fichier README.md. présent à la racine du dépôt.__ 
+* il faut aussi inclure les informations jugées utiles pour faciliter la prise en main de l'application par un nouveau développeur :
+  * l’adresse du dépôt Github ou Gitlab
+  * les éléments de configuration
+  * les projets associés à l'application
+
+__Ces méta-informations doivent être consignées dans un fichier README.md. présent à la racine du dépôt.__
 
 Des fichiers README-xxx.md supplémentaires peuvent être ajoutés si nécessaire, par exemple un README-faq.md peut recenser les questions relatives à l'application.
 

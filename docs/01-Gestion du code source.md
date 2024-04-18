@@ -11,7 +11,7 @@ Les [bibliothèques de logiciels](https://fr.wikipedia.org/wiki/Biblioth%C3%A8qu
 
 ## Github / Gitlab
 
-Github et Gitlab fournissent une interface web qui : 
+Github et Gitlab fournissent une interface web qui :
 * donne accès aux fichiers, aux commits, à un moteur de recherche sur le code source
 * propose un éditeur de code en ligne
 * permet de suivre facilement les modifications apportées par les développeurs
@@ -41,11 +41,11 @@ A chaque release correspondant le tag Git ayant la même valeur `X.Y.Z` posé su
 
 Nous utilisons un système de branches inspiré de [Gitflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow) : nous avons donc systématiquement deux branches :
 - `main` :
-  - version tagguée pour déploiement sur l'env de production (tag `X.Y.Z`)
-  - et version non taggée pour l'env de test (version "glissante")
+    - version tagguée pour déploiement sur l'env de production (tag `X.Y.Z`)
+    - et version non taggée pour l'env de test (version "glissante")
 - `develop` : version pour l'env de développement (version "glissante")
 
-Lorsqu'on souhaite ajouter une fonctionnalité, on crée une nouvelle branche du nom de la fonctionnalité (feature/nomDeLaFonctionnalité ou sous JIRA `<n°ticket JIRA/nomDeLaFonctionnalité>`) à partir de la branche `develop`. Une fois que cette fonctionnalité a été testée, une pull request (appelé aussi merge request) est créée. Un autre développeur prends alors connaissance du code (review), la branche est ensuite fusionnée sur la branche `develop`. 
+Lorsqu'on souhaite ajouter une fonctionnalité, on crée une nouvelle branche du nom de la fonctionnalité (feature/nomDeLaFonctionnalité ou sous JIRA `<n°ticket JIRA/nomDeLaFonctionnalité>`) à partir de la branche `develop`. Une fois que cette fonctionnalité a été testée, une pull request (appelé aussi merge request) est créée. Un autre développeur prends alors connaissance du code (review), la branche est ensuite fusionnée sur la branche `develop`.
 
 On peut également corriger un bug dans la version en production sans toucher à la version en développement. On dérive alors une branche `hotfix` de la branche `main`. Une fois validée, la correction est fusionnée sur la branche `main` et également fusionnée sur la branche `develop`. Une nouvelle release est alors générées en incrémentant le numéro `Z` (cf `X.Y.Z`) et la release intégrant cette correction peut être déployée sur l'env de production.
 
@@ -57,7 +57,7 @@ Cf à suivre procédure ci-dessous.
 
 Parallèlement, l'Abes maintient un système de génération de release au niveau de sa plateforme interne Jenkins qui est destiné à être remplacé par les Github Actions.
 
-Parmi les bonnes pratiques à suivre en complément du workflow [Gitflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow) on peut citer :  
+Parmi les bonnes pratiques à suivre en complément du workflow [Gitflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow) on peut citer :
 
 * ne pas attendre (maximum deux semaines) pour merger une branche et la branche dont elle est dérivée (par exemple une "feature" sur `develop`). En général, la durée maximale est celle du sprint.
 * les commits doivent obligatoirement être accompagnés d'un certain nombre d'informations (voir ci-dessous la section spécifique aux messages de commit).
@@ -95,8 +95,8 @@ Voici la procédure à appliquer pour publier une nouvelle release (nouvelle ver
 5. Choisisez la branche `main` et indiquez ensuite le numéro de la version à générer (doit respecter le [semantic versioning](#numéros-de-version)) après avoir vérifié que votre numéro de version n'existe pas déjà (sinon l'action github échouera)  
    ![image](https://user-images.githubusercontent.com/328244/159044729-e9cc0d7a-abe3-401f-a246-84e577670493.png)
 6. Validez et attendez que le build se termine. Le fait de lancer le workflow create-release.yml va provoquer deux choses :
-  - le workflow `build-test-pubtodockerhub.yml` va se déclencher dans la foulée (cf le code du [workflow "build-test-pubtodockerhub" sur abes-hello](https://github.com/abes-esr/abes-hello-back/actions/workflows/build-test-pubtodockerhub.yml),
-  - et une nouvelle image docker de l'application sera alors publiée avec comme tag docker le numéro de version de votre release (cf le  [dépôt docker hub de abes-hello](https://hub.docker.com/r/abesesr/abes-hello/)
+- le workflow `build-test-pubtodockerhub.yml` va se déclencher dans la foulée (cf le code du [workflow "build-test-pubtodockerhub" sur abes-hello](https://github.com/abes-esr/abes-hello-back/actions/workflows/build-test-pubtodockerhub.yml),
+- et une nouvelle image docker de l'application sera alors publiée avec comme tag docker le numéro de version de votre release (cf le  [dépôt docker hub de abes-hello](https://hub.docker.com/r/abesesr/abes-hello/)
 
 
 ## Messages de commit
@@ -107,14 +107,14 @@ Un soin particulier doit être apporté à la rédaction des messages de commit.
 * si plusieurs points doivent mentionnés, il est possible de les présenter sous forme de listes via * ou -
 * il faut écrire un court paragraphe d'explication en plus du titre
 * le lien entre le commit et le ticket se fait en ajoutant le numéro du ticket au message sous le format : #NumeroDuTicket (voir exemple plus bas)
-* chaque commit doit être typé : 
+* chaque commit doit être typé :
     * Fix : Correction de  bugs
     * Feat : Nouvelles fonctionnalités
     * Doc : Ajout de documentation
     * Test : Ajout de tests unitaires
     * Refactor : Refactorisation ou nettoyage de code existant, sans impact sur les fonctionnalités
 
-Un message de commit doit donc être structuré ainsi : 
+Un message de commit doit donc être structuré ainsi :
 
 #NumeroISSUE Type : Message du commit
 
@@ -123,7 +123,7 @@ Court paragraphe décrivant les modifications plus en détail si nécessaire
 
 ## Création et configuration d'un nouveau dépôt
 
-La création de dépôt opensource sur GitHub doit être privilégiée. La création de dépôt sur GitLab (interne à l'Abes) est utile dans certain rares cas (dépôt contenant des secrets, réorganisation de vieux codes). 
+La création de dépôt opensource sur GitHub doit être privilégiée. La création de dépôt sur GitLab (interne à l'Abes) est utile dans certain rares cas (dépôt contenant des secrets, réorganisation de vieux codes).
 
 Voici la procédure pour la création de dépôt Git :
 * les noms des dépôts Git doivent être en minuscule, les éléments séparés par des tirets. Chaque dépôt doit posséder, dès sa création, une description ainsi qu'un `README.md` minimaliste pour donner dès le début un cadre au contenu attendu dans le dépôt (même si ce dernier est vide dans un premier temps).
@@ -131,7 +131,7 @@ Voici la procédure pour la création de dépôt Git :
 * se loguer en utilisateur admin `abes-dev` pour Github (ou `depot`pour le Gitlab interne Abes)
 * ajouter une description
 
-Une fois le dépôt créé : 
+Une fois le dépôt créé :
 * ajouter un `README.md` (et le renseigner)
 * ajouter un `.gitignore`
 * créer une branche `develop`
@@ -140,7 +140,7 @@ Une fois le dépôt créé :
     * `main` : allowed to push : no one, allowed to merge : maintainers + developers
     * `develop` : allowed to push : maintainers + developers, allowed to merge : maintainers + developers
     * `develop` : la positionner comme la branche par défaut, ainsi quand on clone le dépôt depuis zero et qu'on veut créer une branche pour ajouter une fonctionnalité, cela limite les erreurs et permet de créer les PR sur la branche develop et pas sur la branche main
-    
+
 ## Codes partiellement ouverts sur Github
 
 Les dépôts Github publiés par l'Abes qui contiennent du code qui dépend de librairies non opensource (car pas encore libérées par l'Abes) doivent le mentionner dans le `README.md` du dépot par la mention suivante :

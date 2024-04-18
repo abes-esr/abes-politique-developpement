@@ -187,20 +187,20 @@ Plusieurs types de boutons existe. Chacun sera lu et interprété différemment 
 
 1. Cas d'un bouton avec un label (contenu écrit dans le bouton). Le texte sera lu directement par un lecteur d'écran et reconnu comme un bouton dans la structure de la page.
 
-   *Exemple d'un bouton simple :*
+    *Exemple d'un bouton simple :*
     ```HTML
       <v-btn text tile color="blue" value="accueil" to="/accueil">
       Accueil
       </v-btn>
     ```
 
-2. Cas d'un bouton avec un texte et une icône.
-   Le texte sera lu directement par un lecteur d'écran et reconnu comme un bouton dans la structure de la page.  
-   Dans ce cas, il n'est pas possible d'utiliser une balise ```<div>``` qui englobe l'UI Component ```<v-icon>```
-   (comme vu dans le chapitre sur les [icônes](#icone)),
-   car cela génère un conflit aria-role entre le ```<v-btn>``` et le ```<v-icon>```.
+2. Cas d'un bouton avec un texte et une icône. 
+Le texte sera lu directement par un lecteur d'écran et reconnu comme un bouton dans la structure de la page.  
+Dans ce cas, il n'est pas possible d'utiliser une balise ```<div>``` qui englobe l'UI Component ```<v-icon>```
+(comme vu dans le chapitre sur les [icônes](#icone)), 
+car cela génère un conflit aria-role entre le ```<v-btn>``` et le ```<v-icon>```.
 
-   *Exemple d'un bouton avec texte et icône :*
+    *Exemple d'un bouton avec texte et icône :*
     ```HTML
     <v-btn text value="accueil" to="/accueil">
         Accueil

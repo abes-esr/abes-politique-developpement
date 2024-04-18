@@ -5,10 +5,10 @@
 L’analyse des projets menés à l'Abes a permis de découvrir des structures de projets hétérogènes dépendant de plusieurs facteurs : IDE utilisé, plugins d’IDE, type de projet, expérience personnelle de l'agent dans le développement. Lors d'un transfert de responsabilité d'application vers un autre agent, ou lors de l'intervention d’un développeur sur le code de l’application, il était donc difficile de s'approprier le code en raison de ces aspects hétérogènes.
 
 C'est pourquoi l'utilisation de frameworks spécifiques à chaque type de projet est maintenant préconisée.
- 
+
 ## Types de projets
 
-Nous pouvons classer nos projets / applications de la façon suivante : 
+Nous pouvons classer nos projets / applications de la façon suivante :
 
 ### Applications Web
 
@@ -28,7 +28,7 @@ cf. [Gestion des API](12-Gestion%20des%20API.md#versionnage)
 
 __Cas particulier des applications J2EE / architecture MVC__
 
-Certaines de nos applications ont été développées entièrement en Java, notamment la couche UI avec des frameworks comme JSF. Ces applications Java web sont en général structurées en couches (DAO pour l’accès à la base de données, métier, contrôleur, interface). 
+Certaines de nos applications ont été développées entièrement en Java, notamment la couche UI avec des frameworks comme JSF. Ces applications Java web sont en général structurées en couches (DAO pour l’accès à la base de données, métier, contrôleur, interface).
 
 ### Application Batch
 
@@ -56,16 +56,16 @@ Puis nous créons ensuite les jobs de construction et de déploiement sur Jenkin
 L'application peut nécessiter la création d'autres services : indexation Solr ou ElasticSearch, bases de données relationnelles Oracle etc.
 Pour les projets Java qui sont gérés avec Maven, le fichier pom.xml est configuré pour que notre Jenkins local puisse envoyer les artifacts (code compilé) sur notre Artifactory local. La balise scm doit être renseignée pour faciliter les release via Jenkins. L'encodage des fichiers est UTF-8.
 * Le groupId doit être le même pour toutes les applications de l’Abes : fr.abes
-* L'artifactId doit correspondre au nom de l’application. Les applications peuvent parfois être composée de plusieurs modules. Enfin, pour nos projets interne, les pom.xml peuvent dépendre du pom parent Abes. 
+* L'artifactId doit correspondre au nom de l’application. Les applications peuvent parfois être composée de plusieurs modules. Enfin, pour nos projets interne, les pom.xml peuvent dépendre du pom parent Abes.
 
-* Les fichiers de configuration dépendant de l’environnement d'exécution de l'application (contenant par exemple les chaines de connexion à la base de données qui sera différente si l’application est exécutée sur l’environnement de test, de développement ou de production) sont déposés dans le répertoire /resources. Un fichier par environnement d’exécution est présent et porte un nom spécifique à cet environnement suivant la convention Spring : 
+* Les fichiers de configuration dépendant de l’environnement d'exécution de l'application (contenant par exemple les chaines de connexion à la base de données qui sera différente si l’application est exécutée sur l’environnement de test, de développement ou de production) sont déposés dans le répertoire /resources. Un fichier par environnement d’exécution est présent et porte un nom spécifique à cet environnement suivant la convention Spring :
 
 * application-DEV.properties pour l’environnement de développement
 * application-TEST.properties pour l’environnement de test
 * application-PROD.properties pour l’environnement de production
 * application.properties pour les éléments partagés par tous les environnements.
 
-pour les dépôts Github, les fichiers de configuration ne sont pas versionnés avec le projet. Ils sont versionnés sur un dépôt interne et envoyés sur les environnements de déploiement au moment de l'exécution du job de déploiement.  
+pour les dépôts Github, les fichiers de configuration ne sont pas versionnés avec le projet. Ils sont versionnés sur un dépôt interne et envoyés sur les environnements de déploiement au moment de l'exécution du job de déploiement.
 
 Les fichiers journaux de l’application doivent se situer dans un répertoire nomAppli/logs. Un fichier log4j.properties est fourni dans l’application pour déterminer la structure du fichier de log.
 
@@ -80,9 +80,8 @@ Une application dockerisée respecte plusieurs règles :
   - le `Dockerfile` de l'application execute également les tests de l'application ce qui permet d'éviter de produire une image docker embarquant un code qui ne fonctionne pas (exemple de paramétrage maven sur [abes-hello-back](https://github.com/abes-esr/abes-hello-back/blob/develop/Dockerfile#L27))
   - ce dépôt contient une github action souvent nommée `build-test-pubtodockerhub.yml` (ex: sur [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml)) permettant de construire l'image Docker et de la publier sur l'[espace abesesr sur dockerhub](https://hub.docker.com/orgs/abesesr).
   - ce dépôt contient une github action souvent nommée `create-release.yml` (ex: sur [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/create-release.yml)) permettant de créer une nouvelle version/release de l'application
- - l'application peut avoir besoin de plusieurs images docker, par exemple pour le front en vuejs (ex: [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml)), ou pour l'API en java Spring (ex: [abes-hello-back](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml))
- - l'application possède un dépôt dédiée à son déploiement avec `docker-compose`, cf section suivante.
-
+- l'application peut avoir besoin de plusieurs images docker, par exemple pour le front en vuejs (ex: [abes-hello-front](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml)), ou pour l'API en java Spring (ex: [abes-hello-back](https://github.com/abes-esr/abes-hello-front/blob/develop/.github/workflows/build-test-pubtodockerhub.yml))
+- l'application possède un dépôt dédiée à son déploiement avec `docker-compose`, cf section suivante.
 
 ### Déploiement d'une application docker
 
@@ -91,15 +90,15 @@ Un dépôt github dédié au déploiement doit être créé pour l'application. 
 Les éléments obligatoires de ce dépôt sont :
 - le fichier `docker-compose.yml` : c'est la liste de tous les conteneurs et leurs configurations/articulations utilisés par l'application. Des règles doivent être respectées, cf paragraphe plus bas.
 - le fichier `.env-dist` : c'est un fichier contenant les paramètres de l'application avec des exemples de valeurs. Il est destiné à être copié vers un fichier `.env` au moment de l'installation initiale de l'application et à personnaliser son contenu (ex: mot de passe d'une base de données, chaine de connexion etc ...)
-- le fichier `README.md` : c'est la fiche d'exploitation de l'application qui explique comment installer, démarrer, stopper, superviser, et sauvegarder l'application (ex: sur [abes-hello-docker](https://github.com/abes-esr/abes-hello-docker#readme)).
+- le fichier `README.md` : c'est la fiche d'exploitation de l'application qui explique comment installer, démarrer, stopper, superviser et sauvegarder l'application (ex: sur [abes-hello-docker](https://github.com/abes-esr/abes-hello-docker#readme)).
 
 Le fichier docker-compose.yml de l'application décrit tous les conteneurs de l'application et leurs articulations, il doit respecter les règles suivantes :
-- chaque nom de service doit être préfixé par le nom (court) de l'application, ex avec le préfix `abes-hello` ceci afin de mieux les distinguer et le regrouper au niveau d'un serveur hébergeant plusieurs applications différentes :  
+- chaque nom de service doit être préfixé par le nom (court) de l'application, ex avec le préfix `abes-hello` ceci afin de mieux les distinguer et le regrouper au niveau d'un serveur hébergeant plusieurs applications différentes :
   ```
   services:
     abes-hello-front:
   ```
-- chaque service doit nommer son conteneur en réutilisant le même nommage que le service, ex sur `abes-hello` :  
+- chaque service doit nommer son conteneur en réutilisant le même nommage que le service, ex sur `abes-hello` :
   ```
   container_name: abes-hello-front
   ```
@@ -114,7 +113,7 @@ Le fichier docker-compose.yml de l'application décrit tous les conteneurs de l'
   memswap_limit: ${MEM_LIMIT}
   cpus: ${CPU_LIMIT}
   ```  
-  Dans dans .env-dist :  
+  Dans dans .env-dist :
   ```
   ######################################################
   # Memory caping for containers : 5Go
@@ -126,30 +125,30 @@ Le fichier docker-compose.yml de l'application décrit tous les conteneurs de l'
 
 ### Configuration des logs des conteneurs dockers
 
-Chaque application qui est "dockerisée" et qui produit des logs (c'est à dire toutes les applis ?), doit les produire de la même façon et indiquer au démon filebeat comment les récupérer pour qu'il puisse ensuite les envoyer correctement au puits de log (logstash / elasticsearch / kibana).
+Chaque application qui est "dockerisée" et qui produit des logs (c'est-à-dire toutes les applis ?), doit les produire de la même façon et indiquer au démon filebeat comment les récupérer pour qu'il puisse ensuite les envoyer correctement au puits de log (logstash / elasticsearch / kibana).
 
 L'application doit respecter quelques règles :
 
 1) produire ses logs à surveiller sur stdout et stderr
 2) paramétrer filebeat avec des labels docker
-3) produire ses logs personnalisées en respectant un format
+3) produire ses logs personnalisés en respectant un format
 
 #### stderr stdout
 
 Pour que le conteneur de l'application produise ses logs sur stdout et stderr, il y a plusieurs possibilités.
-  - Si c'est une application Java le mieux est d'exécuter le process java en premier plan (foreground). Exemple de point d'entrée docker exécutant l'appli java à partir d'un JAR en premier plan : `ENTRYPOINT ["java","-jar","/app.jar"]`
-  - Si c'est une script shell (exemple un batch), alors on logguer sur stdout ou stderr au choix en utilisant `>/dev/stdout` (par défaut si rien n'est précisé c'est sur stdout que ça va) ou `>/dev/stderr` pour logguer les erreurs. Exemple :
-    ```bash
-    echo "INFO: ma ligne de log pour aller sur stdout" >/dev/stdout
-    echo "ERROR: ma ligne de log pour aller sur stderr" >/dev/stderr
-    ```
-  - Si c'est une application tierce qu'on ne peut donc pas trop modifier et qui loggue déjà dans un fichier, alors on peut soit configurer l'application pour lui demander de logguer les erreurs sur le fichier `/proc/self/fd/2` (c'est la même chose que le fichier `/dev/stderr`) sur le fichier `/proc/self/fd/1` (ou au choix `/dev/stdout`), soit identifier le chemin du fichier vers lequel l'application va logguer et s'en sortir avec un système de lien symbolique comme par exemple ce que l'image docker officielle de nginx fait : cf son [Dockerfile](https://github.com/nginxinc/docker-nginx/blob/8921999083def7ba43a06fabd5f80e4406651353/mainline/jessie/Dockerfile#L21-L23).
-  
+- Si c'est une application Java le mieux est d'exécuter le process java en premier plan (foreground). Exemple de point d'entrée docker exécutant l'appli java à partir d'un JAR en premier plan : `ENTRYPOINT ["java","-jar","/app.jar"]`
+- Si c'est une script shell (exemple un batch), alors on logguer sur stdout ou stderr au choix en utilisant `>/dev/stdout` (par défaut si rien n'est précisé c'est sur stdout que ça va) ou `>/dev/stderr` pour logguer les erreurs. Exemple :
+  ```bash
+  echo "INFO: ma ligne de log pour aller sur stdout" >/dev/stdout
+  echo "ERROR: ma ligne de log pour aller sur stderr" >/dev/stderr
+  ```
+- Si c'est une application tierce qu'on ne peut donc pas trop modifier et qui loggue déjà dans un fichier, alors on peut soit configurer l'application pour lui demander de logguer les erreurs sur le fichier `/proc/self/fd/2` (c'est la même chose que le fichier `/dev/stderr`) sur le fichier `/proc/self/fd/1` (ou au choix `/dev/stdout`), soit identifier le chemin du fichier vers lequel l'application va logguer et s'en sortir avec un système de lien symbolique comme par exemple ce que l'image docker officielle de nginx fait : cf son [Dockerfile](https://github.com/nginxinc/docker-nginx/blob/8921999083def7ba43a06fabd5f80e4406651353/mainline/jessie/Dockerfile#L21-L23).
+
 #### paramètres pour filebeat - labels docker
 
 Le paramétrage de la remontée des logs dans filebeat se fait au niveau de chaque conteneur en suivant une nomenclature de "labels docker" (cf [recommandations](https://www.elastic.co/guide/en/beats/filebeat/current/running-on-docker.html#_customize_your_configuration)).
 
-La configuration la plus simple est de seulement signaler à filebeat que les logs du conteneur sont à prendre en compte en indiquant aucun format de log. Pour cela il est nécessaire d'ajouter les labels suivant au conteneur. Voici un extrait à copier coller dans un `docker-compose.yml` qui montre comment signaler à filebeat de prendre les logs en compte :
+La configuration la plus simple est de seulement signaler à filebeat que les logs du conteneur sont à prendre en compte en n'indiquant aucun format de log. Pour cela il est nécessaire d'ajouter les labels suivant au conteneur. Voici un extrait à copier coller dans un `docker-compose.yml` qui montre comment signaler à filebeat de prendre les logs en compte :
 ```
     labels:
       - "co.elastic.logs/enabled=true"
@@ -161,34 +160,34 @@ La configuration la plus simple est de seulement signaler à filebeat que les lo
 Les labels ont la signification suivante :
 - `co.elastic.logs/enabled=true` : signifie qu'on souhaite que filebeat remonte les logs de ce conteneur (par défault c'est `false`)
 - `co.elastic.logs/processors.add_fields.target=` : signifie qu'on souhaite ajouter les deux champs `abes_appli` et `abes_middleware` dans le puits de logs en rateau à la racine des champs (cf [la doc](https://www.elastic.co/guide/en/beats/filebeat/current/add-fields.html#add-fields))
-- `co.elastic.logs/processors.add_fields.fields.abes_appli=monapplication` : signifie qu'on souhaite faire remonter un champs personnalisé nommé "abes_appli" qui contiendra comme valeur "monapplication" pour le conteneur présent. Ce champ "abes_appli" est obligatoire, il doit contenir le nom de l'application qui peut elle même être éclatée en plusieurs conteneurs pour chaque middleware (un pour le web, un pour le back, un pour les batch etc ...), c'est ce champ qui permet de regrouper tous les conteneur d'une même application au niveau du puits de logs. Remarque : le puits de logs n'accepte pas que le nom de l'application se termine par un chiffre (ex: si l'appli s'appelle "projet2024" ça ne convient pas, il faut que le nom se termine par une lettre, dans notre exemple ça pourrait donner "projetetab"). Remarque : dans une architecture de type orchestrateur (ex: OKD), c'est probablement le nom du pod qui remplacera la valeur de "abes_appli".
-- `co.elastic.logs/processors.add_fields.fields.abes_middleware=Httpd` : le champs "abes_middleware" est obligatoire, il permet d'indiquer au puits de logs de l'Abes (via logstash précisément) la nature des logs envoyées et donc dans quel index elasticsearch doit il classer ces logs. Les valeurs possibles sont : "adhoc", "Httpd" (mettre "adhoc" si ce sont des logs dont le format est spécifique à l'application).
+- `co.elastic.logs/processors.add_fields.fields.abes_appli=monapplication` : signifie qu'on souhaite faire remonter un champs personnalisé nommé "abes_appli" qui contiendra comme valeur "monapplication" pour le conteneur présent. Ce champ "abes_appli" est obligatoire, il doit contenir le nom de l'application qui peut elle-même être éclatée en plusieurs conteneurs pour chaque middleware (un pour le web, un pour le back, un pour les batch etc ...), c'est ce champ qui permet de regrouper tous les conteneurs d'une même application au niveau du puits de logs. Remarque : le puits de logs n'accepte pas que le nom de l'application se termine par un chiffre (ex: si l'appli s'appelle "projet2024" ça ne convient pas, il faut que le nom se termine par une lettre, dans notre exemple ça pourrait donner "projetetab"). Remarque : dans une architecture de type orchestrateur (ex: OKD), c'est probablement le nom du pod qui remplacera la valeur de "abes_appli".
+- `co.elastic.logs/processors.add_fields.fields.abes_middleware=Httpd` : le champs "abes_middleware" est obligatoire, il permet d'indiquer au puits de logs de l'Abes (via logstash précisément) la nature des logs envoyés et donc dans quel index elasticsearch doit-il classer ces logs. Les valeurs possibles sont : "adhoc", "Httpd" (mettre "adhoc" si ce sont des logs dont le format est spécifique à l'application).
 
-Pour un exemple complet qui montre aussi comment spécifier un format de log précis, on peut se référer à https://github.com/abes-esr/abes-filebeat-docker/blob/f4b19dfdccab690801c550c61724bd09cbeb6f5b/docker-compose.yml#L24-L37
+Pour un exemple complet qui montre aussi comment spécifier un format de log précis, on peut se référer à [https://github.com/abes-esr/abes-filebeat-docker/blob/f4b19dfdccab690801c550c61724bd09cbeb6f5b/docker-compose.yml#L24-L37](https://github.com/abes-esr/abes-filebeat-docker/blob/f4b19dfdccab690801c550c61724bd09cbeb6f5b/docker-compose.yml#L24-L37)
 
 On trouve alors d'autres labels dont voici la signification :
-- `co.elastic.logs/module=nginx` : signifie qu'on dit à filebeat que ce conteneur produit des logs au format nginx ce qui lui permettra de les envoyées découpées dans le puits de logs (cf la liste des [modules filebeat disponibles](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html))
+- `co.elastic.logs/module=nginx` : signifie qu'on dit à filebeat que ce conteneur produit des logs au format nginx ce qui lui permettra de les envoyer découpés dans le puits de logs (cf la liste des [modules filebeat disponibles](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html))
 - `co.elastic.logs/fileset.stdout=access` : signifie que filebeat doit surveiller les logs stdout du conteneur
 - `co.elastic.logs/fileset.stderr=error` : signifie que filebeat doit surveiller les logs stderr du conteneur
 
-La dernière étape pour que les logs de remontent jusqu'au puits de logs de l'Abes est de solliciter l'équipe puits de log de l'Abes pour lui demander d'intégrer (configuration à faire au niveau de la brique logstash) les logs de l'application en s'appuyant sur clé "co.elastic.logs/processors.add_fields.fields.abes_appli=monapplication"
+La dernière étape pour que les logs remontent jusqu'au puits de logs de l'Abes est de solliciter l'équipe puits de log de l'Abes pour lui demander d'intégrer (configuration à faire au niveau de la brique logstash) les logs de l'application en s'appuyant sur clé "co.elastic.logs/processors.add_fields.fields.abes_appli=monapplication"
 
 #### format pour les log personnalisées
 
-TODO expliquer ici que les appli java/métier doivent produire des logs spécifique en respectant certaines règles, lister les règles, donner des exemple de configuration de log4j etc ...
+TODO expliquer ici que les applis java/métier doivent produire des logs spécifiques en respectant certaines règles, lister les règles, donner des exemples de configuration de log4j etc ...
 
 
 ## Bonnes pratiques de programmation
 
-En termes d'architecture, nous cherchons à privilégier : 
+En termes d'architecture, nous cherchons à privilégier :
 
 * la programmation avec des interfaces et non des implémentations
 * l'inversion de contrôle pour réduire le couplage entre classes
 * l'utilisation des design patterns reconnus (tout en prenant soin d'éviter l'écueil de la sur-utilisation)
 
-Concernant plus spécifiquement la notion d’informatique et liberté, on peut dégager les bonnes pratiques suivantes : 
+Concernant plus spécifiquement la notion d’informatique et liberté, on peut dégager les bonnes pratiques suivantes :
 
-* Ne pas effectuer de développements ni de tests sur les environnements de production. 
+* Ne pas effectuer de développements ni de tests sur les environnements de production.
 * Ne pas effectuer de tests sur des données personnelles réelles et utiliser des techniques d’anonymisation.
 * Prévoir une gestion rigoureuse des habilitations et droits d’accès sur les applications.
 * Prévoir en préalable à la mise en production d’une application la durée de conservation de tous les comptes utilisateurs et administrateurs.
@@ -200,13 +199,13 @@ Concernant plus spécifiquement la notion d’informatique et liberté, on peut 
 * Prévoir dans les applications une mention de mise en garde contre un contenu abusif, pour toutes les zones de texte libre.
 * Prévoir une page Mentions légales dès lors que l’application contient des données personnelles.
 
-De façon générale, il faut se référer au guide RGPD fourni par la CNIL : https://github.com/LINCnil/Guide-RGPD-du-developpeur
+De façon générale, il faut se référer au guide RGPD fourni par la CNIL : [https://github.com/LINCnil/Guide-RGPD-du-developpeur](https://github.com/LINCnil/Guide-RGPD-du-developpeur)
 
 ## Frameworks préconisés
 
 ### Quelques considérations sur les frameworks
 
-Le framework sont des cadres de développement qui permettant de définir de manière standardisée l'architecture d’une application. Les développeurs peuvent focaliser leur travail sur la conception de la couche métier de l’application, le framework prenant en charge un ensemble de tâches techniques récurrentes telles que : 
+Le framework sont des cadres de développement qui permettant de définir de manière standardisée l'architecture d’une application. Les développeurs peuvent focaliser leur travail sur la conception de la couche métier de l’application, le framework prenant en charge un ensemble de tâches techniques récurrentes telles que :
 
 * l'accès aux données
 * l'internationalisation
@@ -214,7 +213,7 @@ Le framework sont des cadres de développement qui permettant de définir de man
 * la sécurité (authentification et gestion des rôles)
 * le paramétrage de l'application
 
-La mise en oeuvre d'un framework permet notamment : 
+La mise en oeuvre d'un framework permet notamment :
 
 * de capitaliser le savoir-faire sans "réinventer la roue"
 * d'accroître la productivité des développeurs une fois le framework pris en main
@@ -227,20 +226,20 @@ Le framework qui s'est imposé ces dix dernières années est Spring. Il est tr�
 
 Les fonctionnalités offertes par Spring sont très nombreuses et les sujets couverts ne cessent d'augmenter au fur et mesure des nouvelles versions et des nouveaux projets ajoutés au portfolio.
 
-La documentation de Spring est complète et régulièrement mise à jour lors de la diffusion de chaque nouvelle version. La mise en oeuvre de Spring n'est pas toujours aisée car il existe généralement plusieurs solutions pour implémenter une fonctionnalité. Nous essayons autant que possible de réutiliser des architectures validées dans nos différents projets.
+La documentation de Spring est complète et régulièrement mise à jour lors de la diffusion de chaque nouvelle version. La mise en oeuvre de Spring n'est pas toujours aisée, car il existe généralement plusieurs solutions pour implémenter une fonctionnalité. Nous essayons autant que possible de réutiliser des architectures validées dans nos différents projets.
 
 A noter qu'il n'est pas rare que les livrables aient une taille importante du fait des nombreuses librairies requises par Spring et ses dépendances.
 
 ### Framework VueJs pour les applications clientes (CSS/Javascript)
 
-Les frameworks Javascript permettent de construire des applications s'exécutant essentiellement dans le navigateur web en minimisant les échanges avec la partie serveur. Ce fonctionnement permet d'obtenir une expérience utilisateur plus fluide et riche. Côté développeur, ces frameworks ajoutent une couche d'abstraction qui manquait dans l'univers Javascript. 
+Les frameworks Javascript permettent de construire des applications s'exécutant essentiellement dans le navigateur web en minimisant les échanges avec la partie serveur. Ce fonctionnement permet d'obtenir une expérience utilisateur plus fluide et riche. Côté développeur, ces frameworks ajoutent une couche d'abstraction qui manquait dans l'univers Javascript.
 Actuellement les frameworks Javascript les plus populaires sont React, Angular et VueJs.  
 Nous avons fait le choix de VueJs pour sa légèreté et facilité à prendre à main. Nous utilisons également Vuetify qui propose une galerie de composants graphiques.
 Ce framework implémente le modèle MVVM (modèle-vue-vue-modèle) via un système de binding qui permet d'échanger instantanément des données entre le modèle et la vue.
 
 #### Technique du "cache busting" pour les applications clients pas encore en VueJS
 
-Il est préconisé de mettre en place la technique du [cache busting](https://www.keycdn.com/support/what-is-cache-busting) pour les application HTML/CSS/JS qui n'utilisent pas encore VueJS. Cette technique permet de palier les problèmes de mise en cache des "vieilles" ressources statiques (CSS/JS) lorsque l'on publie une nouvelle version de l'application (et évite par exemple de demander aux utilisateur de faire CTRL+F5 pour avoir la bonne version des ressources). Cette technique consiste à ajouter le numéro de version ou le hash du dernier commit dans l'URL de la CSS/JS au moment de l'inclusion ou bien d'y indiquer une valeur arbitraire qui est modifiée au moment où la ressource statique CSS/JS a été modifiée.
+Il est préconisé de mettre en place la technique du [cache busting](https://www.keycdn.com/support/what-is-cache-busting) pour les applications HTML/CSS/JS qui n'utilisent pas encore VueJS. Cette technique permet de palier les problèmes de mise en cache des "vieilles" ressources statiques (CSS/JS) lorsque l'on publie une nouvelle version de l'application (et évite par exemple de demander aux utilisateurs de faire CTRL+F5 pour avoir la bonne version des ressources). Cette technique consiste à ajouter le numéro de version ou le hash du dernier commit dans l'URL de la CSS/JS au moment de l'inclusion ou bien d'y indiquer une valeur arbitraire qui est modifiée au moment où la ressource statique CSS/JS a été modifiée.
 
 Voici un exemple sur IdRef avant la mise en place du cache busting :
 ```html
