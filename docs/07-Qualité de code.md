@@ -8,27 +8,27 @@ Un code de bonne qualité est un code dont le coût d’implémentation est cons
 
 Il est donc particulièrement important d'essayer de contrôler avec le plus de finesse cette notion de qualité.
 
-* L’analyse de la qualité du code se concentre sur : 
-    * le respect des standards et des bonnes pratiques de développement
-    * l'absence de commentaire dans le code et de rédaction de documentation
-    * la duplication des lignes de code
-    * l'existence des composants complexes et/ou une mauvaise distribution de la complexité entre les composants
-    * une mauvaise couverture du code par tests unitaires surtout sur les parties complexes du code
-    * l'existence des bugs potentiels, les problèmes de performance et de sécurité
-    * l'existence du code "spaghetti".
+* L’analyse de la qualité du code se concentre sur :
+  * le respect des standards et des bonnes pratiques de développement
+  * l'absence de commentaire dans le code et de rédaction de documentation
+  * la duplication des lignes de code
+  * l'existence des composants complexes et/ou une mauvaise distribution de la complexité entre les composants
+  * une mauvaise couverture du code par tests unitaires surtout sur les parties complexes du code
+  * l'existence des bugs potentiels, les problèmes de performance et de sécurité
+  * l'existence du code "spaghetti".
 
-Nous mettons donc en oeuvre une analyse statique du code (ASC). ASC consiste en une collection d’algorithmes qui permettent de rechercher de manière automatique les bugs potentiels et les mauvaises pratiques de développement. L’ASC appelée aussi "white-box testing" analyse une application de manière statique (et non pendant son exécution). C’est la seule manière de couvrir tout le code afin d’identifier les points vulnérables. Les tâches réalisées par l’ASC sont divisées en trois catégories :
+Nous mettons donc en œuvre une analyse statique du code (ASC). ASC consiste en une collection d’algorithmes qui permettent de rechercher de manière automatique les bugs potentiels et les mauvaises pratiques de développement. L’ASC appelée aussi "white-box testing" analyse une application de manière statique (et non pendant son exécution). C’est la seule manière de couvrir tout le code afin d’identifier les points vulnérables. Les tâches réalisées par l’ASC sont divisées en trois catégories :
 * Détection des erreurs dans le code
 * Recommandations sur le formatage du code (en fonction des règles de formatage définies au sein de l’ABES)
-* Calcul des métriques du code. Les métriques du logiciel représentent des valeurs numériques  des caractéristiques du code ou de ses spécifications
+* Calcul des métriques du code. Les métriques du logiciel représentent des valeurs numériques des caractéristiques du code ou de ses spécifications
 
 ## SonarQube
 
 Il existe quelques outils d’ASC reconnus (et historiques) tels que Checkstyle (Focus sur les conventions de codage), PMD (Focus sur les mauvaises pratiques de codage) ou encore FindBugs (Focus sur les bugs potentiels et les problèmes de performance). La plupart de ces outils sont disponibles sous forme de plugins dans SonarQube.
 
-SonarQube est un outil open source qui collecte et analyse le code source en en mesurant la qualité et en fournissant des rapports de qualité. Il peut analyser plus d’une vingtaine des langages de programmations, dont Java, Javascript et PL/SQL (option payante). Il combine l’analyse statique et dynamique du code. Tout ce qui concerne le code (détails mineurs de style ou erreurs critiques de conception) est inspecté par SonarQube et mis à disposition des développeurs. Chaque couche de l’application (du composant à la classe) est analysée. 
+SonarQube est un outil open source qui collecte et analyse le code source en en mesurant la qualité et en fournissant des rapports de qualité. Il peut analyser plus d’une vingtaine des langages de programmations, dont Java, Javascript et PL/SQL (option payante). Il combine l’analyse statique et dynamique du code. Tout ce qui concerne le code (détails mineurs de style ou erreurs critiques de conception) est inspecté par SonarQube et mis à disposition des développeurs. Chaque couche de l’application (du composant à la classe) est analysée.
 
-SonarQube offre : 
+SonarQube offre :
 * assemblage des fonctionnalités de Checkstyle, PMD et FindBugs dans un seul outil (tout-en-un) utilisable dans la chaîne d’intégration continue (intégration facile avec Jenkins)
 * intégration facile avec l’IDE intellij via le plugin SonarLint
 * un tableau de bord pour mesurer la qualité du code de l’ensemble des projets de l’ABES
@@ -40,9 +40,9 @@ SonarQube offre :
 ## Les règles utilisées par SonarQube sont consultables ici https://rules.sonarsource.com/java
 
 Elles sont détaillées par langage utilisé, par type de problème (performance, sécurité, etc.). Chaque règle contient une définition, des exemples conformes/non-conformes et la sévérité.
- 
-* La mise en conformité du code par rapport aux conventions de codage d’écrites par SonarQube doit se faire en amont au niveau d’Eclipse (recommandé pour tous les développeurs), certaines actions de formatage se font automatiquement lors de l’enregistrement du code : 
-* La langue anglaise est recommandée pour tout ce qui est commentaires, nom de classes/méthodes/membres, javadoc, nommage de fichiers de log, mais le français est toléré. 
+
+* La mise en conformité du code par rapport aux conventions de codage d’écrites par SonarQube doit se faire en amont au niveau d’Eclipse (recommandé pour tous les développeurs), certaines actions de formatage se font automatiquement lors de l’enregistrement du code :
+* La langue anglaise est recommandée pour tout ce qui est commentaires, nom de classes/méthodes/membres, javadoc, nommage de fichiers de log, mais le français est toléré.
 
 ## Intégration continue
 

@@ -3,22 +3,22 @@
 ## Types d'environnement
 Nous déployons nos applications sur trois types d’environnements :
 * __Développement__ (appelé aussi "dev")  
-Les développeurs testent le code qu'ils produisent en local sur leur machine. On dispose également d'un environnement de développement, c'est à dire un environnement partagé qui permet de réaliser les tests techniques du programme dans un environnement proche de la production (même version de Linux etc.). Cet environnement peut également servir à tester les montée de version des composants de l'application (container tomcat etc.). Il est accessible en interne.
-Les développeurs utilisent cet environnement pour tester les modifications réalisées sur les programmes sans gêner les tests fonctionnels. 
+  Les développeurs testent le code qu'ils produisent en local sur leur machine. On dispose également d'un environnement de développement, c'est à dire un environnement partagé qui permet de réaliser les tests techniques du programme dans un environnement proche de la production (même version de Linux etc.). Cet environnement peut également servir à tester les montée de version des composants de l'application (container tomcat etc.). Il est accessible en interne.
+  Les développeurs utilisent cet environnement pour tester les modifications réalisées sur les programmes sans gêner les tests fonctionnels.
 * __Test__
-Les serveurs de test permettent aux utilisateurs de tester une version de l’application dans un environnement parfaitement similaire à l’environnement de production. 
-A l’extérieur de l’Abes, les serveurs de tests sont accessibles uniquement aux établissements du réseau RENATER. 
+  Les serveurs de test permettent aux utilisateurs de tester une version de l’application dans un environnement parfaitement similaire à l’environnement de production.
+  A l’extérieur de l’Abes, les serveurs de tests sont accessibles uniquement aux établissements du réseau RENATER.
 
 * __Production__ (appelé aussi "prod")  
-Ce sont les environnements qui hébergent la version officielle de l’application. 
+  Ce sont les environnements qui hébergent la version officielle de l’application.
 
 * Le cas échéant, un environnement de préproduction peut être nécessaire. On pense par exemple au déploiement d'une correction de bug sur la production.
 
 ## Architecture des environnements
 
-Chaque environnement est cloisonné. On ne peut pas accéder depuis un type d’environnement à un autre. Il n’y a par contre pas de cloisonnement par application. 
+Chaque environnement est cloisonné. On ne peut pas accéder depuis un type d’environnement à un autre. Il n’y a par contre pas de cloisonnement par application.
 
-Les points de montage qui permettent d’accéder aux espaces de stockage réseaux sont tous nommés : /applis/ que l’on soit sur l’environnement de développement, de test ou de production, ceci pour faciliter le déplacement des applications d’un environnement à l’autre (inutile de modifier les fichiers de configuration). 
+Les points de montage qui permettent d’accéder aux espaces de stockage réseaux sont tous nommés : /applis/ que l’on soit sur l’environnement de développement, de test ou de production, ceci pour faciliter le déplacement des applications d’un environnement à l’autre (inutile de modifier les fichiers de configuration).
 
 Si l’application a besoin de connaitre l’environnement sur lequel elle s’exécute, elle peut interroger une variable d’environnement positionnée sur chaque type d’environnement : `APPLIS_ENV`. Cette variable peut prendre comme valeur DEV, TEST ou PROD. On peut la récupérer en java via l’instruction System.getenv().
 

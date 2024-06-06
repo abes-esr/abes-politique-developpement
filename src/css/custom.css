@@ -1,0 +1,47 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #314378;
+  --ifm-color-primary-dark: #2c3c6c;
+  --ifm-color-primary-darker: #2a3966;
+  --ifm-color-primary-darkest: #222f54;
+  --ifm-color-primary-light: #364a84;
+  --ifm-color-primary-lighter: #384d8a;
+  --ifm-color-primary-lightest: #40579c;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #97a7d5;
+  --ifm-color-primary-dark: #94a5d4;
+  --ifm-color-primary-darker: #92a3d3;
+  --ifm-color-primary-darkest: #92a3d3;
+  --ifm-color-primary-light: #b1bddf;
+  --ifm-color-primary-lighter: #bec8e5;
+  --ifm-color-primary-lightest: #e5e9f4;
+  --docusaurus-highlighted-code-line-bg: rgba(28, 30, 33, 0.1);
+}
+
+/* personalisation de la table des matières des pages Markdown (équivalent aux titres Markdown) */
+ul.table-of-contents li:hover {
+  padding-right: 8px;
+  padding-left: 8px;
+  border-radius: 5px;
+  background: #f6f6f6;
+  color: #222f54;
+}
+
+ul.table-of-contents li a.table-of-contents__link--active {
+  padding-right: 8px;
+  padding-left: 8px;
+  border-radius: 5px;
+  background: #f6f6f6;
+  color: #222f54;
+}
