@@ -1,4 +1,4 @@
-name: "build-test-pubtodockerhub"
+name: "build-pubtodockerhub"
 
 # IMPORTANT : personnalisez cette variable pour que les images
 # de votre application soient pousées sur dockerhub
@@ -8,6 +8,8 @@ env:
 
 on:
   push:
+    branches:
+      - main
     paths-ignore:
       - '.github/**'
   workflow_dispatch:
