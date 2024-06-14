@@ -120,13 +120,13 @@ const config = {
       //   darkTheme: prismThemes.dracula,
       // },
 
-      //  configuration pour le relevé de statistiques - penser à renseigner le siteId lors de l'activation
-      // matomo: {
-      //   matomoUrl: 'https://piwik.abes.fr/',
-      //   siteId: '',
-      //   phpLoader: 'matomo.php',
-      //   jsLoader: 'matomo.js',
-      // },
+       // configuration pour le relevé de statistiques - penser à renseigner le siteId lors de l'activation
+      matomo: {
+        matomoUrl: 'https://piwik.abes.fr/',
+        siteId: '39',
+        phpLoader: 'matomo.php',
+        jsLoader: 'matomo.js',
+      },
     }),
 };
 
