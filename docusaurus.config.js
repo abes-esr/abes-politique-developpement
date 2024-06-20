@@ -39,9 +39,10 @@ const config = {
       require.resolve('docusaurus-lunr-search'), {
         languages: ['en', 'fr'],
         includeRoutes: ['/docs'],
-    },
+    }
+  ],
     require.resolve('docusaurus-plugin-matomo')
-  ]],
+  ],
 
   presets: [
     [
