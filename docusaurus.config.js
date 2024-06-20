@@ -40,7 +40,7 @@ const config = {
         languages: ['en', 'fr'],
         includeRoutes: ['/docs'],
     },
-    'docusaurus-plugin-matomo'
+    require.resolve('docusaurus-plugin-matomo')
   ]],
 
   presets: [
