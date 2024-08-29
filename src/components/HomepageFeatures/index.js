@@ -11,7 +11,7 @@ const FeatureList = [
                     Version non éditable de la politique de développement de l'Abes
                 </p>
                 <p>
-                    <br/>Pour toute question ou remarque, vous pouvez écrire à <a href="mailto:abes@abes.fr">abes@abes.fr</a>
+                    <br/>Pour toute question ou remarque, vous pouvez écrire à <a href="mailto:github@abes.fr">github@abes.fr</a>
                 </p>
             </>
         ),
