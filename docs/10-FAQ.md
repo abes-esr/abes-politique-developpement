@@ -1048,7 +1048,8 @@ L'outil watchtower utilisé pour le déploiement continue des applications docke
 ### Solution
 
 Deux solutions :
-- Soit souscrire au programme DockerHub OpenSource Program sur l'organisation DockerHub en question (A la date du 12/2023, c'est le cas sur l'organisation abesesr mais pas le cas sur l'organisation transitionbibliographique)
+- Soit souscrire au programme DockerHub OpenSource Program sur l'organisation DockerHub en question (A la date du 12/2023, c'est le cas sur l'organisation abesesr mais pas le cas sur l'organisation transitionbibliographique). Cf la limitation que permet de lever le programme OpenSource de Dockerhub :
+  > Rate-limit removal for all users pulling public images from your project namespace
 - Soit configurer watchtower pour utiliser un login/mdp dockerhub pour faire les appels à l'API de dockerhub (la limitation "rate limit" est alors moins drastique qu'un appel anonyme à l'API), voici les paramètres watchtower à utiliser dans cet [exemple ici](https://github.com/abes-esr/abes-hello-docker/blob/develop/docker-compose.yml#L132-L134). Le login ayant des droits en lecture qui est à utiliser pour faire des docker pull sur l'organisation abesesr de dockerhub est le suivant : ``dockerhubabes`` (le mot de passe est à demander à pic@abes.fr)
 
 ## Notification slack des déploiements réalisés avec watchtower
