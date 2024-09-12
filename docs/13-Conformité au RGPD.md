@@ -127,4 +127,4 @@ Il prend en charge une large gamme de services tiers.
 
 3. Retirez le script original de l'outil tiers :
 
-`<script src='https://www.google.com/recaptcha/api.js?render=XXXXX'></script>`
+`<script src='https://www.google.com/recaptcha/api.js?render=XXXXX'></script>` 
