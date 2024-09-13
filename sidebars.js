@@ -31,6 +31,7 @@ const sidebars = {
    'FAQ',
    'RGAA',
    'Gestion des API',
+   'Conformité au RGPD'
 ],
 
 };
