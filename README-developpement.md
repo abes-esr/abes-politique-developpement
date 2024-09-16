@@ -1,6 +1,6 @@
 # Politique de développement de l'Abes
 
-Le site est construit à l'aide de Docusaurus [Docusaurus](https://docusaurus.io/)
+Le site est construit à l'aide de [Docusaurus](https://docusaurus.io/)
 
 ## Démarrage du site
 Pour démarrer le site en local, saisissez la commande `docusaurus start` dans votre terminal.
