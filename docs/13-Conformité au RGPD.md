@@ -38,7 +38,7 @@ Vous pouvez consulter un exemple sur la page dédiée à la gestion des données
 Les éditeurs de sites doivent informer clairement les utilisateurs sur les cookies utilisés, leur finalité et les conséquences de leur refus.
 Dans le cas d'un formulaire, si le refus de dépôt de cookie empêche à l'utilisateur d'utiliser un service, la CNIL recommande à l'éditeur du site web de proposer une alternative équivalente en terme d'accès au service.
 Cette alternative doit être proposée clairement sur la page, à l'image du formulaire de [signalement de theses.fr](https://theses.fr/signaler?nnt=2024UPASP055&source=star&etabPpn=241345251)
-![Mention d'alternative au formulaire avec captcha de theses.fr](./assets/13-alternative-formulaire.png)
+![Mention d'alternative au formulaire avec captcha de theses.fr](/img/13-alternative-formulaire.png)
 
 ### Cookies strictement nécessaires
 
@@ -49,7 +49,7 @@ Certains cookies sont considérés comme "strictement nécessaires" au fonctionn
 Tarteaucitron est un outil open-source javascript utilisé dans la gestion des cookies sur les sites web. Il est facilement et rapidement implémentable, il est spécifiquement concu pour répondre aux exigences du RGPD en matière de consentement des utilisateurs pour le dépôt de cookies.
 Il prend en charge une large gamme de services tiers.
 
-![Présentation du panneau de gestion des cookies de tarteaucitron.io](./assets/13-bandeau-tarteaucitron.png)
+![Présentation du panneau de gestion des cookies de tarteaucitron.io](/img/13-bandeau-tarteaucitron.png)
 
 ### Fonctionnalités
 - Gestion des catégories de cookies : vous pouvez catégoriser vos cookies (nécessaires, statistiques, marketing, etc.) pour offrir à l'utilisateur un choix plus granulaire.
@@ -62,7 +62,7 @@ Il prend en charge une large gamme de services tiers.
 
 Avant de commencer, téléchargez le plugin depuis le dépôt [github de tarteaucitron.io](https://github.com/AmauriC/tarteaucitron.js)
 Placez le contenu dans le répertoire **/public** de votre application. 
-![Localisation du dossier tarteaucitron](./assets/13-dossier-installation.png)
+![Localisation du dossier tarteaucitron](/img/13-dossier-installation.png)
 
 #### HTML
 1. Collez le script suivant dans le head de la ou des pages.s concernée.s
@@ -71,7 +71,7 @@ Placez le contenu dans le répertoire **/public** de votre application.
 4. Rendez-vous à l'étape 3 du [Guide d'installation](https://tarteaucitron.io/fr/install/) et cherchez les services tiers qui déposent des traceurs sur votre site (ex: reCAPTCHA de *Google*).
 5. Le guide vous donne les scripts et balises à ajouter à votre page
    - Supprimez la balise originale du service et remplacez-la par celle donnée par le guide d'installation. Prenez soin de bien remplacer les tokens et autres informations nécessaires au bon fonctionnement du service (elles sont colorées en vert dans l'exemple donné par le guide)
-   - Revenez dans le <head> de la page et ajoutez à la suite le script donné par le guide
+   - Revenez dans le ```<head>``` de la page et ajoutez à la suite le script donné par le guide
 
 ``` html
 <head>
