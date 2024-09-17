@@ -184,7 +184,7 @@ useHead({
    script: [
       ...
       {
-        children: `tarteaucitron.user.recaptchaapi = '6LchRDMnAAAAAFSPyM8p7mvowBkOiQC6WYahnsV-'; (tarteaucitron.job = tarteaucitron.job || []).push('recaptcha');`
+        children: `tarteaucitron.user.recaptchaapi = 'XXXXX-'; (tarteaucitron.job = tarteaucitron.job || []).push('recaptcha');`
       }
    ]
 });
