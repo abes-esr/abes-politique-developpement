@@ -1,9 +1,21 @@
-# Politique de développement de l'Abes
+# Documentation développeur du système docusaurus de la "Politique de développement de l'Abes"
 
-Le site est construit à l'aide de [Docusaurus](https://docusaurus.io/)
+Le site https://politique-developpement.abes.fr/ est construit à l'aide de [Docusaurus](https://docusaurus.io/)
+
+La documentation ci-dessous explique comment docusorus est paramétré pour les besoins de publication du site de la "politique de développement de l'Abes"
 
 ## Démarrage du site
-Pour démarrer le site en local, saisissez la commande `docusaurus start` dans votre terminal.
+
+Prérequis : disposer de "npm" en local.
+
+Pour démarrer le site en local, suivant la procédure suivante :
+
+```bash
+git clone https://github.com/abes-esr/abes-politique-developpement/
+cd abes-politique-developpement/
+npm install
+npm start
+```
 
 >[!CAUTION]
 > 
