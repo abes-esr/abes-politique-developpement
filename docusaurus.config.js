@@ -56,8 +56,8 @@ const config = {
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/abes-esr/abes-politique-developpement',
+          editUrl: ({versionDocsDirPath, docPath}) =>
+            `https://github.com/abes-esr/abes-politique-developpement/edit/main/${versionDocsDirPath}/${docPath}`,
         },
         blog: false,
         theme: {
