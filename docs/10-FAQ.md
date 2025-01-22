@@ -21,6 +21,8 @@ No appropriate protocol (protocol is disabled or cipher suites are inappropriate
 ### Solution
 
 C'est lié à un problème de dépendances lors du build par Maven, il faut vérifier les dépendances liées aux mails dans le Maven Dependency Tree.
+
+Exemple sur IntelliJ :
 ![Obtenir le Maven Dependency Tree avec IntelliJ](/img/faq-maven-dependency-tree-intellij.png)
 Puis une fois identifiée(s), ajouter une exclusion pour les librairies qui importent des versions de librairies mail obsolètes (qui ne supporte pas le nouveau protocole), par exemple :
 * mettre  
