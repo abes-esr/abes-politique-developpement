@@ -8,7 +8,9 @@ const FeatureList = [
         description: (
             <>
                 <p>
-                    Version non éditable de la politique de développement de l'Abes
+                    La politique de développement de l'Abes nous donne un cadre pour structurer nos développements informatiques.
+                    Cette politique est rédigée par les développeur(se)s de l'Abes avec la participation de collègues du service Infrastructures et Réseaux.
+                    Elle nous fournit des méthodes et des outils pour améliorer la qualité de nos projets et applications.
                 </p>
                 <p>
                     <br/>Pour toute question ou remarque, vous pouvez écrire à <a href="mailto:github@abes.fr">github@abes.fr</a>
