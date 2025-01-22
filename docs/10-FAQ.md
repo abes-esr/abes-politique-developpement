@@ -8,6 +8,31 @@ toc_max_heading_level: 2
 
 Cette FAQ technique a pour objectif de rassembler des résolutions de problèmes récurrents rencontrés lors de nos activités de développement.
 
+## Erreur de protocole TLS dans un projet Java
+
+### Problème
+
+Lorsque l'application Java se connecte au serveur mail, une erreur de protocole lié aux TLS se produit :
+
+```
+No appropriate protocol (protocol is disabled or cipher suites are inappropriate)
+```
+
+### Solution
+
+C'est lié à un problème de dépendances lors du build par Maven, il faut vérifier les dépendances liées aux mails dans le Maven Dependency Tree.
+
+Exemple sur IntelliJ :
+![Obtenir le Maven Dependency Tree avec IntelliJ](/img/faq-maven-dependency-tree-intellij.png)
+Puis une fois identifiée(s), ajouter une exclusion pour les librairies qui importent des versions de librairies mail obsolètes (qui ne supporte pas le nouveau protocole), par exemple :
+* mettre  
+    `<exclusion>` \
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`<groupId>javax.mail</groupId>` \
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`<artifactId>mail</artifactId>` \
+    `</exclusion>` \
+ dans le pom
+* Attention ! Les librairies de mails peuvent avoir différents noms (mail, javax.mail, jakarta.mail...) mais peuvent tout de même entrer en collision.
+
 ## Erreur 404 lors d'un déploiement de war dans un tomcat
 
 ### Problème
