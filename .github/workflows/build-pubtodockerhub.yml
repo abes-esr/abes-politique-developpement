@@ -10,6 +10,7 @@ on:
   push:
     branches:
       - main
+      - polinfo
     paths-ignore:
       - '.github/**'
   workflow_dispatch:
