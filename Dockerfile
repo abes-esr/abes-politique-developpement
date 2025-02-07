@@ -26,5 +26,7 @@ FROM nginx:1.25 as politique-developpement-image
 # Copy what we've installed/built from production
 COPY --from=build-image /app/build /usr/share/nginx/html/
 COPY ./.docker/nginx-default.conf.template   /etc/nginx/templates/default.conf.template
+COPY ./.docker/docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
 EXPOSE 80
