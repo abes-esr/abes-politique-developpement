@@ -148,3 +148,14 @@ Les dépôts Github publiés par l'Abes qui contiennent du code qui dépend de l
 
 Ainsi les collègues contributeurs externes à l'Abes sont prévenus rapidement et cela leur évite de perdre du temps à essayer de compiler/réutiliser le code.
 
+## Codes ESR ouverts et partagés sur Github
+
+Le github https://github.com/abes-esr/ regroupe également les codes sources des applications développées par les établissements des réseaux de l'Abes qui souhaitent les partager au niveau national à tout l'ESR (cf [présentation ici](https://punktokomo.abes.fr/2019/06/18/une-politique-informatique-ouverte-pour-labes/)).
+
+A noter que l'Abes n'impose pas aux établissements de respecter la politique de déveleoppement de l'Abes pour ne pas créer de contraintes trop fortes aux établissements. En revanche l'Abes demande de respecter quelques règles :
+- le nommages du dépôt et un README même minimaliste décrivant le contenu du dépôt (cf [cette section](https://politique-developpement.abes.fr/docs/Architecture%20des%20projets#nom-dun-projetapplication) et [cette section](https://politique-developpement.abes.fr/docs/Gestion%20du%20code%20source#cr%C3%A9ation-et-configuration-dun-nouveau-d%C3%A9p%C3%B4t))
+- une licence open source (l'établissement peut si besoin s'inspirer des [choix de l'Abes](https://politique-developpement.abes.fr/docs/Gestion%20du%20code%20source#licences))
+
+En option, l'Abes propose aux établissements un espace pour communiquer sur leur code source/application dans le [blog technique de l'Abes](https://punktokomo.abes.fr/) via un article (voici un [exemple](https://punktokomo.abes.fr/2019/10/08/sudoctoolkit-une-application-pour-faciliter-lutilisation-des-web-services-de-labes/))
+
+Pour faire une demande de dépôt de code source dans le github de l'Abes, les établissements sont invités à utiliser le guichet d'assistance de l'Abes : https://stp.abes.fr
